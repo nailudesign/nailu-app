@@ -320,21 +320,21 @@ export default function Home() {
         }
     };
 
-    const appUrl = "#"; // Placeholder URL for the separate web app
+    const appUrl = "http://app.nailu.jp/"; // Placeholder URL for the separate web app
 
     return (
-        <div className="min-h-screen bg-transparent text-[#C59FBE]">
+        <div className="min-h-screen bg-transparent text-[#5e3e53]">
             {/* HEADER */}
             <header className="fixed top-0 w-full flex justify-between items-center z-50 bg-[#FAC1B5] backdrop-blur-md animate-fade-in-up" style={{ padding: '1rem 5%' }}>
                 <div
-                    className="logo font-[family-name:var(--font-montserrat)] text-2xl font-semibold tracking-widest text-[#C59FBE] cursor-pointer"
+                    className="logo font-[family-name:var(--font-montserrat)] text-2xl font-semibold tracking-widest text-[#5e3e53] cursor-pointer"
                     onClick={() => scrollToSection(heroRef)}
                 >
                     NAILU
                 </div>
 
                 {/* Desktop Nav */}
-                <nav className="hidden md:flex gap-8 text-sm text-[#FAC1B5] items-center font-[family-name:var(--font-noto-sans-jp)]">
+                <nav className="hidden md:flex gap-8 text-sm text-[#5e3e53] items-center font-[family-name:var(--font-noto-sans-jp)]">
                     <button className="nav-item hover:text-[#F283AE] transition-colors" onClick={() => scrollToSection(heroRef)}>トップ</button>
                     <button className="nav-item hover:text-[#F283AE] transition-colors" onClick={() => scrollToSection(situationRef)}>シチュエーション</button>
                     <button className="nav-item hover:text-[#F283AE] transition-colors" onClick={() => scrollToSection(howItWorksRef)}>使い方</button>
@@ -347,7 +347,7 @@ export default function Home() {
                 <div className="flex items-center gap-4">
                     {/* Points Display - Hidden for now (User Management pending) 
                     <div className="hidden md:block bg-[#EDD9BE] px-3 py-1 rounded-full border border-[#EDD9BE]">
-                        <span className="text-xs text-[#FAC1B5]">Points:</span>
+                        <span className="text-xs text-[#5e3e53]">Points:</span>
                         <span className="text-sm ml-1 font-bold bg-gradient-to-br from-[#F283AE] to-[#C6C870] bg-clip-text text-transparent">
                             0 pt
                         </span>
@@ -380,7 +380,7 @@ export default function Home() {
                     {user ? (
                         <button
                             onClick={signOut}
-                            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-pink-100 hover:bg-pink-50 transition-all text-sm text-[#C59FBE] font-medium font-[family-name:var(--font-noto-sans-jp)]"
+                            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-pink-100 hover:bg-pink-50 transition-all text-sm text-[#5e3e53] font-medium font-[family-name:var(--font-noto-sans-jp)]"
                             title="ログアウト"
                         >
                             {user.photoURL ? (
@@ -429,19 +429,19 @@ export default function Home() {
                                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F283AE] opacity-75"></span>
                                         <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#F283AE]"></span>
                                     </span>
-                                    <span className="text-xs md:text-sm text-[#C59FBE] font-bold tracking-widest uppercase font-[family-name:var(--font-montserrat)]">✨ Premium AI Service</span>
+                                    <span className="text-xs md:text-sm text-[#5e3e53] font-bold tracking-widest uppercase font-[family-name:var(--font-montserrat)]">✨ Premium AI Service</span>
                                 </div>
 
                                 {/* Title */}
                                 <h1 className="opacity-0-start animate-fade-in-up delay-200 leading-[1.1] mb-6 tracking-tight">
-                                    <span className="block text-xl md:text-2xl font-bold text-[#C59FBE] mb-3 tracking-widest text-glow">✨ 指先に、新しい魔法を。 ✨</span>
+                                    <span className="block text-xl md:text-2xl font-bold text-[#5e3e53] mb-3 tracking-widest text-glow">✨ 指先に、新しい魔法を。 ✨</span>
                                     <span className="relative inline-block text-[5.5rem] md:text-[7rem] lg:text-[8rem] text-elegant-gold py-2 leading-none font-black">
                                         NAILU
                                     </span>
                                 </h1>
 
                                 {/* Subtitle / Description */}
-                                <p className="opacity-0-start animate-fade-in-up delay-300 text-lg md:text-xl text-[#C59FBE] font-medium mb-10 leading-loose font-[family-name:var(--font-noto-sans-jp)] max-w-lg drop-shadow-sm">
+                                <p className="opacity-0-start animate-fade-in-up delay-300 text-lg md:text-xl text-[#5e3e53] font-medium mb-10 leading-loose font-[family-name:var(--font-noto-sans-jp)] max-w-lg drop-shadow-sm">
                                     たった1枚の写真から、あなたに似合うネイルデザインを提案。<br className="hidden md:block" />
                                     トレンドの韓国ネイルやニュアンスデザインも、<br className="hidden md:block" />
                                     まるで魔法のように一瞬で試着できます。
@@ -471,10 +471,10 @@ export default function Home() {
                                         <div className="w-8 h-8 rounded-full border-2 border-white bg-[#F283AE] shadow-sm"></div>
                                         <div className="w-8 h-8 rounded-full border-2 border-white bg-[#EDD9BE] shadow-sm"></div>
                                         <div className="w-8 h-8 rounded-full border-2 border-white bg-[#EDD9BE] shadow-sm"></div>
-                                        <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-[10px] text-[#FAC1B5] font-bold shadow-sm">+99</div>
+                                        <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-[10px] text-[#5e3e53] font-bold shadow-sm">+99</div>
                                     </div>
-                                    <div className="text-xs text-[#FAC1B5] leading-tight">
-                                        <span className="font-bold text-[#C59FBE] text-base block mb-0.5">10,000+ Designs</span>
+                                    <div className="text-xs text-[#5e3e53] leading-tight">
+                                        <span className="font-bold text-[#5e3e53] text-base block mb-0.5">10,000+ Designs</span>
                                         Generated by AI
                                     </div>
                                 </div>
@@ -546,7 +546,7 @@ export default function Home() {
 
                                 {/* Style Selector - horizontal row beneath image */}
                                 <div className="flex flex-row flex-wrap justify-center gap-2 w-full max-w-[600px] px-2">
-                                    <p className="w-full text-center text-[10px] font-bold text-[#FAC1B5] tracking-widest uppercase mb-1 font-[family-name:var(--font-montserrat)]">デザインを選ぶ</p>
+                                    <p className="w-full text-center text-[10px] font-bold text-[#5e3e53] tracking-widest uppercase mb-1 font-[family-name:var(--font-montserrat)]">デザインを選ぶ</p>
                                     {trendStyles.map((style, i) => (
                                         <button
                                             key={i}
@@ -558,7 +558,7 @@ export default function Home() {
                                             }}
                                             className={`px-4 py-2 rounded-full text-sm font-bold transition-all duration-200 font-[family-name:var(--font-noto-sans-jp)] ${selectedTrendIndex === i
                                                 ? 'bg-gradient-to-r from-[#F283AE] to-[#C6C870] text-white shadow-md scale-105'
-                                                : 'bg-white/80 text-[#C59FBE] border border-white/60 backdrop-blur-sm hover:bg-pink-50 hover:border-[#F283AE]/40'
+                                                : 'bg-white/80 text-[#5e3e53] border border-white/60 backdrop-blur-sm hover:bg-pink-50 hover:border-[#F283AE]/40'
                                                 }`}
                                         >
                                             {selectedTrendIndex === i && <span className="text-xs mr-1">✨</span>}
@@ -580,11 +580,11 @@ export default function Home() {
                     <div className="max-w-7xl mx-auto relative z-10">
                         <div className="text-center mb-20 animate-on-scroll">
                             <span className="text-[#F283AE] font-bold tracking-[0.2em] text-xs uppercase mb-4 block font-[family-name:var(--font-montserrat)]">Creative AI Feature</span>
-                            <h2 className="text-4xl md:text-5xl font-bold text-[#C59FBE] mb-6 font-[family-name:var(--font-noto-sans-jp)] leading-tight">
+                            <h2 className="text-4xl md:text-5xl font-bold text-[#5e3e53] mb-6 font-[family-name:var(--font-noto-sans-jp)] leading-tight">
                                 日常の「ときめき」を、<br className="md:hidden" />
                                 そのままネイルに。
                             </h2>
-                            <p className="text-[#FAC1B5] text-lg max-w-2xl mx-auto font-[family-name:var(--font-noto-sans-jp)] leading-loose">
+                            <p className="text-[#5e3e53] text-lg max-w-2xl mx-auto font-[family-name:var(--font-noto-sans-jp)] leading-loose">
                                 お気に入りのリボン、大好きな服の柄、心惹かれるテクスチャ。<br className="hidden md:block" />
                                 イメージ画像を送るだけで、AIがそのエッセンスを抽出して<br className="hidden md:block" />
                                 あなただけの特別なデザインを創り出します。
@@ -612,8 +612,8 @@ export default function Home() {
                                 <div className="px-5 py-4 flex items-center gap-3 border-t border-pink-50">
                                     <span className="text-xl">🎀</span>
                                     <div>
-                                        <p className="text-sm font-bold text-[#C59FBE] font-[family-name:var(--font-montserrat)] tracking-wide">Ribbon Essence</p>
-                                        <p className="text-xs text-[#FAC1B5] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">シルクの光沢とリボンの立体感を指先に再現</p>
+                                        <p className="text-sm font-bold text-[#5e3e53] font-[family-name:var(--font-montserrat)] tracking-wide">Ribbon Essence</p>
+                                        <p className="text-xs text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">シルクの光沢とリボンの立体感を指先に再現</p>
                                     </div>
                                 </div>
                             </div>
@@ -636,8 +636,8 @@ export default function Home() {
                                 <div className="px-5 py-4 flex items-center gap-3 border-t border-pink-50">
                                     <span className="text-xl">🧣</span>
                                     <div>
-                                        <p className="text-sm font-bold text-[#C59FBE] font-[family-name:var(--font-montserrat)] tracking-wide">Modern Check</p>
-                                        <p className="text-xs text-[#FAC1B5] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">高級感のあるテキスタイル模様を繊細な筆致で昇華</p>
+                                        <p className="text-sm font-bold text-[#5e3e53] font-[family-name:var(--font-montserrat)] tracking-wide">Modern Check</p>
+                                        <p className="text-xs text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">高級感のあるテキスタイル模様を繊細な筆致で昇華</p>
                                     </div>
                                 </div>
                             </div>
@@ -660,8 +660,8 @@ export default function Home() {
                                 <div className="px-5 py-4 flex items-center gap-3 border-t border-pink-50">
                                     <span className="text-xl">🌿</span>
                                     <div>
-                                        <p className="text-sm font-bold text-[#C59FBE] font-[family-name:var(--font-montserrat)] tracking-wide">Botanical Garden</p>
-                                        <p className="text-xs text-[#FAC1B5] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">押し花の繊細な美しさをクリアジェルの中に閉じ込めて</p>
+                                        <p className="text-sm font-bold text-[#5e3e53] font-[family-name:var(--font-montserrat)] tracking-wide">Botanical Garden</p>
+                                        <p className="text-xs text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">押し花の繊細な美しさをクリアジェルの中に閉じ込めて</p>
                                     </div>
                                 </div>
                             </div>
@@ -684,8 +684,8 @@ export default function Home() {
                                 <div className="px-5 py-4 flex items-center gap-3 border-t border-pink-50">
                                     <span className="text-xl">🪨</span>
                                     <div>
-                                        <p className="text-sm font-bold text-[#C59FBE] font-[family-name:var(--font-montserrat)] tracking-wide">Luxury Marble</p>
-                                        <p className="text-xs text-[#FAC1B5] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">大理石の気品と金箔の輝きを纏った指先</p>
+                                        <p className="text-sm font-bold text-[#5e3e53] font-[family-name:var(--font-montserrat)] tracking-wide">Luxury Marble</p>
+                                        <p className="text-xs text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">大理石の気品と金箔の輝きを纏った指先</p>
                                     </div>
                                 </div>
                             </div>
@@ -724,13 +724,13 @@ export default function Home() {
                                 <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase font-[family-name:var(--font-montserrat)]">NEW FEATURE</span>
                             </div>
 
-                            <h2 className="text-3xl md:text-4xl font-bold text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)] leading-tight">
+                            <h2 className="text-3xl md:text-4xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] leading-tight">
                                 あなただけの<br />
                                 オリジナルデザインを。<br />
                                 <span className="text-2xl md:text-3xl mt-2 block opacity-80">AIが想いをカタチにします</span>
                             </h2>
 
-                            <p className="text-[#FAC1B5] text-lg leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                            <p className="text-[#5e3e53] text-lg leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                 「こんなネイルがしたい」というイメージを伝えるだけで、世界に一つだけのデザインが完成します。
                                 難しい操作は一切不要。まるで専属のネイリストとお話しするような感覚で、理想の指先を見つけましょう。
                             </p>
@@ -740,8 +740,8 @@ export default function Home() {
                                 <div className="flex items-start gap-4 p-4 bg-white/50 rounded-2xl border border-white/60 shadow-sm hover:bg-white/80 transition-colors">
                                     <div className="w-10 h-10 bg-[#F283AE] rounded-full flex items-center justify-center text-xl shrink-0">🎨</div>
                                     <div>
-                                        <h4 className="font-bold text-[#C59FBE] mb-1 font-[family-name:var(--font-noto-sans-jp)]">直感的な操作</h4>
-                                        <p className="text-sm text-[#FAC1B5] font-[family-name:var(--font-noto-sans-jp)]">
+                                        <h4 className="font-bold text-[#5e3e53] mb-1 font-[family-name:var(--font-noto-sans-jp)]">直感的な操作</h4>
+                                        <p className="text-sm text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">
                                             「かわいい」「クール」などの気分や、好きな色を選ぶだけ。専門用語は必要ありません。
                                         </p>
                                     </div>
@@ -749,8 +749,8 @@ export default function Home() {
                                 <div className="flex items-start gap-4 p-4 bg-white/50 rounded-2xl border border-white/60 shadow-sm hover:bg-white/80 transition-colors">
                                     <div className="w-10 h-10 bg-[#EDD9BE] rounded-full flex items-center justify-center text-xl shrink-0">🤖</div>
                                     <div>
-                                        <h4 className="font-bold text-[#C59FBE] mb-1 font-[family-name:var(--font-noto-sans-jp)]">無限のバリエーション</h4>
-                                        <p className="text-sm text-[#FAC1B5] font-[family-name:var(--font-noto-sans-jp)]">
+                                        <h4 className="font-bold text-[#5e3e53] mb-1 font-[family-name:var(--font-noto-sans-jp)]">無限のバリエーション</h4>
+                                        <p className="text-sm text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">
                                             AIが数秒で数パターンのデザインをご提案。気に入るまで何度でも作り直せます。
                                         </p>
                                     </div>
@@ -773,8 +773,8 @@ export default function Home() {
                 <section className="py-24 px-6 overflow-hidden bg-[#F283AE]/10" >
                     <div className="max-w-7xl mx-auto">
                         <div className="text-center mb-16">
-                            <h2 className="text-2xl md:text-3xl font-bold text-[#C59FBE] mb-4 font-[family-name:var(--font-noto-sans-jp)]">人気のトレンドスタイル</h2>
-                            <p className="text-[#FAC1B5] font-[family-name:var(--font-noto-sans-jp)]">韓国・日本の最新トレンドをAIが学習しています</p>
+                            <h2 className="text-2xl md:text-3xl font-bold text-[#5e3e53] mb-4 font-[family-name:var(--font-noto-sans-jp)]">人気のトレンドスタイル</h2>
+                            <p className="text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">韓国・日本の最新トレンドをAIが学習しています</p>
                         </div>
 
                         {/* Style Carousel */}
@@ -882,7 +882,7 @@ export default function Home() {
                                     const el = document.getElementById('trend-carousel');
                                     if (el) el.scrollBy({ left: -300, behavior: 'smooth' });
                                 }}
-                                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-md rounded-full shadow-lg flex items-center justify-center text-[#C59FBE] opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-md rounded-full shadow-lg flex items-center justify-center text-[#5e3e53] opacity-0 group-hover:opacity-100 transition-opacity z-10"
                             >
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
                             </button>
@@ -891,7 +891,7 @@ export default function Home() {
                                     const el = document.getElementById('trend-carousel');
                                     if (el) el.scrollBy({ left: 300, behavior: 'smooth' });
                                 }}
-                                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-md rounded-full shadow-lg flex items-center justify-center text-[#C59FBE] opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-md rounded-full shadow-lg flex items-center justify-center text-[#5e3e53] opacity-0 group-hover:opacity-100 transition-opacity z-10"
                             >
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
                             </button>
@@ -900,7 +900,7 @@ export default function Home() {
 
                     {/* Popular Keywords Cloud */}
                     <div className="max-w-4xl mx-auto mt-16 text-center">
-                        <p className="text-sm text-[#FAC1B5] mb-6 font-[family-name:var(--font-noto-sans-jp)] tracking-widest opacity-80">POPULAR TAGS</p>
+                        <p className="text-sm text-[#5e3e53] mb-6 font-[family-name:var(--font-noto-sans-jp)] tracking-widest opacity-80">POPULAR TAGS</p>
                         <div className="flex flex-wrap justify-center gap-3">
                             {[
                                 "オフィスネイル", "シンプルネイル", "ガラスフレンチ", "フレンチネイル", "ドットネイル",
@@ -915,7 +915,7 @@ export default function Home() {
                                 "ぷっくりネイル", "囲みグラデ", "オーロラネイル", "氷ネイル", "インクネイル",
                                 "落書きネイル", "ショートネイル", "ロングネイル", "自爪風"
                             ].map((tag, index) => (
-                                <span key={index} className="px-4 py-2 bg-white/40 backdrop-blur-sm border border-white/60 rounded-full text-xs md:text-sm text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)] hover:bg-white hover:scale-105 transition-all duration-300 cursor-default shadow-sm text-nowrap">
+                                <span key={index} className="px-4 py-2 bg-white/40 backdrop-blur-sm border border-white/60 rounded-full text-xs md:text-sm text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] hover:bg-white hover:scale-105 transition-all duration-300 cursor-default shadow-sm text-nowrap">
                                     # {tag}
                                 </span>
                             ))}
@@ -928,7 +928,7 @@ export default function Home() {
                         <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
                             <div className="text-left">
                                 <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase mb-3 block">SITUATION FINDER</span>
-                                <h2 className="text-3xl md:text-4xl font-bold text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)] leading-tight">
+                                <h2 className="text-3xl md:text-4xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] leading-tight">
                                     今のあなたに、<br className="md:hidden" />ぴったりのデザインを。
                                 </h2>
                             </div>
@@ -949,7 +949,7 @@ export default function Home() {
                                     </svg>
                                 </div>
                                 <div className="flex flex-wrap gap-2 mt-3 text-xs">
-                                    <span className="text-[#FAC1B5]">例:</span>
+                                    <span className="text-[#5e3e53]">例:</span>
                                     {["結婚式", "オフィス", "地雷系", "推し活", "デート", "成人式", "ワンホン", "Y2K"].map(tag => (
                                         <button
                                             key={tag}
@@ -984,9 +984,9 @@ export default function Home() {
                                         </div>
 
                                         <div className="p-8 flex flex-col items-center flex-grow w-full">
-                                            <h3 className="text-xl font-bold text-[#C59FBE] mb-2 font-[family-name:var(--font-noto-sans-jp)]">{cat.titleJp}</h3>
+                                            <h3 className="text-xl font-bold text-[#5e3e53] mb-2 font-[family-name:var(--font-noto-sans-jp)]">{cat.titleJp}</h3>
                                             <p className="text-xs text-[#F283AE] font-bold mb-4 tracking-widest uppercase font-[family-name:var(--font-montserrat)]">{cat.title}</p>
-                                            <p className="text-[#FAC1B5] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)] mb-6 line-clamp-3">
+                                            <p className="text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)] mb-6 line-clamp-3">
                                                 {cat.description}
                                             </p>
                                             <button
@@ -1003,7 +1003,7 @@ export default function Home() {
                                 ))
                             ) : (
                                 <div className="col-span-full py-20 text-center">
-                                    <p className="text-[#FAC1B5] font-[family-name:var(--font-noto-sans-jp)]">
+                                    <p className="text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">
                                         「{searchQuery}」に一致するシチュエーションが見つかりませんでした。
                                     </p>
                                 </div>
@@ -1025,14 +1025,14 @@ export default function Home() {
                                 <div>
                                     <div className="flex items-center gap-3 mb-2">
                                         <span className="text-3xl">{selectedSituation.icon}</span>
-                                        <h3 className="text-2xl font-bold text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)]">
+                                        <h3 className="text-2xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">
                                             {selectedSituation.titleJp}
                                         </h3>
                                     </div>
                                     <p className="text-[#F283AE] text-sm font-bold tracking-widest uppercase mb-2">
                                         {selectedSituation.title}
                                     </p>
-                                    <p className="text-[#FAC1B5] text-sm font-[family-name:var(--font-noto-sans-jp)]">
+                                    <p className="text-[#5e3e53] text-sm font-[family-name:var(--font-noto-sans-jp)]">
                                         {selectedSituation.description}
                                     </p>
                                 </div>
@@ -1058,7 +1058,7 @@ export default function Home() {
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                             />
                                             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                                <button className="bg-white/90 text-[#C59FBE] px-4 py-2 rounded-full text-xs font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all">
+                                                <button className="bg-white/90 text-[#5e3e53] px-4 py-2 rounded-full text-xs font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all">
                                                     このデザインにする
                                                 </button>
                                             </div>
@@ -1073,7 +1073,7 @@ export default function Home() {
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                             />
                                             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                                <button className="bg-white/90 text-[#C59FBE] px-4 py-2 rounded-full text-xs font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all">
+                                                <button className="bg-white/90 text-[#5e3e53] px-4 py-2 rounded-full text-xs font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all">
                                                     このデザインにする
                                                 </button>
                                             </div>
@@ -1091,7 +1091,7 @@ export default function Home() {
                     <div className="max-w-5xl mx-auto">
                         <div className="text-center mb-16">
                             <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase mb-3 block">RECOMMENDED</span>
-                            <h2 className="text-2xl md:text-3xl font-bold text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)]">こんな方におすすめ</h2>
+                            <h2 className="text-2xl md:text-3xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">こんな方におすすめ</h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <div className="animate-on-scroll bg-white/60 backdrop-blur-md rounded-[32px] border border-white/80 shadow-lg overflow-hidden hover-lift group">
@@ -1100,8 +1100,8 @@ export default function Home() {
                                 </div>
                                 <div className="p-8 text-center">
                                     <div className="text-3xl mb-4 group-hover:scale-125 transition-transform duration-300">💅</div>
-                                    <h3 className="text-lg font-bold mb-3 text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)]">失敗したくない！<br />サロン前のリハに</h3>
-                                    <p className="text-[#FAC1B5] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                                    <h3 className="text-lg font-bold mb-3 text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">失敗したくない！<br />サロン前のリハに</h3>
+                                    <p className="text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                         「イメージと違った...」を防ぐために。<br />納得いくまでシミュレーション♡
                                     </p>
                                 </div>
@@ -1112,8 +1112,8 @@ export default function Home() {
                                 </div>
                                 <div className="p-8 text-center">
                                     <div className="text-3xl mb-4 group-hover:scale-125 transition-transform duration-300">🎀</div>
-                                    <h3 className="text-lg font-bold mb-3 text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)]">流行りの韓国ネイルも<br />試してみたい</h3>
-                                    <p className="text-[#FAC1B5] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                                    <h3 className="text-lg font-bold mb-3 text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">流行りの韓国ネイルも<br />試してみたい</h3>
+                                    <p className="text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                         話題のワンホンネイルやチークネイル。<br />似合うかどうか、まずはアプリでcheck✨
                                     </p>
                                 </div>
@@ -1124,8 +1124,8 @@ export default function Home() {
                                 </div>
                                 <div className="p-8 text-center">
                                     <div className="text-3xl mb-4 group-hover:scale-125 transition-transform duration-300">📸</div>
-                                    <h3 className="text-lg font-bold mb-3 text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)]">「これ可愛い♡」を<br />みんなにシェア</h3>
-                                    <p className="text-[#FAC1B5] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                                    <h3 className="text-lg font-bold mb-3 text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">「これ可愛い♡」を<br />みんなにシェア</h3>
+                                    <p className="text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                         お気に入りのデザインができたら保存。<br />インスタやTikTokで自慢しちゃおう！
                                     </p>
                                 </div>
@@ -1141,23 +1141,23 @@ export default function Home() {
                             <div className="inline-block px-4 py-2 bg-[#F283AE]/10 rounded-full border border-[#F283AE]/30">
                                 <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase">AI DIAGNOSIS</span>
                             </div>
-                            <h2 className="text-3xl md:text-4xl font-bold text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)] leading-tight">
+                            <h2 className="text-3xl md:text-4xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] leading-tight">
                                 自分に似合うネイルデザインの<br />見つけ方、知りたくない？
                             </h2>
-                            <p className="text-[#FAC1B5] text-lg leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                            <p className="text-[#5e3e53] text-lg leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                 NAILUのAIは、高度な画像解析であなたの肌色を瞬時に判別。<br />
                                 <strong>イエベ（イエローベース）</strong>か<strong>ブルベ（ブルーベース）</strong>かを診断し、肌を最高に美しく見せるパーソナルカラーに合ったネイルを提案します。
                             </p>
                             <div className="grid grid-cols-2 gap-4 mt-8">
                                 <div className="p-6 bg-[#EDD9BE] rounded-[30px] border border-white/50 text-center shadow-lg">
                                     <span className="text-sm font-bold text-[#F283AE] block mb-2">Yellow Base</span>
-                                    <h3 className="text-xl font-bold text-[#C59FBE] mb-2 font-[family-name:var(--font-noto-sans-jp)]">イエベ春・秋</h3>
-                                    <p className="text-xs text-[#FAC1B5]">暖かみのあるベージュやテラコッタ、コーラル系が映えます。</p>
+                                    <h3 className="text-xl font-bold text-[#5e3e53] mb-2 font-[family-name:var(--font-noto-sans-jp)]">イエベ春・秋</h3>
+                                    <p className="text-xs text-[#5e3e53]">暖かみのあるベージュやテラコッタ、コーラル系が映えます。</p>
                                 </div>
                                 <div className="p-6 bg-[#F5F8FD] rounded-[30px] border border-white/50 text-center shadow-lg">
                                     <span className="text-sm font-bold text-[#8FBAC8] block mb-2">Blue Base</span>
-                                    <h3 className="text-xl font-bold text-[#C59FBE] mb-2 font-[family-name:var(--font-noto-sans-jp)]">ブルベ夏・冬</h3>
-                                    <p className="text-xs text-[#FAC1B5]">透明感を出すローズ、アイボリー、グレージュ系が得意です。</p>
+                                    <h3 className="text-xl font-bold text-[#5e3e53] mb-2 font-[family-name:var(--font-noto-sans-jp)]">ブルベ夏・冬</h3>
+                                    <p className="text-xs text-[#5e3e53]">透明感を出すローズ、アイボリー、グレージュ系が得意です。</p>
                                 </div>
                             </div>
                         </div>
@@ -1181,7 +1181,7 @@ export default function Home() {
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-16">
                             <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase mb-3 block">HOW TO USE</span>
-                            <h2 className="text-3xl md:text-3xl font-bold text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)]">使い方はとっても簡単♡</h2>
+                            <h2 className="text-3xl md:text-3xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">使い方はとっても簡単♡</h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
                             {/* Connecting Line (Desktop) */}
@@ -1196,8 +1196,8 @@ export default function Home() {
                                     <div className="absolute inset-0 bg-white/20 flex items-center justify-center text-3xl">📷</div>
                                 </div>
                                 <div className="bg-[#C59FBE] text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4 font-[family-name:var(--font-montserrat)] scale-100 group-hover:scale-110 transition-transform">STEP 1</div>
-                                <h3 className="text-xl font-bold mb-2 text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)]">パシャっと撮影</h3>
-                                <p className="text-[#FAC1B5] text-sm font-[family-name:var(--font-noto-sans-jp)] text-center w-full">
+                                <h3 className="text-xl font-bold mb-2 text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">パシャっと撮影</h3>
+                                <p className="text-[#5e3e53] text-sm font-[family-name:var(--font-noto-sans-jp)] text-center w-full">
                                     自分の手をスマホで撮影。<br />今のネイルのままでもOK！
                                 </p>
                             </div>
@@ -1209,8 +1209,8 @@ export default function Home() {
                                     <div className="absolute inset-0 bg-white/20 flex items-center justify-center text-4xl animate-sparkle">✨</div>
                                 </div>
                                 <div className="bg-[#C59FBE] text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4 font-[family-name:var(--font-montserrat)] scale-100 group-hover:scale-110 transition-transform">STEP 2</div>
-                                <h3 className="text-xl font-bold mb-2 text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)]">わくわくAI生成</h3>
-                                <p className="text-[#FAC1B5] text-sm font-[family-name:var(--font-noto-sans-jp)] text-center w-full">
+                                <h3 className="text-xl font-bold mb-2 text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">わくわくAI生成</h3>
+                                <p className="text-[#5e3e53] text-sm font-[family-name:var(--font-noto-sans-jp)] text-center w-full">
                                     好きな雰囲気を選ぶだけ。<br />魔法のように一瞬で変身します。
                                 </p>
                             </div>
@@ -1222,8 +1222,8 @@ export default function Home() {
                                     <div className="absolute inset-0 bg-white/20 flex items-center justify-center text-3xl">💖</div>
                                 </div>
                                 <div className="bg-[#C59FBE] text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4 font-[family-name:var(--font-montserrat)] scale-100 group-hover:scale-110 transition-transform">STEP 3</div>
-                                <h3 className="text-xl font-bold mb-2 text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)]">みんなに自慢</h3>
-                                <p className="text-[#FAC1B5] text-sm font-[family-name:var(--font-noto-sans-jp)] text-center w-full">
+                                <h3 className="text-xl font-bold mb-2 text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">みんなに自慢</h3>
+                                <p className="text-[#5e3e53] text-sm font-[family-name:var(--font-noto-sans-jp)] text-center w-full">
                                     お気に入りは保存して<br />SNSやサロンでシェアしてね♡
                                 </p>
                             </div>
@@ -1235,10 +1235,10 @@ export default function Home() {
                 <section className="py-24 px-6 bg-[#EDD9BE]/20" >
                     <div className="max-w-5xl mx-auto text-center animate-on-scroll">
                         <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase mb-3 block">SALON GUIDE</span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-[#C59FBE] mb-6 font-[family-name:var(--font-noto-sans-jp)]">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#5e3e53] mb-6 font-[family-name:var(--font-noto-sans-jp)]">
                             ネイルサロンへの<br className="md:hidden" />「持ち込みデザイン」もスムーズに
                         </h2>
-                        <p className="text-[#FAC1B5] text-lg leading-relaxed max-w-3xl mx-auto mb-16 font-[family-name:var(--font-noto-sans-jp)]">
+                        <p className="text-[#5e3e53] text-lg leading-relaxed max-w-3xl mx-auto mb-16 font-[family-name:var(--font-noto-sans-jp)]">
                             AIで作成した理想のデザインは、そのままネイルサロンで「持ち込みデザイン」としてオーダー可能です。ネイリストさんにイメージが正確に伝わるので、理想通りの仕上がりに。
                         </p>
 
@@ -1250,8 +1250,8 @@ export default function Home() {
                             ].map((item, i) => (
                                 <div key={i} className="p-8 bg-white/60 backdrop-blur-md rounded-[32px] shadow-lg border border-white/80 transition-all hover:shadow-xl group">
                                     <div className="text-4xl font-black text-[#F283AE]/20 mb-4 group-hover:text-[#F283AE]/40 transition-colors">{item.step}</div>
-                                    <h4 className="text-xl font-bold text-[#C59FBE] mb-3 font-[family-name:var(--font-noto-sans-jp)]">{item.title}</h4>
-                                    <p className="text-sm text-[#FAC1B5] font-[family-name:var(--font-noto-sans-jp)]">{item.desc}</p>
+                                    <h4 className="text-xl font-bold text-[#5e3e53] mb-3 font-[family-name:var(--font-noto-sans-jp)]">{item.title}</h4>
+                                    <p className="text-sm text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">{item.desc}</p>
                                 </div>
                             ))}
                         </div>
@@ -1271,8 +1271,8 @@ export default function Home() {
                                         <div className="text-2xl text-[#F283AE]">➡</div>
                                         <div className="w-14 h-14 bg-gradient-to-br from-[#F283AE] to-[#C6C870] rounded-full flex items-center justify-center text-xs font-bold text-white shadow-lg font-[family-name:var(--font-montserrat)]">After</div>
                                     </div>
-                                    <h3 className="text-[#C59FBE] font-bold text-xl mb-3 font-[family-name:var(--font-noto-sans-jp)]">サロンクオリティの仕上がり</h3>
-                                    <p className="text-[#FAC1B5] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                                    <h3 className="text-[#5e3e53] font-bold text-xl mb-3 font-[family-name:var(--font-noto-sans-jp)]">サロンクオリティの仕上がり</h3>
+                                    <p className="text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                         AIが爪の形、肌の色、光の当たり方を高度に分析。まるで本当にネイルを塗っているかのような、違和感のないリアルな試着体験を実現しました。
                                     </p>
                                 </div>
@@ -1280,8 +1280,8 @@ export default function Home() {
                         </div>
                         <div className="flex-1 order-1 md:order-2 text-left">
                             <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase mb-3 block font-[family-name:var(--font-montserrat)]">REALISTIC</span>
-                            <h2 className="text-3xl md:text-4xl font-bold text-[#C59FBE] mb-6 font-[family-name:var(--font-noto-sans-jp)]">驚くほど自然な<br />バーチャル試着</h2>
-                            <p className="text-[#FAC1B5] leading-relaxed font-[family-name:var(--font-noto-sans-jp)] text-lg">
+                            <h2 className="text-3xl md:text-4xl font-bold text-[#5e3e53] mb-6 font-[family-name:var(--font-noto-sans-jp)]">驚くほど自然な<br />バーチャル試着</h2>
+                            <p className="text-[#5e3e53] leading-relaxed font-[family-name:var(--font-noto-sans-jp)] text-lg">
                                 「イメージと違った...」を防ぎます。<br />
                                 自分の手に合わせて色味やデザインのバランスを確認できるので、失敗のないネイル選びが可能に。
                             </p>
@@ -1299,7 +1299,7 @@ export default function Home() {
                                     <span className="text-2xl">✨</span>
                                 </div>
                                 <h3 className="text-xl font-bold mb-3 text-gray-900 font-[family-name:var(--font-noto-sans-jp)]">トレンド自動反映</h3>
-                                <p className="text-[#FAC1B5] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
+                                <p className="text-[#5e3e53] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
                                     韓国、日本、世界中の最新トレンドを常時学習。今一番人気のデザインをリアルタイムで提案。
                                 </p>
                             </div>
@@ -1313,7 +1313,7 @@ export default function Home() {
                                     </svg>
                                 </div>
                                 <h3 className="text-xl font-bold mb-3 text-gray-900 font-[family-name:var(--font-noto-sans-jp)]">自由なカスタマイズ</h3>
-                                <p className="text-[#FAC1B5] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
+                                <p className="text-[#5e3e53] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
                                     色、パターン、装飾を自由に変更。AIが提案したデザインをベースに、あなただけのアレンジが可能。
                                 </p>
                             </div>
@@ -1326,7 +1326,7 @@ export default function Home() {
                                     </svg>
                                 </div>
                                 <h3 className="text-xl font-bold mb-3 text-gray-900 font-[family-name:var(--font-noto-sans-jp)]">一瞬で生成</h3>
-                                <p className="text-[#FAC1B5] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
+                                <p className="text-[#5e3e53] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
                                     待ち時間はわずか数秒。高品質なデザインを複数パターン同時生成し、お気に入りを選べます。
                                 </p>
                             </div>
@@ -1339,7 +1339,7 @@ export default function Home() {
                                     </svg>
                                 </div>
                                 <h3 className="text-xl font-bold mb-3 text-gray-900 font-[family-name:var(--font-noto-sans-jp)]">保存＆シェア</h3>
-                                <p className="text-[#FAC1B5] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
+                                <p className="text-[#5e3e53] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
                                     お気に入りのデザインを保存して、サロンで見せたり、SNSでシェアして友達と共有できます。
                                 </p>
                             </div>
@@ -1352,7 +1352,7 @@ export default function Home() {
                                     </svg>
                                 </div>
                                 <h3 className="text-xl font-bold mb-3 text-gray-900 font-[family-name:var(--font-noto-sans-jp)]">サロン対応</h3>
-                                <p className="text-[#FAC1B5] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
+                                <p className="text-[#5e3e53] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
                                     デザインをネイリストに見せるだけ。イメージの共有がスムーズになり、理想通りの仕上がりに。
                                 </p>
                             </div>
@@ -1368,10 +1368,10 @@ export default function Home() {
                                 🦾
                             </div>
                             <div>
-                                <h2 className="text-2xl font-bold text-[#C59FBE] mb-4 font-[family-name:var(--font-noto-sans-jp)]">
+                                <h2 className="text-2xl font-bold text-[#5e3e53] mb-4 font-[family-name:var(--font-noto-sans-jp)]">
                                     2026年最新トレンドを学習した「ネイル特化型AI」
                                 </h2>
-                                <p className="text-[#FAC1B5] leading-loose font-[family-name:var(--font-noto-sans-jp)]">
+                                <p className="text-[#5e3e53] leading-loose font-[family-name:var(--font-noto-sans-jp)]">
                                     NAILUのAIは、日本国内の主要ネイルサロンの最新データと2026年のトレンド予測を学習しています。<br />
                                     「クラウドダンサー（ミルキーホワイト）」や「微細パール」など、最先端のカラーや質感を忠実に再現。プロのネイリストも参考にするレベルのデザインを、無料で体験できます。
                                 </p>
@@ -1389,8 +1389,8 @@ export default function Home() {
                     </div>
 
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold mb-4 text-[#C59FBE] tracking-tight">Community Gallery</h2>
-                        <p className="text-[#FAC1B5] font-medium tracking-wide">AIと創り上げた、最新のデザインたち</p>
+                        <h2 className="text-3xl font-bold mb-4 text-[#5e3e53] tracking-tight">Community Gallery</h2>
+                        <p className="text-[#5e3e53] font-medium tracking-wide">AIと創り上げた、最新のデザインたち</p>
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
@@ -1409,7 +1409,7 @@ export default function Home() {
                             <div className="mt-16 text-center">
                                 <button
                                     onClick={() => setVisibleGalleryCount(prev => prev + 6)}
-                                    className="px-10 py-4 bg-white/50 backdrop-blur-md border border-[#F283AE]/30 rounded-full text-[#C59FBE] font-bold hover:bg-[#C59FBE] hover:text-white transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 group"
+                                    className="px-10 py-4 bg-white/50 backdrop-blur-md border border-[#F283AE]/30 rounded-full text-[#5e3e53] font-bold hover:bg-[#C59FBE] hover:text-white transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 group"
                                 >
                                     <span className="mr-2">More View</span>
                                     <span className="inline-block transition-transform group-hover:translate-y-1">↓</span>
@@ -1430,9 +1430,9 @@ export default function Home() {
                     <div className="max-w-6xl mx-auto relative z-10">
                         <div className="text-center mb-16 animate-on-scroll">
                             <span className="text-[#F283AE] font-bold tracking-[0.3em] text-xs uppercase mb-4 block">NAIL DICTIONARY</span>
-                            <h2 className="text-3xl md:text-5xl font-bold text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)] tracking-tight">ネイルデザイン用語集</h2>
+                            <h2 className="text-3xl md:text-5xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] tracking-tight">ネイルデザイン用語集</h2>
                             <div className="w-20 h-1 bg-[#F283AE] mx-auto mt-6 rounded-full opacity-60"></div>
-                            <p className="mt-8 text-[#FAC1B5] text-base font-medium max-w-xl mx-auto leading-relaxed">最新のトレンドから定番まで、理想の指先を叶えるためのキーワードをAIが詳しく解説。</p>
+                            <p className="mt-8 text-[#5e3e53] text-base font-medium max-w-xl mx-auto leading-relaxed">最新のトレンドから定番まで、理想の指先を叶えるためのキーワードをAIが詳しく解説。</p>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -1451,8 +1451,8 @@ export default function Home() {
                                     <div className="p-8 pb-10">
                                         <div className={`w-12 h-1 bg-gradient-to-r from-transparent via-[#F283AE] to-transparent mb-6 transition-all duration-500 group-hover:w-full group-hover:via-[#F283AE]`}></div>
                                         <span className="text-[10px] font-bold text-[#F283AE] tracking-widest uppercase mb-2 block">{item.eng}</span>
-                                        <h3 className="text-2xl font-bold text-[#C59FBE] mb-4 font-[family-name:var(--font-noto-sans-jp)]">{item.title}</h3>
-                                        <p className="text-[#FAC1B5] text-sm leading-loose font-[family-name:var(--font-noto-sans-jp)] opacity-90">{item.desc}</p>
+                                        <h3 className="text-2xl font-bold text-[#5e3e53] mb-4 font-[family-name:var(--font-noto-sans-jp)]">{item.title}</h3>
+                                        <p className="text-[#5e3e53] text-sm leading-loose font-[family-name:var(--font-noto-sans-jp)] opacity-90">{item.desc}</p>
                                     </div>
                                 </div>
                             ))}
@@ -1465,16 +1465,16 @@ export default function Home() {
                     <div className="max-w-7xl mx-auto">
                         <div className="text-center mb-20 animate-on-scroll">
                             <span className="text-[#F283AE] font-bold tracking-[0.4em] text-xs uppercase mb-4 block">2026 TREND FORECAST</span>
-                            <h2 className="text-4xl md:text-5xl font-bold text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)] tracking-tight">2026年 季節のトレンド予報</h2>
-                            <p className="mt-8 text-[#FAC1B5] text-lg font-light">移り変わる季節に、AIが提案する最高の彩りを。</p>
+                            <h2 className="text-4xl md:text-5xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] tracking-tight">2026年 季節のトレンド予報</h2>
+                            <p className="mt-8 text-[#5e3e53] text-lg font-light">移り変わる季節に、AIが提案する最高の彩りを。</p>
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                             {[
                                 { season: "SPRING", theme: "Peach & Sakura", color: "bg-[#EDD9BE]", border: "border-[#C6C870]", text: "text-[#F283AE]", desc: "多幸感あふれるピーチカラーや、桜の花びらのようなシアーな質感が主役。AI診断では『イエベ春』の方に特におすすめのデザインが豊富です。", img: "/gallery-sakura-cherry-blossom.png" },
-                                { season: "SUMMER", theme: "Sea Glass", color: "bg-[#EDD9BE]", border: "border-[#FAC1B5]", text: "text-[#FAC1B5]", desc: "磨りガラスのようなマットな透明感と、水面のような波紋模様。涼しげなブルーやミントカラーのニュアンスが『ブルベ夏』の白肌を引き立てます。", img: "/gallery-aurora-glass.png" },
+                                { season: "SUMMER", theme: "Sea Glass", color: "bg-[#EDD9BE]", border: "border-[#FAC1B5]", text: "text-[#5e3e53]", desc: "磨りガラスのようなマットな透明感と、水面のような波紋模様。涼しげなブルーやミントカラーのニュアンスが『ブルベ夏』の白肌を引き立てます。", img: "/gallery-aurora-glass.png" },
                                 { season: "AUTUMN", theme: "Rich Amber", color: "bg-[#EDD9BE]", border: "border-[#C6C870]", text: "text-[#C6C870]", desc: "深みのある琥珀色やテラコッタ。重厚感のあるマグネットや、べっ甲柄の進化系がトレンド。温かみのあるカラーが『イエベ秋』の肌に馴染みます。", img: "/gallery-autumn-leaves-terracotta.png" },
-                                { season: "WINTER", theme: "Frozen Pearl", color: "bg-[#EDD9BE]", border: "border-[#FAC1B5]", text: "text-[#FAC1B5]", desc: "氷の結晶のような微細なパールと、冬の静寂を感じさせるアイボリー。クリアな煌めきが『ブルベ冬』のコントラストの効いた肌色を輝かせます。", img: "/gallery-ivory-aurora.png" },
+                                { season: "WINTER", theme: "Frozen Pearl", color: "bg-[#EDD9BE]", border: "border-[#FAC1B5]", text: "text-[#5e3e53]", desc: "氷の結晶のような微細なパールと、冬の静寂を感じさせるアイボリー。クリアな煌めきが『ブルベ冬』のコントラストの効いた肌色を輝かせます。", img: "/gallery-ivory-aurora.png" },
                             ].map((item, idx) => (
                                 <div key={idx} className={`relative rounded-[50px] ${item.color} border ${item.border} overflow-hidden group transition-all duration-500 hover:shadow-xl hover:-translate-y-1 flex flex-col`}>
                                     <div className="aspect-[4/3] overflow-hidden">
@@ -1484,8 +1484,8 @@ export default function Home() {
                                         <div className="absolute top-4 right-6 text-6xl font-black text-white/40 group-hover:scale-110 transition-transform duration-700">{item.season[0]}</div>
                                         <div className="relative z-10">
                                             <span className={`text-xs font-black tracking-[0.2em] ${item.text} mb-3 block`}>{item.season}</span>
-                                            <h3 className="text-xl font-bold text-[#C59FBE] mb-4 font-[family-name:var(--font-noto-sans-jp)]">{item.theme}</h3>
-                                            <p className="text-[#FAC1B5] text-sm leading-loose font-[family-name:var(--font-noto-sans-jp)] opacity-80">{item.desc}</p>
+                                            <h3 className="text-xl font-bold text-[#5e3e53] mb-4 font-[family-name:var(--font-noto-sans-jp)]">{item.theme}</h3>
+                                            <p className="text-[#5e3e53] text-sm leading-loose font-[family-name:var(--font-noto-sans-jp)] opacity-80">{item.desc}</p>
                                         </div>
                                     </div>
                                     <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
@@ -1505,11 +1505,11 @@ export default function Home() {
                             <div className="relative z-10 flex flex-col lg:flex-row gap-16 items-center">
                                 <div className="w-full lg:w-2/5 text-center lg:text-left">
                                     <div className="inline-flex items-center justify-center w-24 h-24 bg-white/40 backdrop-blur-md rounded-full mb-8 shadow-inner text-4xl">🧴</div>
-                                    <h2 className="text-3xl md:text-4xl font-bold text-[#C59FBE] mb-6 font-[family-name:var(--font-noto-sans-jp)] tracking-tight">美爪のための<br className="hidden md:block" />メンテナンス習慣</h2>
+                                    <h2 className="text-3xl md:text-4xl font-bold text-[#5e3e53] mb-6 font-[family-name:var(--font-noto-sans-jp)] tracking-tight">美爪のための<br className="hidden md:block" />メンテナンス習慣</h2>
                                     <p className="inline-block px-4 py-2 bg-[#F283AE] text-white text-[10px] font-bold tracking-[0.3em] uppercase rounded-full shadow-lg shadow-[#F283AE]/20">Care & Maintenance</p>
                                 </div>
-                                <div className="w-full lg:w-3/5 space-y-8 text-[#FAC1B5] text-base leading-loose font-[family-name:var(--font-noto-sans-jp)]">
-                                    <p className="font-medium text-[#C59FBE]/70">AI診断で最高の結果を得るためには、土台となる自爪のケアが欠かせません。プロが実践する3つの秘訣をご紹介します。</p>
+                                <div className="w-full lg:w-3/5 space-y-8 text-[#5e3e53] text-base leading-loose font-[family-name:var(--font-noto-sans-jp)]">
+                                    <p className="font-medium text-[#5e3e53]/70">AI診断で最高の結果を得るためには、土台となる自爪のケアが欠かせません。プロが実践する3つの秘訣をご紹介します。</p>
                                     <div className="grid grid-cols-1 gap-6">
                                         {[
                                             { icon: "✨", title: "徹底した保湿", text: "ネイルオイルを爪の根元（ルースキューティクル）に1日3回塗ることで、乾燥による欠けやささくれを徹底防御。" },
@@ -1519,7 +1519,7 @@ export default function Home() {
                                             <div key={i} className="flex gap-6 items-start p-6 bg-white/30 rounded-3xl hover:bg-white/50 transition-colors">
                                                 <span className="text-2xl mt-1">{tip.icon}</span>
                                                 <div>
-                                                    <h4 className="font-bold text-[#C59FBE] mb-2">{tip.title}</h4>
+                                                    <h4 className="font-bold text-[#5e3e53] mb-2">{tip.title}</h4>
                                                     <p className="text-sm opacity-90">{tip.text}</p>
                                                 </div>
                                             </div>
@@ -1539,8 +1539,8 @@ export default function Home() {
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                             </svg>
                         </div>
-                        <h2 className="text-2xl font-bold text-[#C59FBE] mb-6 font-[family-name:var(--font-noto-sans-jp)]">安心・安全への取り組み</h2>
-                        <p className="text-[#FAC1B5] text-sm leading-relaxed max-w-2xl mx-auto font-[family-name:var(--font-noto-sans-jp)]">
+                        <h2 className="text-2xl font-bold text-[#5e3e53] mb-6 font-[family-name:var(--font-noto-sans-jp)]">安心・安全への取り組み</h2>
+                        <p className="text-[#5e3e53] text-sm leading-relaxed max-w-2xl mx-auto font-[family-name:var(--font-noto-sans-jp)]">
                             NAILUでは、お客様のプライバシーを最優先に考えています。<br />
                             アップロードされた写真はデザイン生成のみに使用され、許可なく保存・公開されることはありません。<br />
                             生成された画像もお好きなタイミングで削除可能です。
@@ -1551,33 +1551,33 @@ export default function Home() {
                 {/* SECTION: FAQ */}
                 <section ref={faqRef} className="py-24 px-6 max-w-3xl mx-auto" >
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)]">よくあるご質問</h2>
+                        <h2 className="text-3xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">よくあるご質問</h2>
                     </div>
                     <div className="space-y-4">
                         <details className="group glass-card rounded-[20px] open:bg-white transition-all duration-300">
-                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#C59FBE] list-none select-none">
+                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#5e3e53] list-none select-none">
                                 <span className="font-[family-name:var(--font-noto-sans-jp)]">Q. 本当に無料で使えますか？</span>
                                 <span className="transition-transform duration-300 group-open:rotate-180">▼</span>
                             </summary>
-                            <div className="px-6 pb-6 text-[#FAC1B5] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                            <div className="px-6 pb-6 text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                 はい、基本的なデザイン生成機能はすべて無料でお使いいただけます。
                             </div>
                         </details>
                         <details className="group glass-card rounded-[20px] open:bg-white transition-all duration-300">
-                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#C59FBE] list-none select-none">
+                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#5e3e53] list-none select-none">
                                 <span className="font-[family-name:var(--font-noto-sans-jp)]">Q. スマホでも使えますか？</span>
                                 <span className="transition-transform duration-300 group-open:rotate-180">▼</span>
                             </summary>
-                            <div className="px-6 pb-6 text-[#FAC1B5] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                            <div className="px-6 pb-6 text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                 はい、スマートフォンに完全対応しています。アプリのインストール不要で、ブラウザからそのままご利用いただけます。
                             </div>
                         </details>
                         <details className="group glass-card rounded-[20px] open:bg-white transition-all duration-300">
-                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#C59FBE] list-none select-none">
+                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#5e3e53] list-none select-none">
                                 <span className="font-[family-name:var(--font-noto-sans-jp)]">Q. 作った画像をネイルサロンで見せてもいいですか？</span>
                                 <span className="transition-transform duration-300 group-open:rotate-180">▼</span>
                             </summary>
-                            <div className="px-6 pb-6 text-[#FAC1B5] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                            <div className="px-6 pb-6 text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                 もちろんです！「サロン対応」機能で生成された画像は、ネイリストさんにイメージを伝えるのに最適です。ぜひご活用ください。
                             </div>
                         </details>
@@ -1585,29 +1585,29 @@ export default function Home() {
                     {/* Additional FAQs */}
                     <div className="space-y-4 mt-4">
                         <details className="group glass-card rounded-[20px] open:bg-white transition-all duration-300">
-                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#C59FBE] list-none select-none">
+                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#5e3e53] list-none select-none">
                                 <span className="font-[family-name:var(--font-noto-sans-jp)]">Q. 今のネイルをオフする必要はありますか？</span>
                                 <span className="transition-transform duration-300 group-open:rotate-180">▼</span>
                             </summary>
-                            <div className="px-6 pb-6 text-[#FAC1B5] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                            <div className="px-6 pb-6 text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                 いいえ、必要ありません！今のネイルの上からAIが新しいデザインを重ねて生成するので、オフなしでいろんなデザインを試着できます。
                             </div>
                         </details>
                         <details className="group glass-card rounded-[20px] open:bg-white transition-all duration-300">
-                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#C59FBE] list-none select-none">
+                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#5e3e53] list-none select-none">
                                 <span className="font-[family-name:var(--font-noto-sans-jp)]">Q. 写真はどこかに保存されますか？</span>
                                 <span className="transition-transform duration-300 group-open:rotate-180">▼</span>
                             </summary>
-                            <div className="px-6 pb-6 text-[#FAC1B5] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                            <div className="px-6 pb-6 text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                 アップロードされた写真はデザイン生成のみに使用され、サーバーには保存されませんのでご安心ください。プライバシーは厳重に保護されます。
                             </div>
                         </details>
                         <details className="group glass-card rounded-[20px] open:bg-white transition-all duration-300">
-                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#C59FBE] list-none select-none">
+                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#5e3e53] list-none select-none">
                                 <span className="font-[family-name:var(--font-noto-sans-jp)]">Q. 会員登録は必要ですか？</span>
                                 <span className="transition-transform duration-300 group-open:rotate-180">▼</span>
                             </summary>
-                            <div className="px-6 pb-6 text-[#FAC1B5] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                            <div className="px-6 pb-6 text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                 いいえ、登録なしで今すぐお使いいただけます。「今すぐデザインを作る」ボタンから、魔法のようなネイル体験をお楽しみください♡
                             </div>
                         </details>
@@ -1618,10 +1618,10 @@ export default function Home() {
                 <section className="py-32 px-6 text-center relative overflow-hidden" >
                     <div className="absolute inset-0 bg-gradient-to-t from-[#F283AE]/10 to-transparent pointer-events-none"></div>
                     <div className="relative z-10 max-w-4xl mx-auto">
-                        <h2 className="text-4xl md:text-5xl font-bold text-[#C59FBE] mb-8 leading-tight font-[family-name:var(--font-noto-sans-jp)]">
+                        <h2 className="text-4xl md:text-5xl font-bold text-[#5e3e53] mb-8 leading-tight font-[family-name:var(--font-noto-sans-jp)]">
                             指先から、<br />新しい私へ。
                         </h2>
-                        <p className="text-[#FAC1B5] text-lg mb-12 font-[family-name:var(--font-noto-sans-jp)]">
+                        <p className="text-[#5e3e53] text-lg mb-12 font-[family-name:var(--font-noto-sans-jp)]">
                             まずは1枚、写真を撮って試してみませんか？<br />
                             あなたの指先にぴったりのデザインが待っています。
                         </p>
@@ -1631,7 +1631,7 @@ export default function Home() {
                                 <span>💎</span> デザインを作ってみる
                             </a>
                         </div>
-                        <p className="mt-6 text-xs text-[#FAC1B5] opacity-70 font-[family-name:var(--font-noto-sans-jp)]">※ 登録不要・完全無料</p>
+                        <p className="mt-6 text-xs text-[#5e3e53] opacity-70 font-[family-name:var(--font-noto-sans-jp)]">※ 登録不要・完全無料</p>
                     </div>
                 </section>
             </main>
@@ -1639,7 +1639,7 @@ export default function Home() {
             {/* COMPARISON SECTION - SNS vs NAILU */}
 
             {/* FOOTER */}
-            <footer className="bg-[#C59FBE] text-[#EDD9BE] py-16 px-6 relative overflow-hidden" >
+            <footer className="bg-[#5e3e53] text-[#EDD9BE] py-16 px-6 relative overflow-hidden" >
                 {/* Decorative Background Elements */}
                 <div className="absolute top-[-50%] left-[-20%] w-[600px] h-[600px] bg-[#F283AE] rounded-full mix-blend-overlay opacity-10 blur-3xl pointer-events-none" ></div>
                 <div className="absolute bottom-[-50%] right-[-20%] w-[500px] h-[500px] bg-[#EDD9BE] rounded-full mix-blend-overlay opacity-10 blur-3xl pointer-events-none"></div>
@@ -1690,25 +1690,25 @@ export default function Home() {
                         <div className="space-y-6">
                             <h4 className="font-bold text-sm tracking-widest font-[family-name:var(--font-montserrat)] text-[#F283AE] border-b border-[#F283AE]/30 pb-2 inline-block">FOLLOW US</h4>
                             <div className="flex gap-4">
-                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#F283AE] hover:border-[#F283AE] hover:text-[#C59FBE] transition-all duration-300 group">
+                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#F283AE] hover:border-[#F283AE] hover:text-[#5e3e53] transition-all duration-300 group">
                                     {/* Instagram */}
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="group-hover:scale-110 transition-transform">
                                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                                     </svg>
                                 </a>
-                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#F283AE] hover:border-[#F283AE] hover:text-[#C59FBE] transition-all duration-300 group">
+                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#F283AE] hover:border-[#F283AE] hover:text-[#5e3e53] transition-all duration-300 group">
                                     {/* X (Twitter) */}
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="group-hover:scale-110 transition-transform">
                                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                                     </svg>
                                 </a>
-                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#F283AE] hover:border-[#F283AE] hover:text-[#C59FBE] transition-all duration-300 group">
+                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#F283AE] hover:border-[#F283AE] hover:text-[#5e3e53] transition-all duration-300 group">
                                     {/* TikTok */}
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="group-hover:scale-110 transition-transform">
                                         <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
                                     </svg>
                                 </a>
-                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#F283AE] hover:border-[#F283AE] hover:text-[#C59FBE] transition-all duration-300 group">
+                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#F283AE] hover:border-[#F283AE] hover:text-[#5e3e53] transition-all duration-300 group">
                                     {/* Pinterest */}
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="group-hover:scale-110 transition-transform">
                                         <path d="M9.04 21.54c.96.29 1.93.46 2.96.46a10 10 0 0 0 10-10A10 10 0 0 0 12 2a10 10 0 0 0-10 10c0 4.25 2.67 7.9 6.44 9.34-.09-.8-.16-2.02.03-2.88l.82-3.46s-.2-.42-.2-1.05c0-.98.57-1.7 1.28-1.7.6 0 .89.45.89 1 0 .6-.38 1.5-.58 2.34-.17.7.35 1.27 1.04 1.27 1.25 0 2.21-1.32 2.21-3.22 0-1.68-1.21-2.85-2.93-2.85-2.14 0-3.39 1.6-3.39 3.26 0 .64.25 1.33.56 1.7.06.07.07.13.05.2l-.21.87c-.03.13-.1.16-.24.1-1.07-.5-1.74-1.83-1.74-2.94 0-2.39 1.74-4.59 5.01-4.59 2.64 0 4.69 1.88 4.69 4.39 0 2.62-1.65 4.73-3.95 4.73-.77 0-1.49-.4-1.74-.87 0 0-.4 1.56-.5 1.94-.18.66-.67 1.49-1 2 .75.22 1.55.34 2.37.34z" />
@@ -1736,10 +1736,10 @@ export default function Home() {
                             <div className="w-16 h-16 bg-[#EDD9BE] rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
                                 🙏
                             </div>
-                            <h3 className="text-xl font-bold text-[#C59FBE] mb-2 font-[family-name:var(--font-noto-sans-jp)]">
+                            <h3 className="text-xl font-bold text-[#5e3e53] mb-2 font-[family-name:var(--font-noto-sans-jp)]">
                                 Coming Soon
                             </h3>
-                            <p className="text-[#FAC1B5] text-sm mb-6 font-[family-name:var(--font-noto-sans-jp)]">
+                            <p className="text-[#5e3e53] text-sm mb-6 font-[family-name:var(--font-noto-sans-jp)]">
                                 SNSアカウントは現在準備中です。<br />
                                 公開までもう少々お待ちください。
                             </p>
@@ -1770,7 +1770,7 @@ export default function Home() {
                             {/* Close Button */}
                             <button
                                 onClick={() => setSelectedTrend(null)}
-                                className="absolute top-6 right-6 w-10 h-10 bg-black/5 hover:bg-black/10 rounded-full flex items-center justify-center text-[#C59FBE] transition-colors z-20"
+                                className="absolute top-6 right-6 w-10 h-10 bg-black/5 hover:bg-black/10 rounded-full flex items-center justify-center text-[#5e3e53] transition-colors z-20"
                             >
                                 ✕
                             </button>
@@ -1778,8 +1778,8 @@ export default function Home() {
                             <div className="p-8 md:p-12">
                                 <div className="mb-10">
                                     <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase mb-3 block font-[family-name:var(--font-montserrat)]">Trend Featured</span>
-                                    <h2 className="text-3xl md:text-5xl font-bold text-[#C59FBE] mb-4 font-[family-name:var(--font-noto-sans-jp)]">{selectedTrend.title}</h2>
-                                    <p className="text-[#FAC1B5] text-lg font-[family-name:var(--font-noto-sans-jp)]">{selectedTrend.description}</p>
+                                    <h2 className="text-3xl md:text-5xl font-bold text-[#5e3e53] mb-4 font-[family-name:var(--font-noto-sans-jp)]">{selectedTrend.title}</h2>
+                                    <p className="text-[#5e3e53] text-lg font-[family-name:var(--font-noto-sans-jp)]">{selectedTrend.description}</p>
                                 </div>
 
                                 <div className="grid grid-cols-2 md:grid-cols-2 gap-6">

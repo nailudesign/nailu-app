@@ -5,8 +5,8 @@
   --milk-beige: #EDD9BE;
   --ivory: #EDD9BE;
   --white: #FFFFFF;
-  --text-dark: #C59FBE;
-  --text-gray: #8C7B75;
+  --text-dark: #5e3e53;
+  --text-gray: #7a5a6c;
   --glass-bg: rgba(255, 255, 255, 0.7);
   --shadow: 0 10px 40px rgba(74, 62, 62, 0.05);
   /* Soft mauve-purple that blends with dusty rose theme */
@@ -24,7 +24,7 @@
 
 ::selection {
   background: #EDD9BE;
-  color: #C59FBE;
+  color: #5e3e53;
 }
 
 body {
@@ -534,7 +534,7 @@ h3 {
 
 .text-elegant-gold {
   font-family: var(--font-montserrat), 'Arial Black', sans-serif;
-  color: #C59FBE;
+  color: #5e3e53;
   -webkit-text-stroke: 1px #F283AE;
   animation: neonPulse 3s ease-in-out infinite;
   letter-spacing: 0.08em;

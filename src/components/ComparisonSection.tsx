@@ -62,11 +62,11 @@ export default function ComparisonSection() {
                         </span>
                     </div>
 
-                    <h2 className="text-4xl md:text-5xl font-bold text-[#C59FBE] mb-4 font-[family-name:var(--font-noto-sans-jp)] leading-tight">
-                        SNS検索で<span className="text-[#FAC1B5]">疲れてませんか？</span>
+                    <h2 className="text-4xl md:text-5xl font-bold text-[#5e3e53] mb-4 font-[family-name:var(--font-noto-sans-jp)] leading-tight">
+                        SNS検索で<span className="text-[#F283AE]">疲れてませんか？</span>
                     </h2>
 
-                    <p className="text-xl text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)] mb-8">
+                    <p className="text-xl text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] mb-8">
                         NAILUなら、理想のネイルが<span className="text-[#F283AE] font-bold">10秒</span>で見つかります
                     </p>
                 </div>
@@ -84,7 +84,7 @@ export default function ComparisonSection() {
                                     {React.createElement(comparison.icon, {
                                         className: 'w-7 h-7 text-[#F283AE]',
                                     })}
-                                    <div className="text-xl font-bold text-[#C59FBE] font-[family-name:var(--font-noto-sans-jp)]">
+                                    <div className="text-xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">
                                         {comparison.label}
                                     </div>
                                 </div>
@@ -95,10 +95,10 @@ export default function ComparisonSection() {
                                         <X className="w-5 h-5 text-red-500" />
                                     </div>
                                     <div className="flex-1">
-                                        <div className="text-xs text-[#FAC1B5] font-medium mb-1 font-[family-name:var(--font-noto-sans-jp)]">
+                                        <div className="text-xs text-[#5e3e53] font-medium mb-1 font-[family-name:var(--font-noto-sans-jp)]">
                                             SNS検索
                                         </div>
-                                        <div className="text-sm text-[#C59FBE]/50 font-[family-name:var(--font-noto-sans-jp)] leading-relaxed line-through">
+                                        <div className="text-sm text-[#5e3e53]/50 font-[family-name:var(--font-noto-sans-jp)] leading-relaxed line-through">
                                             {comparison.oldValue}
                                         </div>
                                     </div>
@@ -113,7 +113,7 @@ export default function ComparisonSection() {
                                         <div className="text-xs text-[#F283AE] font-bold mb-1 font-[family-name:var(--font-noto-sans-jp)]">
                                             NAILU
                                         </div>
-                                        <div className="text-base text-[#C59FBE] font-bold font-[family-name:var(--font-noto-sans-jp)] leading-relaxed">
+                                        <div className="text-base text-[#5e3e53] font-bold font-[family-name:var(--font-noto-sans-jp)] leading-relaxed">
                                             {comparison.newValue}
                                         </div>
                                     </div>
@@ -126,10 +126,10 @@ export default function ComparisonSection() {
 
                 {/* Strong CTA Section */}
                 <div className="text-center bg-gradient-to-br from-white via-[#EDD9BE] to-[#EDD9BE] rounded-3xl p-12 shadow-2xl border border-[#F283AE]/30">
-                    <p className="text-2xl md:text-3xl font-bold text-[#C59FBE] mb-4 font-[family-name:var(--font-noto-sans-jp)]">
+                    <p className="text-2xl md:text-3xl font-bold text-[#5e3e53] mb-4 font-[family-name:var(--font-noto-sans-jp)]">
                         もう何時間も探す必要はありません
                     </p>
-                    <p className="text-base text-[#C59FBE]/80 mb-8 font-[family-name:var(--font-noto-sans-jp)]">
+                    <p className="text-base text-[#5e3e53]/80 mb-8 font-[family-name:var(--font-noto-sans-jp)]">
                         10秒で理想のネイルが見つかる体験を、今すぐ
                     </p>
 
@@ -139,7 +139,7 @@ export default function ComparisonSection() {
                         <div className="absolute -inset-2 rounded-full blur-xl opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse" style={{ background: 'linear-gradient(90deg, #F283AE, #F283AE, #C59FBE, #98B8B9)' }}></div>
 
                         {/* Button */}
-                        <button className="relative px-16 py-6 text-white text-xl md:text-2xl font-bold rounded-full shadow-2xl hover:shadow-[#C59FBE]/40 hover:scale-105 transition-all duration-300 font-[family-name:var(--font-noto-sans-jp)] overflow-hidden group" style={{ background: 'linear-gradient(90deg, #F283AE, #F283AE, #C59FBE, #98B8B9)' }}>
+                        <a href="http://app.nailu.jp/" className="relative px-16 py-6 text-white text-xl md:text-2xl font-bold rounded-full shadow-2xl hover:shadow-[#C59FBE]/40 hover:scale-105 transition-all duration-300 font-[family-name:var(--font-noto-sans-jp)] overflow-hidden group inline-block" style={{ background: 'linear-gradient(90deg, #F283AE, #F283AE, #C59FBE, #98B8B9)' }}>
                             {/* Shimmer effect */}
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
 
@@ -154,10 +154,10 @@ export default function ComparisonSection() {
                             <span className="relative flex items-center justify-center gap-3">
                                 💎 無料で今すぐ試す
                             </span>
-                        </button>
+                        </a>
                     </div>
 
-                    <p className="text-xs text-[#C59FBE]/60 mt-6 font-[family-name:var(--font-noto-sans-jp)]">
+                    <p className="text-xs text-[#5e3e53]/60 mt-6 font-[family-name:var(--font-noto-sans-jp)]">
                         ※ 登録不要・完全無料
                     </p>
                 </div>

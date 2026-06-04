@@ -101,10 +101,10 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     {/* Header */}
                     <div className="text-center mb-7">
                         <div className="text-3xl mb-2">🌸</div>
-                        <h2 className="text-2xl font-bold text-[#C59FBE] font-[family-name:var(--font-montserrat)] tracking-widest">
+                        <h2 className="text-2xl font-bold text-[#5e3e53] font-[family-name:var(--font-montserrat)] tracking-widest">
                             NAILU
                         </h2>
-                        <p className="text-sm text-[#FAC1B5] mt-1 font-[family-name:var(--font-noto-sans-jp)]">
+                        <p className="text-sm text-[#5e3e53] mt-1 font-[family-name:var(--font-noto-sans-jp)]">
                             {mode === "login" ? "ログインしてデザインを楽しもう" : "アカウントを作成しよう"}
                         </p>
                     </div>
@@ -135,7 +135,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     {/* Email / Password Form */}
                     <form onSubmit={handleEmailAuth} className="space-y-3">
                         <div>
-                            <label className="block text-xs font-medium text-[#C59FBE] mb-1 font-[family-name:var(--font-noto-sans-jp)]">
+                            <label className="block text-xs font-medium text-[#5e3e53] mb-1 font-[family-name:var(--font-noto-sans-jp)]">
                                 メールアドレス
                             </label>
                             <input
@@ -148,7 +148,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                             />
                         </div>
                         <div>
-                            <label className="block text-xs font-medium text-[#C59FBE] mb-1 font-[family-name:var(--font-noto-sans-jp)]">
+                            <label className="block text-xs font-medium text-[#5e3e53] mb-1 font-[family-name:var(--font-noto-sans-jp)]">
                                 パスワード
                             </label>
                             <input
