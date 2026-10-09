@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect } from "react";
+import Image from "next/image";
 import ComparisonSection from "@/components/ComparisonSection";
 
 const AppStoreBadge = ({ href }: { href: string }) => {
@@ -33,7 +34,7 @@ export default function Home() {
     const howItWorksRef = useRef<HTMLElement>(null);
     const designMakerRef = useRef<HTMLElement>(null);
     const faqRef = useRef<HTMLElement>(null);
-    const [visibleGalleryCount, setVisibleGalleryCount] = React.useState(6);
+    const [visibleGalleryCount, setVisibleGalleryCount] = React.useState(12);
     const [showcaseFocus, setShowcaseFocus] = React.useState<'before' | 'after'>('after');
     const [sparkleActive, setSparkleActive] = React.useState(false);
 
@@ -302,8 +303,30 @@ export default function Home() {
         "/situation-trend-4.png"
     ].includes(img.src));
 
-    // Final consolidated gallery - Optimized Order
+    // Design photos currently used by the iOS app.
+    const appGalleryImages = [
+        { src: "/app-designs/popular-gradient.png", alt: "アプリ掲載のグラデーションネイル" },
+        { src: "/app-designs/popular-gradient-magnet.png", alt: "アプリ掲載のグラデーションマグネットネイル" },
+        { src: "/app-designs/popular-blush-french.png", alt: "アプリ掲載のチークフレンチネイル" },
+        { src: "/app-designs/popular-check.png", alt: "アプリ掲載のチェックネイル" },
+        { src: "/app-designs/popular-french.png", alt: "アプリ掲載のフレンチネイル" },
+        { src: "/app-designs/style-simple.jpg", alt: "アプリ掲載のシンプルネイル" },
+        { src: "/app-designs/style-elegant.jpg", alt: "アプリ掲載のきれいめネイル" },
+        { src: "/app-designs/style-girly.jpg", alt: "アプリ掲載のガーリーネイル" },
+        { src: "/app-designs/style-nuance.jpg", alt: "アプリ掲載のニュアンスネイル" },
+        { src: "/app-designs/style-korean.jpg", alt: "アプリ掲載の韓国風ネイル" },
+        { src: "/app-designs/style-wonhwon.jpg", alt: "アプリ掲載のワンホンネイル" },
+        { src: "/app-designs/style-y2k.jpg", alt: "アプリ掲載のY2Kネイル" },
+        { src: "/app-designs/style-jirai.jpg", alt: "アプリ掲載の地雷系ネイル" },
+        { src: "/app-designs/style-balletcore.jpg", alt: "アプリ掲載のバレエコアネイル" },
+        { src: "/app-designs/style-french-ombre.png", alt: "アプリ掲載のフレンチネイルデザイン" },
+        { src: "/app-designs/style-matte-nude.png", alt: "アプリ掲載のマットネイルデザイン" },
+        { src: "/app-designs/style-y2k-sparkle.png", alt: "アプリ掲載のビジューネイルデザイン" },
+    ];
+
+    // App photos first, followed by the existing site design examples.
     const galleryImages = [
+        ...appGalleryImages,
         ...featuredGalleryImages,
         ...baseGalleryImages,
         ...situationImagesList,
@@ -553,64 +576,6 @@ export default function Home() {
                 </section>
 
                 <ComparisonSection />
-
-                {/* SECTION: COMMUNITY GALLERY */}
-                <section className="py-28 px-6 relative overflow-hidden bg-gradient-to-b from-[#FCF7F4] to-white">
-                    <div className="max-w-6xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-                        <div className="animate-on-scroll">
-                            <span className="text-[#9C7378] font-bold tracking-[0.2em] text-xs uppercase mb-4 block font-[family-name:var(--font-montserrat)]">In the app · Community Gallery</span>
-                            <h2 className="text-4xl md:text-5xl font-bold text-[#665956] mb-6 font-[family-name:var(--font-noto-sans-jp)] leading-tight">
-                                みんなのネイルから、<br />次のデザインを見つけよう。
-                            </h2>
-                            <p className="text-[#665956] text-lg leading-loose font-[family-name:var(--font-noto-sans-jp)]">
-                                アプリのCommunity Galleryでは、公開されたネイルデザインを見たり、検索したりできます。気になるデザインを選んで、自分の手の写真で試してみましょう。
-                            </p>
-                            <div className="mt-8 space-y-4 font-[family-name:var(--font-noto-sans-jp)]">
-                                {[
-                                    { number: "01", title: "デザインを探す", description: "みんなが公開したデザインを見て、好みの雰囲気を見つける。" },
-                                    { number: "02", title: "自分の手で試す", description: "気になったデザインを選び、自分の手の写真で仕上がりを確認。" },
-                                    { number: "03", title: "いいねで応援", description: "お気に入りの公開デザインに、いいねを送れます。" },
-                                ].map((item) => (
-                                    <div key={item.number} className="flex items-start gap-4 rounded-2xl bg-white/80 border border-[#E5D9D5] p-4 shadow-sm">
-                                        <span className="text-[#9C7378] font-bold text-sm pt-1">{item.number}</span>
-                                        <div>
-                                            <h3 className="font-bold text-[#665956]">{item.title}</h3>
-                                            <p className="text-sm text-[#665956]/80 mt-1">{item.description}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <a href={appUrl} className="mt-9 inline-flex items-center justify-center px-9 py-4 rounded-full bg-[#9C7378] text-white font-bold shadow-lg hover:bg-[#865F65] hover:shadow-xl transition-all font-[family-name:var(--font-noto-sans-jp)]">
-                                App Storeでダウンロード
-                            </a>
-                        </div>
-
-                        <div className="animate-on-scroll rounded-[32px] bg-white/80 border border-[#E5D9D5] shadow-xl p-5 md:p-7">
-                            <div className="flex items-center justify-between mb-5">
-                                <div>
-                                    <p className="text-xs font-bold tracking-[0.18em] text-[#9C7378] font-[family-name:var(--font-montserrat)]">DESIGN IDEAS</p>
-                                    <p className="text-lg font-bold text-[#665956] font-[family-name:var(--font-noto-sans-jp)] mt-1">ネイルデザインの例</p>
-                                </div>
-                                <span className="text-2xl" aria-hidden="true">♡</span>
-                            </div>
-                            <div className="grid grid-cols-2 gap-3">
-                                {[
-                                    { src: "/gallery-ribbon-pink.png", alt: "ピンクのリボンネイルのデザイン例" },
-                                    { src: "/gallery-glass-french-ribbon.png", alt: "ガラスフレンチネイルのデザイン例" },
-                                    { src: "/gallery-nuance-marble.png", alt: "ニュアンスマーブルネイルのデザイン例" },
-                                    { src: "/gallery-magnetic-aurora-gold.png", alt: "マグネットネイルのデザイン例" },
-                                ].map((design) => (
-                                    <div key={design.src} className="aspect-square rounded-2xl overflow-hidden bg-[#F9F0ED]">
-                                        <img src={design.src} alt={design.alt} className="w-full h-full object-cover" />
-                                    </div>
-                                ))}
-                            </div>
-                            <p className="text-xs text-[#665956]/70 mt-4 font-[family-name:var(--font-noto-sans-jp)]">掲載画像はデザイン例です。公開作品はアプリ内でご覧ください。</p>
-                        </div>
-                    </div>
-                    <div className="absolute top-[20%] left-[-10%] w-[40%] h-[40%] bg-[#DFC4C5] rounded-full mix-blend-multiply filter blur-[120px] opacity-40 pointer-events-none"></div>
-                    <div className="absolute bottom-[20%] right-[-10%] w-[40%] h-[40%] bg-[#FCF7F4] rounded-full mix-blend-multiply filter blur-[120px] opacity-40 pointer-events-none"></div>
-                </section>
 
                 {/* SECTION: CREATE YOUR OWN DESIGN (Explanation) */}
                 <section ref={designMakerRef} className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-white to-[#FCF7F4]" >
@@ -1286,7 +1251,36 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* SECTION: COMMUNITY GALLERY (Showcase Only) */}
+                {/* SECTION: COMMUNITY GALLERY */}
+                <section className="py-24 px-6 bg-gradient-to-b from-[#FCF7F4] to-white">
+                    <div className="max-w-5xl mx-auto text-center animate-on-scroll">
+                        <span className="text-[#9C7378] font-bold tracking-[0.2em] text-xs uppercase mb-4 block font-[family-name:var(--font-montserrat)]">In the app · Community Gallery</span>
+                        <h2 className="text-4xl md:text-5xl font-bold text-[#665956] mb-6 font-[family-name:var(--font-noto-sans-jp)] leading-tight">
+                            みんなのネイルから、次のデザインを見つけよう。
+                        </h2>
+                        <p className="text-[#665956] text-lg leading-loose max-w-3xl mx-auto font-[family-name:var(--font-noto-sans-jp)]">
+                            アプリのCommunity Galleryでは、公開されたネイルデザインを見たり、検索したりできます。気になるデザインを選んで、自分の手の写真で試してみましょう。
+                        </p>
+                        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 text-left font-[family-name:var(--font-noto-sans-jp)]">
+                            {[
+                                { number: "01", title: "デザインを探す", description: "みんなが公開したデザインから、好みの雰囲気を探す。" },
+                                { number: "02", title: "自分の手で試す", description: "気になるデザインを、自分の手の写真で試せます。" },
+                                { number: "03", title: "いいねで応援", description: "お気に入りの公開デザインに、いいねを送れます。" },
+                            ].map((item) => (
+                                <div key={item.number} className="rounded-2xl bg-white border border-[#E5D9D5] p-6 shadow-sm">
+                                    <span className="text-[#9C7378] font-bold text-sm">{item.number}</span>
+                                    <h3 className="font-bold text-[#665956] mt-3">{item.title}</h3>
+                                    <p className="text-sm text-[#665956]/80 mt-2">{item.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <a href={appUrl} className="mt-10 inline-flex items-center justify-center px-9 py-4 rounded-full bg-[#9C7378] text-white font-bold shadow-lg hover:bg-[#865F65] hover:shadow-xl transition-all font-[family-name:var(--font-noto-sans-jp)]">
+                            App Storeでダウンロード
+                        </a>
+                    </div>
+                </section>
+
+                {/* SECTION: APP DESIGN GALLERY */}
                 <section ref={galleryRef} className="min-h-screen pt-24 pb-24 px-5 max-w-5xl mx-auto relative overflow-hidden" >
                     {/* Gallery Background Elements */}
                     <div className="absolute inset-0 w-full h-full -z-10 overflow-hidden pointer-events-none" >
@@ -1295,14 +1289,14 @@ export default function Home() {
                     </div>
 
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold mb-4 text-[#665956] tracking-tight">Design Gallery</h2>
-                        <p className="text-[#665956] font-medium tracking-wide">ネイルデザインの例をご紹介。みんなの公開作品はアプリ内のCommunity Galleryで見られます。</p>
+                        <h2 className="text-3xl font-bold mb-4 text-[#665956] tracking-tight">アプリ掲載デザイン</h2>
+                        <p className="text-[#665956] font-medium tracking-wide">アプリで表示しているデザイン画像と、ネイルデザインの例をご紹介。みんなの公開作品はアプリ内で見られます。</p>
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
                         {galleryImages.slice(0, visibleGalleryCount).map((img, index) => (
                             <div key={index} className="aspect-[4/5] glass-card rounded-[40px] relative overflow-hidden group hover:scale-[1.03] transition-all duration-500 shadow-xl gloss-effect">
-                                <img src={img.src} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" alt={img.alt} />
+                                <Image src={img.src} fill sizes="(max-width: 768px) 50vw, 33vw" className="object-cover opacity-90 group-hover:opacity-100 transition-opacity" alt={img.alt} />
                             </div>
                         ))}
                     </div>
@@ -1314,7 +1308,7 @@ export default function Home() {
                                     onClick={() => setVisibleGalleryCount(prev => prev + 6)}
                                     className="px-10 py-4 bg-white/50 backdrop-blur-md border border-[#9C7378]/30 rounded-full text-[#665956] font-bold hover:bg-[#DFC4C5] hover:text-white transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 group"
                                 >
-                                    <span className="mr-2">More View</span>
+                                    <span className="mr-2">さらに見る</span>
                                     <span className="inline-block transition-transform group-hover:translate-y-1">↓</span>
                                 </button>
                             </div>
