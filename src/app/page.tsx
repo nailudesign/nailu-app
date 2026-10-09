@@ -554,133 +554,60 @@ export default function Home() {
 
                 <ComparisonSection />
 
-                {/* SECTION: DESIGN FROM INSPIRATION (New Feature Showcase) */}
-                <section className="py-32 px-6 relative overflow-hidden bg-gradient-to-b from-[#FCF7F4] to-white">
-                    <div className="max-w-7xl mx-auto relative z-10">
-                        <div className="text-center mb-20 animate-on-scroll">
-                            <span className="text-[#9C7378] font-bold tracking-[0.2em] text-xs uppercase mb-4 block font-[family-name:var(--font-montserrat)]">Creative AI Feature</span>
+                {/* SECTION: COMMUNITY GALLERY */}
+                <section className="py-28 px-6 relative overflow-hidden bg-gradient-to-b from-[#FCF7F4] to-white">
+                    <div className="max-w-6xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+                        <div className="animate-on-scroll">
+                            <span className="text-[#9C7378] font-bold tracking-[0.2em] text-xs uppercase mb-4 block font-[family-name:var(--font-montserrat)]">In the app · Community Gallery</span>
                             <h2 className="text-4xl md:text-5xl font-bold text-[#665956] mb-6 font-[family-name:var(--font-noto-sans-jp)] leading-tight">
-                                日常の「ときめき」を、<br className="md:hidden" />
-                                そのままネイルに。
+                                みんなのネイルから、<br />次のデザインを見つけよう。
                             </h2>
-                            <p className="text-[#665956] text-lg max-w-2xl mx-auto font-[family-name:var(--font-noto-sans-jp)] leading-loose">
-                                お気に入りのリボン、大好きな服の柄、心惹かれるテクスチャ。<br className="hidden md:block" />
-                                イメージ画像を送るだけで、AIがそのエッセンスを抽出して<br className="hidden md:block" />
-                                あなただけの特別なデザインを創り出します。
+                            <p className="text-[#665956] text-lg leading-loose font-[family-name:var(--font-noto-sans-jp)]">
+                                アプリのCommunity Galleryでは、公開されたネイルデザインを見たり、検索したりできます。気になるデザインを選んで、自分の手の写真で試してみましょう。
                             </p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-
-                            {/* Card 1: Ribbon */}
-                            <div className="group animate-on-scroll bg-white rounded-3xl shadow-xl border border-[#E5D9D5] overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500" style={{ transitionDelay: '100ms' }}>
-                                <div className="flex relative">
-                                    {/* Source Image */}
-                                    <div className="flex-1 relative overflow-hidden">
-                                        <div className="absolute top-3 left-3 z-10 bg-black/40 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">元画像</div>
-                                        <img src="/inspiration_ribbon_source_1771336138345.png" alt="Ribbon inspiration" className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-700" />
+                            <div className="mt-8 space-y-4 font-[family-name:var(--font-noto-sans-jp)]">
+                                {[
+                                    { number: "01", title: "デザインを探す", description: "みんなが公開したデザインを見て、好みの雰囲気を見つける。" },
+                                    { number: "02", title: "自分の手で試す", description: "気になったデザインを選び、自分の手の写真で仕上がりを確認。" },
+                                    { number: "03", title: "いいねで応援", description: "お気に入りの公開デザインに、いいねを送れます。" },
+                                ].map((item) => (
+                                    <div key={item.number} className="flex items-start gap-4 rounded-2xl bg-white/80 border border-[#E5D9D5] p-4 shadow-sm">
+                                        <span className="text-[#9C7378] font-bold text-sm pt-1">{item.number}</span>
+                                        <div>
+                                            <h3 className="font-bold text-[#665956]">{item.title}</h3>
+                                            <p className="text-sm text-[#665956]/80 mt-1">{item.description}</p>
+                                        </div>
                                     </div>
-
-                                    {/* Result Image */}
-                                    <div className="flex-1 relative overflow-hidden">
-                                        <div className="absolute top-3 right-3 z-10 bg-[#9C7378]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">AI生成</div>
-                                        <img src="/nail_design_ribbon_result_1771336207172.png" alt="Ribbon nail result" className="w-full h-52 object-cover" />
-                                        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#9C7378]/8 pointer-events-none" />
-                                    </div>
-                                </div>
-                                <div className="px-5 py-4 flex items-center gap-3 border-t border-[#E5D9D5]">
-                                    <span className="text-xl">🎀</span>
-                                    <div>
-                                        <p className="text-sm font-bold text-[#665956] font-[family-name:var(--font-montserrat)] tracking-wide">Ribbon Essence</p>
-                                        <p className="text-xs text-[#665956] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">シルクの光沢とリボンの立体感を指先に再現</p>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
-
-                            {/* Card 2: Check */}
-                            <div className="group animate-on-scroll bg-white rounded-3xl shadow-xl border border-[#E5D9D5] overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500" style={{ transitionDelay: '200ms' }}>
-                                <div className="flex relative">
-                                    <div className="flex-1 relative overflow-hidden">
-                                        <div className="absolute top-3 left-3 z-10 bg-black/40 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">元画像</div>
-                                        <img src="/inspiration_check_source_1771336351525.png" alt="Check inspiration" className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-700" />
-                                    </div>
-                                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-gradient-to-br from-[#9C7378] to-[#BB969B] flex items-center justify-center shadow-lg border-2 border-white">
-                                        <span className="text-white text-[11px] font-black tracking-wider">AI</span>
-                                    </div>
-                                    <div className="flex-1 relative overflow-hidden">
-                                        <div className="absolute top-3 right-3 z-10 bg-[#9C7378]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">AI生成</div>
-                                        <img src="/nail_design_check_result_1771336430638.png" alt="Check nail result" className="w-full h-52 object-cover" />
-                                    </div>
-                                </div>
-                                <div className="px-5 py-4 flex items-center gap-3 border-t border-[#E5D9D5]">
-                                    <span className="text-xl">🧣</span>
-                                    <div>
-                                        <p className="text-sm font-bold text-[#665956] font-[family-name:var(--font-montserrat)] tracking-wide">Modern Check</p>
-                                        <p className="text-xs text-[#665956] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">高級感のあるテキスタイル模様を繊細な筆致で昇華</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Card 3: Flower */}
-                            <div className="group animate-on-scroll bg-white rounded-3xl shadow-xl border border-[#E5D9D5] overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500" style={{ transitionDelay: '300ms' }}>
-                                <div className="flex relative">
-                                    <div className="flex-1 relative overflow-hidden">
-                                        <div className="absolute top-3 left-3 z-10 bg-black/40 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">元画像</div>
-                                        <img src="/inspiration_flower_source.png" alt="Flower inspiration" className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-700" />
-                                    </div>
-                                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-gradient-to-br from-[#9C7378] to-[#BB969B] flex items-center justify-center shadow-lg border-2 border-white">
-                                        <span className="text-white text-[11px] font-black tracking-wider">AI</span>
-                                    </div>
-                                    <div className="flex-1 relative overflow-hidden">
-                                        <div className="absolute top-3 right-3 z-10 bg-[#9C7378]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">AI生成</div>
-                                        <img src="/nail_design_flower_result.png" alt="Flower nail result" className="w-full h-52 object-cover" />
-                                    </div>
-                                </div>
-                                <div className="px-5 py-4 flex items-center gap-3 border-t border-[#E5D9D5]">
-                                    <span className="text-xl">🌿</span>
-                                    <div>
-                                        <p className="text-sm font-bold text-[#665956] font-[family-name:var(--font-montserrat)] tracking-wide">Botanical Garden</p>
-                                        <p className="text-xs text-[#665956] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">押し花の繊細な美しさをクリアジェルの中に閉じ込めて</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Card 4: Marble */}
-                            <div className="group animate-on-scroll bg-white rounded-3xl shadow-xl border border-[#E5D9D5] overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500" style={{ transitionDelay: '400ms' }}>
-                                <div className="flex relative">
-                                    <div className="flex-1 relative overflow-hidden">
-                                        <div className="absolute top-3 left-3 z-10 bg-black/40 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">元画像</div>
-                                        <img src="/inspiration_marble_source.png" alt="Marble inspiration" className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-700" />
-                                    </div>
-                                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-gradient-to-br from-[#9C7378] to-[#BB969B] flex items-center justify-center shadow-lg border-2 border-white">
-                                        <span className="text-white text-[11px] font-black tracking-wider">AI</span>
-                                    </div>
-                                    <div className="flex-1 relative overflow-hidden">
-                                        <div className="absolute top-3 right-3 z-10 bg-[#9C7378]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">AI生成</div>
-                                        <img src="/nail_design_marble_result.png" alt="Marble nail result" className="w-full h-52 object-cover" />
-                                    </div>
-                                </div>
-                                <div className="px-5 py-4 flex items-center gap-3 border-t border-[#E5D9D5]">
-                                    <span className="text-xl">🪨</span>
-                                    <div>
-                                        <p className="text-sm font-bold text-[#665956] font-[family-name:var(--font-montserrat)] tracking-wide">Luxury Marble</p>
-                                        <p className="text-xs text-[#665956] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">大理石の気品と金箔の輝きを纏った指先</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        {/* CTA / Action */}
-                        <div className="mt-20 text-center animate-on-scroll">
-                            <a href={appUrl} className="group inline-flex items-center justify-center gap-3 px-12 py-5 rounded-full text-white font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 font-[family-name:var(--font-noto-sans-jp)]" style={{ background: '#9C7378' }}>
-                                <span>💎 App Storeでダウンロード</span>
+                            <a href={appUrl} className="mt-9 inline-flex items-center justify-center px-9 py-4 rounded-full bg-[#9C7378] text-white font-bold shadow-lg hover:bg-[#865F65] hover:shadow-xl transition-all font-[family-name:var(--font-noto-sans-jp)]">
+                                App Storeでダウンロード
                             </a>
                         </div>
+
+                        <div className="animate-on-scroll rounded-[32px] bg-white/80 border border-[#E5D9D5] shadow-xl p-5 md:p-7">
+                            <div className="flex items-center justify-between mb-5">
+                                <div>
+                                    <p className="text-xs font-bold tracking-[0.18em] text-[#9C7378] font-[family-name:var(--font-montserrat)]">DESIGN IDEAS</p>
+                                    <p className="text-lg font-bold text-[#665956] font-[family-name:var(--font-noto-sans-jp)] mt-1">ネイルデザインの例</p>
+                                </div>
+                                <span className="text-2xl" aria-hidden="true">♡</span>
+                            </div>
+                            <div className="grid grid-cols-2 gap-3">
+                                {[
+                                    { src: "/gallery-ribbon-pink.png", alt: "ピンクのリボンネイルのデザイン例" },
+                                    { src: "/gallery-glass-french-ribbon.png", alt: "ガラスフレンチネイルのデザイン例" },
+                                    { src: "/gallery-nuance-marble.png", alt: "ニュアンスマーブルネイルのデザイン例" },
+                                    { src: "/gallery-magnetic-aurora-gold.png", alt: "マグネットネイルのデザイン例" },
+                                ].map((design) => (
+                                    <div key={design.src} className="aspect-square rounded-2xl overflow-hidden bg-[#F9F0ED]">
+                                        <img src={design.src} alt={design.alt} className="w-full h-full object-cover" />
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-xs text-[#665956]/70 mt-4 font-[family-name:var(--font-noto-sans-jp)]">掲載画像はデザイン例です。公開作品はアプリ内でご覧ください。</p>
+                        </div>
                     </div>
-
-
-                    {/* Decorative Background Elements */}
                     <div className="absolute top-[20%] left-[-10%] w-[40%] h-[40%] bg-[#DFC4C5] rounded-full mix-blend-multiply filter blur-[120px] opacity-40 pointer-events-none"></div>
                     <div className="absolute bottom-[20%] right-[-10%] w-[40%] h-[40%] bg-[#FCF7F4] rounded-full mix-blend-multiply filter blur-[120px] opacity-40 pointer-events-none"></div>
                 </section>
@@ -1368,8 +1295,8 @@ export default function Home() {
                     </div>
 
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold mb-4 text-[#665956] tracking-tight">Community Gallery</h2>
-                        <p className="text-[#665956] font-medium tracking-wide">ネイルデザインのイメージをご紹介</p>
+                        <h2 className="text-3xl font-bold mb-4 text-[#665956] tracking-tight">Design Gallery</h2>
+                        <p className="text-[#665956] font-medium tracking-wide">ネイルデザインの例をご紹介。みんなの公開作品はアプリ内のCommunity Galleryで見られます。</p>
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
