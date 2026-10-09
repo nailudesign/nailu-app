@@ -1,30 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --muted-pink: #FAC1B5;
-  --milk-beige: #EDD9BE;
-  --ivory: #EDD9BE;
+  --muted-pink: #F9F0ED;
+  --milk-beige: #FCF7F4;
+  --ivory: #FCF7F4;
   --white: #FFFFFF;
-  --text-dark: #5e3e53;
-  --text-gray: #7a5a6c;
+  --text-dark: #665956;
+  --text-gray: #897B77;
   --glass-bg: rgba(255, 255, 255, 0.7);
   --shadow: 0 10px 40px rgba(74, 62, 62, 0.05);
   /* Soft mauve-purple that blends with dusty rose theme */
-  --purple-accent: #C59FBE;
-  --purple-soft: #C59FBE;
-  --purple-mid: #C59FBE;
+  --purple-accent: #DFC4C5;
+  --purple-soft: #DFC4C5;
+  --purple-mid: #DFC4C5;
   /* Elegant rose-to-mauve gradient (not neon) for buttons */
-  --btn-app-gradient: linear-gradient(90deg, #F283AE 0%, #F283AE 35%, #C59FBE 70%, #98B8B9 100%);
+  --btn-app-gradient: #9C7378;
   /* Background with subtle lavender hint */
-  --pink-gradient-premium: linear-gradient(135deg, #EDD9BE 0%, #FAC1B5 45%, #C59FBE 75%, #98B8B9 100%);
+  --pink-gradient-premium: #F9F0ED;
 
   /* Background fix */
   background: var(--pink-gradient-premium);
 }
 
 ::selection {
-  background: #EDD9BE;
-  color: #5e3e53;
+  background: #FCF7F4;
+  color: #665956;
 }
 
 body {
@@ -78,8 +78,8 @@ h3 {
 }
 
 .btn-secondary:hover {
-  background: #EDD9BE;
-  border-color: #F283AE;
+  background: #FCF7F4;
+  border-color: #9C7378;
 }
 
 /* Animations */
@@ -307,9 +307,7 @@ h3 {
 }
 
 .btn-diamond-app {
-  /* Modern Gradient: Soft Pink -> Lavender -> Soft Blue */
-  background: linear-gradient(90deg, var(--muted-pink), #EDD9BE, var(--milk-beige), var(--muted-pink));
-  background-size: 300% 100%;
+  background: #9C7378;
 
   /* Glassy Border */
   border: 1px solid rgba(255, 255, 255, 0.6);
@@ -319,7 +317,7 @@ h3 {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 
   /* Animations */
-  animation: shimmerSlide 4s linear infinite, subtlePulse 3s ease-in-out infinite;
+  animation: subtlePulse 3s ease-in-out infinite;
 
   /* Modern Glass Feel */
   backdrop-filter: blur(5px);
@@ -534,8 +532,8 @@ h3 {
 
 .text-elegant-gold {
   font-family: var(--font-montserrat), 'Arial Black', sans-serif;
-  color: #5e3e53;
-  -webkit-text-stroke: 1px #F283AE;
+  color: #665956;
+  -webkit-text-stroke: 1px #9C7378;
   animation: neonPulse 3s ease-in-out infinite;
   letter-spacing: 0.08em;
 }
@@ -704,7 +702,7 @@ h3 {
   content: '';
   position: absolute;
   inset: -3px;
-  background: conic-gradient(from 0deg, #C59FBE, #F283AE, #FAC1B5, #C6C870, #F283AE, #C59FBE);
+  background: conic-gradient(from 0deg, #DFC4C5, #9C7378, #F9F0ED, #BB969B, #9C7378, #DFC4C5);
   border-radius: inherit;
   animation: rotateBorder 4s linear infinite;
   z-index: -1;
@@ -742,13 +740,13 @@ h3 {
 
 .liquid-gradient-bg {
   background: linear-gradient(-45deg,
-      #EDD9BE,
-      #F283AE,
-      #C6C870,
-      #C59FBE,
+      #FCF7F4,
+      #9C7378,
+      #BB969B,
+      #DFC4C5,
       #c0c0c0,
-      #F283AE,
-      #EDD9BE);
+      #9C7378,
+      #FCF7F4);
   background-size: 400% 400%;
   animation: liquidGradient 15s ease infinite;
 }
@@ -983,7 +981,7 @@ h3 {
 
 /* Premium Gold Border */
 .premium-gold-border {
-  outline: 4px solid #C6C870;
+  outline: 4px solid #BB969B;
   outline-offset: 0px;
   box-shadow:
     0 0 0 2px #f7ef8a,

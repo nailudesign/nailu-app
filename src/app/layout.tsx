@@ -3,7 +3,6 @@ import { Noto_Sans_JP, Montserrat } from "next/font/google";
 import "./globals.css";
 
 import { SITE_METADATA, JSON_LD } from "./seo-metadata";
-import { AuthProvider } from "@/context/AuthContext";
 
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto-sans-jp",
@@ -50,11 +49,8 @@ export default function RootLayout({
         className={`${notoSansJP.variable} ${montserrat.variable} antialiased`}
         suppressHydrationWarning
       >
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+        {children}
       </body>
     </html>
   );
 }
-

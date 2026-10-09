@@ -1,10 +1,29 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import ComparisonSection from "@/components/ComparisonSection";
-import AuthModal from "@/components/AuthModal";
-import { useAuth } from "@/context/AuthContext";
 
+const AppStoreBadge = ({ href }: { href: string }) => {
+    return (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-black hover:bg-black/90 active:scale-95 text-white px-5 py-2.5 rounded-2xl border border-white/10 shadow-lg hover:shadow-xl transition-all duration-300 font-sans group relative overflow-hidden shrink-0"
+        >
+            {/* Shimmer effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+
+            <svg viewBox="0 0 384 512" className="w-5 h-5 fill-white transition-transform duration-300 group-hover:scale-110">
+                <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-48-20.7-77.5-20.7-39.3 0-75.1 22-95.6 57.5-42.2 72.9-10.8 181.9 29.8 240.2 20 28.8 43.4 60.8 74.3 59.6 30.2-1.2 41.7-19.3 78.2-19.3 36.4 0 46.9 19.3 78.2 19.3 31.9-.5 52.3-29.2 72.1-57.9 22.9-33.1 32.4-65 32.9-66.6-.7-.3-64.1-24.6-64.6-98.3zM288.9 105c15.6-19 25.9-45.3 23-71.6-22.6.9-50.2 15-66.4 33.8-14.3 16.5-26.8 43.1-23.4 69.1 25.1 2 51.1-12.3 66.8-31.3z" />
+            </svg>
+            <div className="flex flex-col items-start leading-none text-left select-none">
+                <span className="text-[9px] font-medium text-gray-400 tracking-wider uppercase">Download on the</span>
+                <span className="text-base font-semibold text-white tracking-tight mt-0.5 font-[family-name:var(--font-montserrat)]">App Store</span>
+            </div>
+        </a>
+    );
+};
 
 export default function Home() {
     const heroRef = useRef<HTMLElement>(null);
@@ -17,8 +36,6 @@ export default function Home() {
     const [visibleGalleryCount, setVisibleGalleryCount] = React.useState(6);
     const [showcaseFocus, setShowcaseFocus] = React.useState<'before' | 'after'>('after');
     const [sparkleActive, setSparkleActive] = React.useState(false);
-    const [authModalOpen, setAuthModalOpen] = useState(false);
-    const { user, signOut } = useAuth();
 
     const [selectedTrendIndex, setSelectedTrendIndex] = React.useState(0);
 
@@ -26,7 +43,7 @@ export default function Home() {
     const trendStyles = [
         { name: "Ribbon", img: "/hero-after-ribbon-perfect.png", label: "リボン" },
         { name: "Y2K", img: "/hero-nail-y2k.png", label: "Y2K" },
-        { name: "Cheek", img: "/hero-nail-cheek.png", label: "チーク" },
+        { name: "Cheek", img: "/trend-cheek.png", label: "チーク" },
         { name: "Glass French", img: "/hero-nail-french.png", label: "フレンチ" },
         { name: "Magnet", img: "/hero-nail-magnet.png", label: "マグネット" },
         { name: "Nuance", img: "/hero-nail-nuance.png", label: "ニュアンス" },
@@ -50,7 +67,7 @@ export default function Home() {
             keywords: ["結婚式", "けっこんしき", "ウェディング", "ブライダル", "披露宴", "ドレス", "お呼ばれ"],
             description: "人生の特別な日に。ドレスに合わせた上品で華やかなホワイト・パール・ストーン系の王道ブライダルネイル。",
             icon: "💍",
-            color: "bg-[#EDD9BE]",
+            color: "bg-[#FCF7F4]",
             image: "/situation-wedding-1.png"
         },
         {
@@ -60,7 +77,7 @@ export default function Home() {
             keywords: ["就活", "しゅうかつ", "面接", "めんせつ", "オフィス", "仕事", "ナチュラル", "清潔感", "スキンカラー", "学校", "スクール", "学生"],
             description: "面接やオフィスで好印象。清潔感あふれるナチュラルなミルクベージュやグレージュの好感度ネイル。",
             icon: "💼",
-            color: "bg-[#EDD9BE]",
+            color: "bg-[#FCF7F4]",
             image: "/situation-office-1.png"
         },
         {
@@ -70,8 +87,8 @@ export default function Home() {
             keywords: ["地雷系", "じらいけい", "量産型", "りょうさんがた", "ブラック", "リボン", "推し活"],
             description: "自分らしさを表現。ブラックやピンクにリボンやパールをあしらった、華やかでドーリーな個性派デザイン。",
             icon: "🖤",
-            color: "bg-[#EDD9BE]",
-            image: "/situation-subculture-1.png"
+            color: "bg-[#FCF7F4]",
+            image: "/situation-subculture-2.png"
         },
         {
             id: "adult",
@@ -80,7 +97,7 @@ export default function Home() {
             keywords: ["成人式", "せいじんしき", "振袖", "ふりそで", "前撮り", "和装", "豪華", "和柄"],
             description: "一生に一度の記念日に。振袖の柄や色味に合わせた、水引や金箔をあしらった豪華な和装デザイン。",
             icon: "👘",
-            color: "bg-[#EDD9BE]",
+            color: "bg-[#FCF7F4]",
             image: "/situation-adult-1.png"
         },
         {
@@ -90,7 +107,7 @@ export default function Home() {
             keywords: ["ワンホン", "わんほん", "韓国ネイル", "ちゅるん", "チーク", "キラキラ"],
             description: "SNSで話題沸騰中。透明感のあるベースに蝶々パーツやチークをのせた、韓国発の最新トレンド。",
             icon: "🎀",
-            color: "bg-[#EDD9BE]",
+            color: "bg-[#FCF7F4]",
             image: "/wanghong-beige-heart-gems.png",
             extraImages: ["/wanghong-beige-heart-gems.png", "/wanghong-silver-glitter.png"]
         },
@@ -101,7 +118,7 @@ export default function Home() {
             keywords: ["ニュアンス", "にゅあんす", "もやもや", "天然石", "マーブル", "絶妙"],
             description: "アーティスティックな指先に。絶妙な色の混ざり合いと凹凸を楽しむ、大人っぽい抜け感フルデザイン。",
             icon: "🎨",
-            color: "bg-[#EDD9BE]",
+            color: "bg-[#FCF7F4]",
             image: "/nuance-pink-marble-gold.png",
             extraImages: ["/nuance-pink-marble-gold.png", "/nuance-celestial-mint-hand.png", "/nuance-celestial-mint.png"]
         }
@@ -130,13 +147,13 @@ export default function Home() {
             id: "cheek",
             title: "Cheek Nail",
             description: "じゅわっとした血色感が可愛い、内側の柔らかいグラデーションが特徴の人気スタイルです。",
-            images: ["/gallery-cheek-skinny-french.png", "/gallery-cheek-pearl.png", "/gallery-cheek-heart.png", "/gallery-cheek-lifestyle.png"]
+            images: ["/gallery-cheek-heart.png", "/gallery-cheek-lifestyle.png", "/gallery-cheek-heart.png", "/gallery-cheek-lifestyle.png"]
         },
         glass: {
             id: "glass",
             title: "Glass French",
             description: "先端がガラスや鏡のように輝くシルバーのフレンチネイル。ベースカラーは自由で、エッジの輝きが特徴です。",
-            images: ["/hero-after-glass-french-inpainted.png", "/gallery-glass-french-ribbon.png", "/gallery-glass-french-sunlight.png", "/gallery-glass-french-2.png"]
+            images: ["/hero-after-glass-french-inpainted.png", "/gallery-glass-french-ribbon.png", "/gallery-glass-french-sunlight.png", "/gallery-glass-french-milky-pink.png"]
         },
         nuance: {
             id: "nuance",
@@ -172,127 +189,125 @@ export default function Home() {
 
     // 1. Featured Premium Gallery (Top Priority)
     const featuredGalleryImages = [
-        { src: "/wanghong-beige-heart-gems.png", alt: "Wanghong nail art with crystal heart gem and 3D bow charms - Premium AI creation", likes: 1456 },
-        { src: "/wanghong-silver-glitter.png", alt: "Wanghong silver glitter nails with 3D rose and rhinestone charms - Premium AI creation", likes: 1389 },
-        { src: "/nuance-pink-marble-gold.png", alt: "Nuance nail art with pink marble and gold foil lines - Premium AI creation", likes: 1312 },
-        { src: "/nuance-celestial-mint-hand.png", alt: "Nuance celestial mint nail art with moon and star charms - Premium AI creation", likes: 1278 },
-        { src: "/hero-after-magnet-perfect.png", alt: "Deep magnetic 'cat eye' nail design in galactic purple - Premium AI creation", likes: 1245 },
-        { src: "/hero-after-y2k-perfect.png", alt: "Mirror chrome metallic silver nails - Futuristc AI creation", likes: 1102 },
-        { src: "/hero-after-y2k-perfect.png", alt: "Y2K Cyber style nails with 3D chrome butterfly charms - Trendy AI creation", likes: 1356 },
-        { src: "/situation-wedding-1.png", alt: "Elegant white lace bridal nails - Wedding AI inspiration", likes: 982 },
-        { src: "/situation-wedding-3.png", alt: "Sophisticated 3D flower and crystal wedding nails", likes: 876 },
-        { src: "/trend-chrome-more.png", alt: "Collection of futuristic rose gold and holographic chrome designs", likes: 945 },
-        { src: "/trend-magnet-more.png", alt: "Showcase of deep emerald and sapphire magnetic gel nails", likes: 1023 },
-        { src: "/trend-y2k-more.png", alt: "Vibrant Harajuku style Y2K nail art collection", likes: 1189 },
-        { src: "/gallery-ribbon-pink.png", alt: "Ribbon nail design with sheer pink base and 3D ribbon charms", likes: 1123 },
-        { src: "/gallery-cheek-heart.png", alt: "Cheek nail with holographic heart accent", likes: 1056 },
-        { src: "/gallery-glass-french-ribbon.png", alt: "Glass French nails with delicate ribbon charm accent", likes: 989 },
-        { src: "/gallery-nuance-marble.png", alt: "AI generated nuance marble nail design with milky beige and brown swirls", likes: 856 },
+        { src: "/wanghong-beige-heart-gems.png", alt: "Wanghong nail art with crystal heart gem and 3D bow charms - Premium AI creation" },
+        { src: "/wanghong-silver-glitter.png", alt: "Wanghong silver glitter nails with 3D rose and rhinestone charms - Premium AI creation" },
+        { src: "/nuance-pink-marble-gold.png", alt: "Nuance nail art with pink marble and gold foil lines - Premium AI creation" },
+        { src: "/nuance-celestial-mint-hand.png", alt: "Nuance celestial mint nail art with moon and star charms - Premium AI creation" },
+        { src: "/hero-after-magnet-perfect.png", alt: "Deep magnetic 'cat eye' nail design in galactic purple - Premium AI creation" },
+        { src: "/hero-after-y2k-perfect.png", alt: "Mirror chrome metallic silver nails - Futuristc AI creation" },
+        { src: "/hero-after-y2k-perfect.png", alt: "Y2K Cyber style nails with 3D chrome butterfly charms - Trendy AI creation" },
+        { src: "/situation-wedding-1.png", alt: "Elegant white lace bridal nails - Wedding AI inspiration" },
+        { src: "/situation-wedding-3.png", alt: "Sophisticated 3D flower and crystal wedding nails" },
+        { src: "/trend-chrome-more.png", alt: "Collection of futuristic rose gold and holographic chrome designs" },
+        { src: "/trend-magnet-more.png", alt: "Showcase of deep emerald and sapphire magnetic gel nails" },
+        { src: "/trend-y2k-more.png", alt: "Vibrant Harajuku style Y2K nail art collection" },
+        { src: "/gallery-ribbon-pink.png", alt: "Ribbon nail design with sheer pink base and 3D ribbon charms" },
+        { src: "/gallery-cheek-heart.png", alt: "Cheek nail with holographic heart accent" },
+        { src: "/gallery-glass-french-ribbon.png", alt: "Glass French nails with delicate ribbon charm accent" },
+        { src: "/gallery-nuance-marble.png", alt: "AI generated nuance marble nail design with milky beige and brown swirls" },
     ];
 
     // 2. Comprehensive Base Gallery (Incl. all gallery-* assets)
     const baseGalleryImages = [
-        { src: "/hero-after-glass-french-inpainted.png", alt: "Glass French with holographic shattered glass tips", likes: 892 },
-        { src: "/gallery-glass-french-sunlight.png", alt: "Holographic glass french tips reflecting sunlight", likes: 834 },
-        { src: "/gallery-glass-french-fur.png", alt: "Winter style glass french with subtle texture", likes: 756 },
-        { src: "/gallery-glass-french-milky-pink.png", alt: "Soft pink base glass french nails", likes: 845 },
-        { src: "/gallery-milky-gold-foil.png", alt: "Milky white nails with delicate gold foil accents", likes: 678 },
-        { src: "/gallery-kawaii-hearts.png", alt: "Kawaii nail art with lavender base and 3D heart charms", likes: 945 },
-        { src: "/gallery-dried-flower.png", alt: "Nude ombre nails with dried flower embeds", likes: 689 },
-        { src: "/gallery-modern-french.png", alt: "Modern French manicure with pink base and gold line accent", likes: 734 },
-        { src: "/gallery-terracotta-nuance.png", alt: "Terracotta nuance nails with gold flakes", likes: 698 },
-        { src: "/gallery-mirror-chrome.png", alt: "Mirror chrome nails in silver - ultra detailed reflection", likes: 743 },
-        { src: "/gallery-mirror-chrome-rose-gold.png", alt: "Rose gold chrome metallic finish", likes: 812 },
-        { src: "/gallery-mirror-chrome-holographic.png", alt: "Holographic chrome with rainbow reflection", likes: 867 },
-        { src: "/gallery-baby-blue-glitter.png", alt: "Baby blue nails with delicate silver glitter gradient", likes: 756 },
-        { src: "/gallery-flower-2.png", alt: "Sheer pink nails with dried flower wreath", likes: 920 },
-        { src: "/gallery-flower-3.png", alt: "Mimosa inspired yellow flower nail art", likes: 780 },
-        { src: "/gallery-flower-5.png", alt: "Antique bouquet style flower nail art", likes: 810 },
-        { src: "/gallery-cheek-lifestyle.png", alt: "Natural cheek nail lifestyle shot", likes: 723 },
-        { src: "/gallery-ribbon-baby-pink-pearls.png", alt: "Baby pink ribbon nails with tiny pearls", likes: 945 },
-        { src: "/gallery-ribbon-lavender-crystals.png", alt: "Lavender ribbon nails with shimmering crystals", likes: 867 },
-        { src: "/gallery-y2k-chrome.png", alt: "Y2K style chrome and charm design", likes: 912 },
-        { src: "/gallery-y2k-cyber-butterfly-chrome.png", alt: "Cyber aesthetic butterfly charm chrome", likes: 1023 },
-        { src: "/gallery-y2k-jirai-black-hearts.png", alt: "Gothic/Jirai style black hearts and charms", likes: 987 },
-        { src: "/gallery-magnetic-burgundy-cat-eye.png", alt: "Deep burgundy magnetic cat eye", likes: 834 },
-        { src: "/gallery-magnetic-aurora-gold.png", alt: "Aurora magnetic gold shimmering line", likes: 756 },
-        { src: "/gallery-burgundy-magnetic.png", alt: "Classic burgundy magnetic design", likes: 689 },
-        { src: "/gallery-aurora-glass.png", alt: "Aurora glass nails with iridescent shine", likes: 912 },
-        { src: "/gallery-aurora-holographic-pink.png", alt: "Holographic pink aurora effect", likes: 845 },
-        { src: "/gallery-aurora-glass-milky-white.png", alt: "Milky white aurora glass nails", likes: 723 },
-        { src: "/gallery-autumn-leaves-terracotta.png", alt: "Autumn themed terracotta designs", likes: 656 },
-        { src: "/gallery-bridal-white-lace-crystal.png", alt: "Intricate bridal white lace design", likes: 934 },
-        { src: "/gallery-christmas-burgundy-gold.png", alt: "Holiday themed burgundy and gold", likes: 712 },
-        { src: "/gallery-constellation-midnight-gold.png", alt: "Midnight blue constellation design", likes: 867 },
-        { src: "/gallery-galaxy-navy-purple.png", alt: "Nebula style galaxy nail art", likes: 845 },
-        { src: "/gallery-glossy-vinyl-black.png", alt: "High-shine glossy vinyl black", likes: 789 },
-        { src: "/gallery-hydrangea-blue-purple.png", alt: "Hydrangea floral blue-purple blend", likes: 756 },
-        { src: "/gallery-idol-pink-crown.png", alt: "Idol style pink with crown charms", likes: 912 },
-        { src: "/gallery-ivory-aurora.png", alt: "Soft ivory with aurora reflection", likes: 678 },
-        { src: "/gallery-jelly-clear-gold-flowers.png", alt: "Clear jelly base with gold flowers", likes: 823 },
-        { src: "/gallery-knit-sweater-winter.png", alt: "3D knit sweater texture for winter", likes: 745 },
-        { src: "/gallery-lilac-purple-silver-stars.png", alt: "Lilac purple with tiny silver stars", likes: 834 },
-        { src: "/gallery-minimalist-gold.png", alt: "Clean minimalist gold line art", likes: 671 },
-        { src: "/gallery-mint-green-cloud.png", alt: "Mint green with fluffy cloud art", likes: 723 },
-        { src: "/gallery-nuance-greige-watercolor.png", alt: "Watercolor style nuance greige", likes: 656 },
-        { src: "/gallery-ombre-pink-white.png", alt: "Classic pink and white ombre", likes: 812 },
-        { src: "/gallery-oshikatsu-member-color.png", alt: "Fan-style member color designs", likes: 867 },
-        { src: "/gallery-plump-gel-dried-flowers.png", alt: "3D plump gel with dried flowers", likes: 734 },
-        { src: "/gallery-plump-pink-gradient-pearl.png", alt: "Plump pink with delicate pearls", likes: 845 },
-        { src: "/gallery-pressed-flower-pink-gold.png", alt: "Pressed flowers on pink and gold", likes: 756 },
-        { src: "/gallery-sakura-cherry-blossom.png", alt: "Spring sakura cherry blossom art", likes: 912 },
-        { src: "/gallery-sakura-pink-ombre.png", alt: "Soft sakura pink ombre gradient", likes: 834 },
-        { src: "/gallery-sanrio-rainbow-bow.png", alt: "Sanrio inspired cute rainbow bows", likes: 987 },
-        { src: "/gallery-satin-dusty-rose.png", alt: "Satin finish dusty rose elegance", likes: 723 },
-        { src: "/gallery-stained-glass-colorful.png", alt: "Vibrant stained glass patterns", likes: 689 },
-        { src: "/gallery-stone-marble.png", alt: "Realistic stone marble texture", likes: 756 },
-        { src: "/gallery-stone-holographic-gems.png", alt: "Large gems on holographic base", likes: 845 },
-        { src: "/gallery-sugar-texture-white.png", alt: "Sparkling sugar texture white", likes: 634 },
-        { src: "/gallery-syrup-cherry-red.png", alt: "Glossy syrup finish cherry red", likes: 867 },
-        { src: "/gallery-syrup-lavender-aurora.png", alt: "Syrup lavender with aurora glow", likes: 745 },
-        { src: "/gallery-syrup-peach.png", alt: "Juicy syrup peach natural look", likes: 812 },
-        { src: "/gallery-tie-dye-pastel-rainbow.png", alt: "Pastel rainbow tie-dye swirl", likes: 723 },
-        { src: "/gallery-valentine-red-hearts.png", alt: "Romantic red hearts for Valentines", likes: 845 },
-        { src: "/gallery-velvet-matte-dusty-rose.png", alt: "Velvet texture matte dusty rose", likes: 756 },
-        { src: "/gallery-velvet-mauve.png", alt: "Dusty mauve velvet finish", likes: 712 },
-        { src: "/gallery-watermelon-summer-kawaii.png", alt: "Fruity summer watermelon art", likes: 689 },
-        { src: "/gallery-anime-kawaii-character.png", alt: "Anime character themed kawaii art", likes: 912 },
+        { src: "/hero-after-glass-french-inpainted.png", alt: "Glass French with holographic shattered glass tips" },
+        { src: "/gallery-glass-french-sunlight.png", alt: "Holographic glass french tips reflecting sunlight" },
+        { src: "/gallery-glass-french-fur.png", alt: "Winter style glass french with subtle texture" },
+        { src: "/gallery-glass-french-milky-pink.png", alt: "Soft pink base glass french nails" },
+        { src: "/gallery-milky-gold-foil.png", alt: "Milky white nails with delicate gold foil accents" },
+        { src: "/gallery-kawaii-hearts.png", alt: "Kawaii nail art with lavender base and 3D heart charms" },
+        { src: "/gallery-dried-flower.png", alt: "Nude ombre nails with dried flower embeds" },
+        { src: "/gallery-modern-french.png", alt: "Modern French manicure with pink base and gold line accent" },
+        { src: "/gallery-terracotta-nuance.png", alt: "Terracotta nuance nails with gold flakes" },
+        { src: "/gallery-mirror-chrome.png", alt: "Mirror chrome nails in silver - ultra detailed reflection" },
+        { src: "/gallery-mirror-chrome-rose-gold.png", alt: "Rose gold chrome metallic finish" },
+        { src: "/gallery-mirror-chrome-holographic.png", alt: "Holographic chrome with rainbow reflection" },
+        { src: "/gallery-baby-blue-glitter.png", alt: "Baby blue nails with delicate silver glitter gradient" },
+        { src: "/gallery-flower-2.png", alt: "Sheer pink nails with dried flower wreath" },
+        { src: "/gallery-flower-3.png", alt: "Mimosa inspired yellow flower nail art" },
+        { src: "/gallery-flower-5.png", alt: "Antique bouquet style flower nail art" },
+        { src: "/gallery-cheek-lifestyle.png", alt: "Natural cheek nail lifestyle shot" },
+        { src: "/gallery-ribbon-baby-pink-pearls.png", alt: "Baby pink ribbon nails with tiny pearls" },
+        { src: "/gallery-ribbon-lavender-crystals.png", alt: "Lavender ribbon nails with shimmering crystals" },
+        { src: "/gallery-y2k-chrome.png", alt: "Y2K style chrome and charm design" },
+        { src: "/gallery-y2k-cyber-butterfly-chrome.png", alt: "Cyber aesthetic butterfly charm chrome" },
+        { src: "/gallery-y2k-jirai-black-hearts.png", alt: "Gothic/Jirai style black hearts and charms" },
+        { src: "/gallery-magnetic-burgundy-cat-eye.png", alt: "Deep burgundy magnetic cat eye" },
+        { src: "/gallery-magnetic-aurora-gold.png", alt: "Aurora magnetic gold shimmering line" },
+        { src: "/gallery-burgundy-magnetic.png", alt: "Classic burgundy magnetic design" },
+        { src: "/gallery-aurora-glass.png", alt: "Aurora glass nails with iridescent shine" },
+        { src: "/gallery-aurora-holographic-pink.png", alt: "Holographic pink aurora effect" },
+        { src: "/gallery-aurora-glass-milky-white.png", alt: "Milky white aurora glass nails" },
+        { src: "/gallery-autumn-leaves-terracotta.png", alt: "Autumn themed terracotta designs" },
+        { src: "/gallery-bridal-white-lace-crystal.png", alt: "Intricate bridal white lace design" },
+        { src: "/gallery-christmas-burgundy-gold.png", alt: "Holiday themed burgundy and gold" },
+        { src: "/gallery-constellation-midnight-gold.png", alt: "Midnight blue constellation design" },
+        { src: "/gallery-galaxy-navy-purple.png", alt: "Nebula style galaxy nail art" },
+        { src: "/gallery-glossy-vinyl-black.png", alt: "High-shine glossy vinyl black" },
+        { src: "/gallery-hydrangea-blue-purple.png", alt: "Hydrangea floral blue-purple blend" },
+        { src: "/gallery-idol-pink-crown.png", alt: "Idol style pink with crown charms" },
+        { src: "/gallery-ivory-aurora.png", alt: "Soft ivory with aurora reflection" },
+        { src: "/gallery-jelly-clear-gold-flowers.png", alt: "Clear jelly base with gold flowers" },
+        { src: "/gallery-knit-sweater-winter.png", alt: "3D knit sweater texture for winter" },
+        { src: "/gallery-lilac-purple-silver-stars.png", alt: "Lilac purple with tiny silver stars" },
+        { src: "/gallery-minimalist-gold.png", alt: "Clean minimalist gold line art" },
+        { src: "/gallery-mint-green-cloud.png", alt: "Mint green with fluffy cloud art" },
+        { src: "/gallery-nuance-greige-watercolor.png", alt: "Watercolor style nuance greige" },
+        { src: "/gallery-ombre-pink-white.png", alt: "Classic pink and white ombre" },
+        { src: "/gallery-oshikatsu-member-color.png", alt: "Fan-style member color designs" },
+        { src: "/gallery-plump-gel-dried-flowers.png", alt: "3D plump gel with dried flowers" },
+        { src: "/gallery-plump-pink-gradient-pearl.png", alt: "Plump pink with delicate pearls" },
+        { src: "/gallery-pressed-flower-pink-gold.png", alt: "Pressed flowers on pink and gold" },
+        { src: "/gallery-sakura-cherry-blossom.png", alt: "Spring sakura cherry blossom art" },
+        { src: "/gallery-sakura-pink-ombre.png", alt: "Soft sakura pink ombre gradient" },
+        { src: "/gallery-sanrio-rainbow-bow.png", alt: "Sanrio inspired cute rainbow bows" },
+        { src: "/gallery-satin-dusty-rose.png", alt: "Satin finish dusty rose elegance" },
+        { src: "/gallery-stained-glass-colorful.png", alt: "Vibrant stained glass patterns" },
+        { src: "/gallery-stone-marble.png", alt: "Realistic stone marble texture" },
+        { src: "/gallery-stone-holographic-gems.png", alt: "Large gems on holographic base" },
+        { src: "/gallery-sugar-texture-white.png", alt: "Sparkling sugar texture white" },
+        { src: "/gallery-syrup-cherry-red.png", alt: "Glossy syrup finish cherry red" },
+        { src: "/gallery-syrup-lavender-aurora.png", alt: "Syrup lavender with aurora glow" },
+        { src: "/gallery-syrup-peach.png", alt: "Juicy syrup peach natural look" },
+        { src: "/gallery-tie-dye-pastel-rainbow.png", alt: "Pastel rainbow tie-dye swirl" },
+        { src: "/gallery-valentine-red-hearts.png", alt: "Romantic red hearts for Valentines" },
+        { src: "/gallery-velvet-matte-dusty-rose.png", alt: "Velvet texture matte dusty rose" },
+        { src: "/gallery-velvet-mauve.png", alt: "Dusty mauve velvet finish" },
+        { src: "/gallery-watermelon-summer-kawaii.png", alt: "Fruity summer watermelon art" },
+        { src: "/gallery-anime-kawaii-character.png", alt: "Anime character themed kawaii art" },
     ];
 
-    // 3. Transformation & Diagnosis Assets
-    const afterAndDiagnosisImages = [
-        { src: "/hero-after-cheek-perfect.png", alt: "Transformation: Before to Cheek Nail", likes: 545 },
-        { src: "/hero-after-glass-french-inpainted.png", alt: "Transformation: Before to Glass French", likes: 612 },
-        { src: "/hero-after-beige.png", alt: "Transformation: Before to Milky Beige", likes: 489 },
-        { src: "/hero-after-nuance-perfect.png", alt: "Transformation: Before to Nuance", likes: 523 },
-        { src: "/hero-after-ivory.png", alt: "Transformation: Before to Pearl Ivory", likes: 456 },
-        { src: "/hero-after-ribbon-perfect.png", alt: "Transformation: Before to Ribbon", likes: 678 },
-        { src: "/hero-after-pink.png", alt: "Transformation: Before to Sakura Pink", likes: 589 },
-        { src: "/diagnosis-cool-1.png", alt: "Cool Personal Color Recommendation 1", likes: 412 },
-        { src: "/diagnosis-girly-1.png", alt: "Girly Personal Color Recommendation 1", likes: 567 },
-        { src: "/diagnosis-girly-3.png", alt: "Girly Personal Color Recommendation 3", likes: 512 },
-        { src: "/diagnosis-sheer-2.png", alt: "Sheer Personal Color Recommendation 2", likes: 434 },
-        { src: "/diagnosis-sheer-3.png", alt: "Sheer Personal Color Recommendation 3", likes: 467 },
+    // 3. Before and after examples
+    const afterImages = [
+        { src: "/hero-after-cheek-perfect.png", alt: "Transformation: Before to Cheek Nail" },
+        { src: "/hero-after-glass-french-inpainted.png", alt: "Transformation: Before to Glass French" },
+        { src: "/hero-after-beige.png", alt: "Transformation: Before to Milky Beige" },
+        { src: "/hero-after-nuance-v2.png", alt: "Transformation: Before to Nuance" },
+        { src: "/hero-after-ivory.png", alt: "Transformation: Before to Pearl Ivory" },
+        { src: "/hero-after-ribbon-perfect.png", alt: "Transformation: Before to Ribbon" },
+        { src: "/hero-after-pink.png", alt: "Transformation: Before to Sakura Pink" },
     ];
 
     // 4. Situation Images (All categories)
     const situationImagesList = eventCategories.flatMap(cat =>
         Array.from({ length: 5 }, (_, i) => ({
             src: `/situation-${cat.id}-${i + 1}.png`,
-            alt: `${cat.titleJp} - Design Pattern ${i + 1}`,
-            likes: 300 + Math.floor(Math.random() * 300)
+            alt: `${cat.titleJp} - Design Pattern ${i + 1}`
         }))
     ).filter(img => ![
         "/situation-wedding-1.png",
-        "/situation-wedding-3.png"
+        "/situation-wedding-3.png",
+        "/situation-subculture-1.png",
+        "/situation-adult-3.png",
+        "/situation-adult-4.png",
+        "/situation-trend-4.png"
     ].includes(img.src));
 
     // Final consolidated gallery - Optimized Order
     const galleryImages = [
         ...featuredGalleryImages,
-        ...baseGalleryImages.sort((a, b) => b.likes - a.likes),
+        ...baseGalleryImages,
         ...situationImagesList,
-        ...afterAndDiagnosisImages
+        ...afterImages
     ];
 
     // Scroll Animation Logic
@@ -320,35 +335,35 @@ export default function Home() {
         }
     };
 
-    const appUrl = "http://app.nailu.jp/"; // Placeholder URL for the separate web app
+    const appUrl = "https://apps.apple.com/jp/app/id6777699639";
 
     return (
-        <div className="min-h-screen bg-transparent text-[#5e3e53]">
+        <div className="min-h-screen bg-transparent pb-20 text-[#665956] md:pb-0">
             {/* HEADER */}
-            <header className="fixed top-0 w-full flex justify-between items-center z-50 bg-[#FAC1B5] backdrop-blur-md animate-fade-in-up" style={{ padding: '1rem 5%' }}>
+            <header className="fixed top-0 w-full flex justify-between items-center z-50 bg-[#F9F0ED] backdrop-blur-md animate-fade-in-up" style={{ padding: '1rem 5%' }}>
                 <div
-                    className="logo font-[family-name:var(--font-montserrat)] text-2xl font-semibold tracking-widest text-[#5e3e53] cursor-pointer"
+                    className="logo font-[family-name:var(--font-montserrat)] text-2xl font-semibold tracking-widest text-[#665956] cursor-pointer"
                     onClick={() => scrollToSection(heroRef)}
                 >
                     NAILU
                 </div>
 
                 {/* Desktop Nav */}
-                <nav className="hidden md:flex gap-8 text-sm text-[#5e3e53] items-center font-[family-name:var(--font-noto-sans-jp)]">
-                    <button className="nav-item hover:text-[#F283AE] transition-colors" onClick={() => scrollToSection(heroRef)}>トップ</button>
-                    <button className="nav-item hover:text-[#F283AE] transition-colors" onClick={() => scrollToSection(situationRef)}>シチュエーション</button>
-                    <button className="nav-item hover:text-[#F283AE] transition-colors" onClick={() => scrollToSection(howItWorksRef)}>使い方</button>
-                    <button className="nav-item hover:text-[#F283AE] transition-colors" onClick={() => scrollToSection(designMakerRef)}>デザイン</button>
-                    <button className="nav-item hover:text-[#F283AE] transition-colors" onClick={() => scrollToSection(galleryRef)}>ギャラリー</button>
-                    <button className="nav-item hover:text-[#F283AE] transition-colors" onClick={() => scrollToSection(faqRef)}>よくある質問</button>
+                <nav className="hidden md:flex gap-8 text-sm text-[#665956] items-center font-[family-name:var(--font-noto-sans-jp)]">
+                    <button className="nav-item hover:text-[#9C7378] transition-colors" onClick={() => scrollToSection(heroRef)}>トップ</button>
+                    <button className="nav-item hover:text-[#9C7378] transition-colors" onClick={() => scrollToSection(situationRef)}>シチュエーション</button>
+                    <button className="nav-item hover:text-[#9C7378] transition-colors" onClick={() => scrollToSection(howItWorksRef)}>使い方</button>
+                    <button className="nav-item hover:text-[#9C7378] transition-colors" onClick={() => scrollToSection(designMakerRef)}>デザイン</button>
+                    <button className="nav-item hover:text-[#9C7378] transition-colors" onClick={() => scrollToSection(galleryRef)}>ギャラリー</button>
+                    <button className="nav-item hover:text-[#9C7378] transition-colors" onClick={() => scrollToSection(faqRef)}>よくある質問</button>
                 </nav>
 
                 {/* Action Area: Points + USE APP Button */}
                 <div className="flex items-center gap-4">
-                    {/* Points Display - Hidden for now (User Management pending) 
-                    <div className="hidden md:block bg-[#EDD9BE] px-3 py-1 rounded-full border border-[#EDD9BE]">
-                        <span className="text-xs text-[#5e3e53]">Points:</span>
-                        <span className="text-sm ml-1 font-bold bg-gradient-to-br from-[#F283AE] to-[#C6C870] bg-clip-text text-transparent">
+                    {/* Points Display - Hidden for now (User Management pending)
+                    <div className="hidden md:block bg-[#FCF7F4] px-3 py-1 rounded-full border border-[#FCF7F4]">
+                        <span className="text-xs text-[#665956]">Points:</span>
+                        <span className="text-sm ml-1 font-bold bg-gradient-to-br from-[#9C7378] to-[#BB969B] bg-clip-text text-transparent">
                             0 pt
                         </span>
                     </div>
@@ -357,62 +372,35 @@ export default function Home() {
                     {/* Amazing Shimmery Pink Gradient Button */}
                     <div className="relative group">
                         {/* Glow effect with pulse animation */}
-                        <div className="absolute -inset-1 rounded-full blur-md opacity-50 group-hover:opacity-100 transition duration-500 animate-pulse" style={{ background: 'linear-gradient(90deg, #F283AE, #F283AE, #C59FBE, #98B8B9)' }}></div>
+                        <div className="absolute -inset-1 rounded-full blur-md opacity-50 group-hover:opacity-100 transition duration-500 animate-pulse" style={{ background: '#9C7378' }}></div>
 
                         {/* Button */}
                         <a
                             href={appUrl}
-                            className="relative px-6 py-2.5 text-white text-sm font-bold rounded-full shadow-lg hover:shadow-[#C59FBE]/40 hover:scale-105 transition-all duration-300 font-[family-name:var(--font-noto-sans-jp)] overflow-hidden flex items-center gap-2 group"
-                            style={{ background: 'linear-gradient(90deg, #F283AE, #F283AE, #C59FBE, #98B8B9)' }}
+                            className="relative px-6 py-2.5 text-white text-sm font-bold rounded-full shadow-lg hover:shadow-[#DFC4C5]/40 hover:scale-105 transition-all duration-300 font-[family-name:var(--font-noto-sans-jp)] overflow-hidden flex items-center gap-2 group"
+                            style={{ background: '#9C7378' }}
                         >
                             {/* Shimmer effect */}
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
 
                             {/* Button content */}
                             <span className="relative flex items-center gap-2">
-                                <span className="text-base">💎</span>
-                                アプリを起動
+                                <svg viewBox="0 0 384 512" className="w-3.5 h-3.5 fill-white">
+                                    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-48-20.7-77.5-20.7-39.3 0-75.1 22-95.6 57.5-42.2 72.9-10.8 181.9 29.8 240.2 20 28.8 43.4 60.8 74.3 59.6 30.2-1.2 41.7-19.3 78.2-19.3 36.4 0 46.9 19.3 78.2 19.3 31.9-.5 52.3-29.2 72.1-57.9 22.9-33.1 32.4-65 32.9-66.6-.7-.3-64.1-24.6-64.6-98.3zM288.9 105c15.6-19 25.9-45.3 23-71.6-22.6.9-50.2 15-66.4 33.8-14.3 16.5-26.8 43.1-23.4 69.1 25.1 2 51.1-12.3 66.8-31.3z" />
+                                </svg>
+                                App Store
                             </span>
                         </a>
                     </div>
 
-                    {/* Auth Button */}
-                    {user ? (
-                        <button
-                            onClick={signOut}
-                            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-pink-100 hover:bg-pink-50 transition-all text-sm text-[#5e3e53] font-medium font-[family-name:var(--font-noto-sans-jp)]"
-                            title="ログアウト"
-                        >
-                            {user.photoURL ? (
-                                <img src={user.photoURL} alt="avatar" className="w-6 h-6 rounded-full" />
-                            ) : (
-                                <span className="w-6 h-6 rounded-full bg-gradient-to-br from-[#F283AE] to-[#C6C870] flex items-center justify-center text-white text-xs">
-                                    {user.email?.[0]?.toUpperCase() ?? "U"}
-                                </span>
-                            )}
-                            <span className="hidden md:inline">ログアウト</span>
-                        </button>
-                    ) : (
-                        <button
-                            onClick={() => setAuthModalOpen(true)}
-                            className="px-5 py-2 rounded-full border border-[#F283AE] text-[#F283AE] text-sm font-bold hover:bg-[#F283AE] hover:text-white transition-all duration-200 font-[family-name:var(--font-noto-sans-jp)]"
-                        >
-                            ログイン
-                        </button>
-                    )}
-
-                    <div className="md:hidden text-gray-600 text-2xl cursor-pointer">≡</div>
                 </div>
             </header>
-
-            {/* Auth Modal */}
-            <AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} />
 
             <main className="pt-20">
                 {/* SECTION: HERO - Two Column Layout */}
                 <section ref={heroRef} className="min-h-screen flex items-center justify-center relative overflow-visible px-6 md:px-12 py-20 pb-40 md:pb-48">
                     {/* Background Elements - Light Pink to White Gradient */}
-                    <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none bg-gradient-to-b from-pink-100 via-pink-50/50 to-white">
+                    <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none bg-gradient-to-b from-[#F9F0ED] via-[#FCF7F4]/50 to-white">
                     </div>
 
                     {/* Content Container - Transparent to show salon background */}
@@ -426,58 +414,49 @@ export default function Home() {
                                 {/* Badge */}
                                 <div className="opacity-0-start animate-fade-in-up delay-100 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/60 backdrop-blur-md holographic border border-white/40 shadow-sm mb-8 hover:scale-105 transition-transform duration-300 cursor-default w-fit">
                                     <span className="relative flex h-2.5 w-2.5">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F283AE] opacity-75"></span>
-                                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#F283AE]"></span>
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#9C7378] opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#9C7378]"></span>
                                     </span>
-                                    <span className="text-xs md:text-sm text-[#5e3e53] font-bold tracking-widest uppercase font-[family-name:var(--font-montserrat)]">✨ Premium AI Service</span>
+                                    <span className="text-xs md:text-sm text-[#665956] font-bold tracking-widest uppercase font-[family-name:var(--font-montserrat)]">✨ Premium AI Service</span>
                                 </div>
 
                                 {/* Title */}
                                 <h1 className="opacity-0-start animate-fade-in-up delay-200 leading-[1.1] mb-6 tracking-tight">
-                                    <span className="block text-xl md:text-2xl font-bold text-[#5e3e53] mb-3 tracking-widest text-glow">✨ 指先に、新しい魔法を。 ✨</span>
-                                    <span className="relative inline-block text-[5.5rem] md:text-[7rem] lg:text-[8rem] text-elegant-gold py-2 leading-none font-black">
+                                    <span className="block text-xl md:text-2xl font-bold text-[#665956] mb-3 tracking-widest text-glow">✨ 指先に、新しい魔法を。 ✨</span>
+                                    <span className="relative inline-block text-[4rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] text-elegant-gold py-2 leading-none font-black">
                                         NAILU
                                     </span>
                                 </h1>
 
                                 {/* Subtitle / Description */}
-                                <p className="opacity-0-start animate-fade-in-up delay-300 text-lg md:text-xl text-[#5e3e53] font-medium mb-10 leading-loose font-[family-name:var(--font-noto-sans-jp)] max-w-lg drop-shadow-sm">
+                                <p className="opacity-0-start animate-fade-in-up delay-300 text-lg md:text-xl text-[#665956] font-medium mb-10 leading-loose font-[family-name:var(--font-noto-sans-jp)] max-w-lg drop-shadow-sm">
                                     たった1枚の写真から、あなたに似合うネイルデザインを提案。<br className="hidden md:block" />
                                     トレンドの韓国ネイルやニュアンスデザインも、<br className="hidden md:block" />
-                                    まるで魔法のように一瞬で試着できます。
+                                    自分の手の写真で、仕上がりを試せます。
                                 </p>
 
                                 {/* CTA Area */}
-                                <div className="opacity-0-start animate-scale-in delay-500 flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-4">
+                                <div className="opacity-0-start animate-scale-in delay-500 flex flex-col sm:flex-row items-center gap-4 mt-6 w-full sm:w-auto">
                                     <a
                                         href={appUrl}
-                                        className="group relative inline-flex items-center justify-center cursor-pointer"
+                                        className="group relative inline-flex items-center justify-center cursor-pointer w-full sm:w-auto"
                                     >
-                                        <div className="absolute -inset-2 rounded-full blur-lg opacity-50 group-hover:opacity-80 animate-gradient transition duration-500" style={{ background: 'linear-gradient(90deg, #F283AE, #F283AE, #C59FBE, #98B8B9)' }}></div>
-                                        <button className="btn-ultra relative px-12 py-5 text-white rounded-full text-lg font-bold shadow-2xl flex items-center gap-3">
-                                            <span>💎 今すぐデザインを作る</span>
-                                            <span className="bg-white/20 rounded-full p-1.5 transition-transform group-hover:rotate-45 group-hover:scale-110">
+                                        <div className="absolute -inset-2 rounded-full blur-lg opacity-50 group-hover:opacity-80 animate-gradient transition duration-500" style={{ background: '#9C7378' }}></div>
+                                        <span className="btn-ultra relative w-full sm:w-auto px-4 sm:px-12 py-5 text-white rounded-full text-sm sm:text-lg font-bold shadow-2xl flex items-center justify-center gap-3">
+                                            <span>💎 App Storeでダウンロード</span>
+                                            <span className="hidden sm:inline-flex bg-white/20 rounded-full p-1.5 transition-transform group-hover:rotate-45 group-hover:scale-110">
                                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                                     <path d="M5 12h14M12 5l7 7-7 7" />
                                                 </svg>
                                             </span>
-                                        </button>
+                                        </span>
                                     </a>
+                                    <AppStoreBadge href={appUrl} />
                                 </div>
 
-                                {/* Social Proof / Trust Badge */}
-                                <div className="opacity-0-start animate-fade-in-up delay-700 mt-12 flex items-center gap-4 border-t border-[#F283AE]/20 pt-6 max-w-sm">
-                                    <div className="flex -space-x-3">
-                                        <div className="w-8 h-8 rounded-full border-2 border-white bg-[#F283AE] shadow-sm"></div>
-                                        <div className="w-8 h-8 rounded-full border-2 border-white bg-[#EDD9BE] shadow-sm"></div>
-                                        <div className="w-8 h-8 rounded-full border-2 border-white bg-[#EDD9BE] shadow-sm"></div>
-                                        <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-[10px] text-[#5e3e53] font-bold shadow-sm">+99</div>
-                                    </div>
-                                    <div className="text-xs text-[#5e3e53] leading-tight">
-                                        <span className="font-bold text-[#5e3e53] text-base block mb-0.5">10,000+ Designs</span>
-                                        Generated by AI
-                                    </div>
-                                </div>
+                                <p className="opacity-0-start animate-fade-in-up delay-700 mt-8 text-sm text-[#665956]">
+                                    無料ダウンロード・アプリ内購入あり
+                                </p>
                             </div>
 
                             {/* Right Column - Large Cloud-Framed Image + Style Selector */}
@@ -509,7 +488,7 @@ export default function Home() {
                                         <div className="absolute inset-0"
                                             style={{
                                                 clipPath: 'url(#cloudClip)',
-                                                background: 'linear-gradient(135deg, #C6C870 0%, #C6C870 40%, #C6C870 70%, #C6C870 100%)',
+                                                background: 'linear-gradient(135deg, #BB969B 0%, #BB969B 40%, #BB969B 70%, #BB969B 100%)',
                                                 padding: '4px',
                                             }}
                                         />
@@ -533,7 +512,7 @@ export default function Home() {
                                                 <div className="absolute inset-0 pointer-events-none z-40 overflow-hidden">
                                                     {[...Array(12)].map((_, i) => (
                                                         <div key={i} className="absolute text-2xl animate-sparkle-once opacity-0"
-                                                            style={{ top: `${Math.random() * 100}%`, left: `${Math.random() * 100}%`, animationDelay: `${Math.random() * 0.5}s` }}>
+                                                            style={{ top: `${(i * 37 + 17) % 100}%`, left: `${(i * 53 + 11) % 100}%`, animationDelay: `${(i % 5) * 0.1}s` }}>
                                                             ✨
                                                         </div>
                                                     ))}
@@ -546,7 +525,7 @@ export default function Home() {
 
                                 {/* Style Selector - horizontal row beneath image */}
                                 <div className="flex flex-row flex-wrap justify-center gap-2 w-full max-w-[600px] px-2">
-                                    <p className="w-full text-center text-[10px] font-bold text-[#5e3e53] tracking-widest uppercase mb-1 font-[family-name:var(--font-montserrat)]">デザインを選ぶ</p>
+                                    <p className="w-full text-center text-[10px] font-bold text-[#665956] tracking-widest uppercase mb-1 font-[family-name:var(--font-montserrat)]">デザインを選ぶ</p>
                                     {trendStyles.map((style, i) => (
                                         <button
                                             key={i}
@@ -557,8 +536,8 @@ export default function Home() {
                                                 setTimeout(() => setSparkleActive(false), 1200);
                                             }}
                                             className={`px-4 py-2 rounded-full text-sm font-bold transition-all duration-200 font-[family-name:var(--font-noto-sans-jp)] ${selectedTrendIndex === i
-                                                ? 'bg-gradient-to-r from-[#F283AE] to-[#C6C870] text-white shadow-md scale-105'
-                                                : 'bg-white/80 text-[#5e3e53] border border-white/60 backdrop-blur-sm hover:bg-pink-50 hover:border-[#F283AE]/40'
+                                                ? 'bg-gradient-to-r from-[#9C7378] to-[#BB969B] text-white shadow-md scale-105'
+                                                : 'bg-white/80 text-[#665956] border border-white/60 backdrop-blur-sm hover:bg-[#FCF7F4] hover:border-[#9C7378]/40'
                                                 }`}
                                         >
                                             {selectedTrendIndex === i && <span className="text-xs mr-1">✨</span>}
@@ -576,15 +555,15 @@ export default function Home() {
                 <ComparisonSection />
 
                 {/* SECTION: DESIGN FROM INSPIRATION (New Feature Showcase) */}
-                <section className="py-32 px-6 relative overflow-hidden bg-gradient-to-b from-[#EDD9BE] to-white">
+                <section className="py-32 px-6 relative overflow-hidden bg-gradient-to-b from-[#FCF7F4] to-white">
                     <div className="max-w-7xl mx-auto relative z-10">
                         <div className="text-center mb-20 animate-on-scroll">
-                            <span className="text-[#F283AE] font-bold tracking-[0.2em] text-xs uppercase mb-4 block font-[family-name:var(--font-montserrat)]">Creative AI Feature</span>
-                            <h2 className="text-4xl md:text-5xl font-bold text-[#5e3e53] mb-6 font-[family-name:var(--font-noto-sans-jp)] leading-tight">
+                            <span className="text-[#9C7378] font-bold tracking-[0.2em] text-xs uppercase mb-4 block font-[family-name:var(--font-montserrat)]">Creative AI Feature</span>
+                            <h2 className="text-4xl md:text-5xl font-bold text-[#665956] mb-6 font-[family-name:var(--font-noto-sans-jp)] leading-tight">
                                 日常の「ときめき」を、<br className="md:hidden" />
                                 そのままネイルに。
                             </h2>
-                            <p className="text-[#5e3e53] text-lg max-w-2xl mx-auto font-[family-name:var(--font-noto-sans-jp)] leading-loose">
+                            <p className="text-[#665956] text-lg max-w-2xl mx-auto font-[family-name:var(--font-noto-sans-jp)] leading-loose">
                                 お気に入りのリボン、大好きな服の柄、心惹かれるテクスチャ。<br className="hidden md:block" />
                                 イメージ画像を送るだけで、AIがそのエッセンスを抽出して<br className="hidden md:block" />
                                 あなただけの特別なデザインを創り出します。
@@ -594,7 +573,7 @@ export default function Home() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
                             {/* Card 1: Ribbon */}
-                            <div className="group animate-on-scroll bg-white rounded-3xl shadow-xl border border-pink-50 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500" style={{ transitionDelay: '100ms' }}>
+                            <div className="group animate-on-scroll bg-white rounded-3xl shadow-xl border border-[#E5D9D5] overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500" style={{ transitionDelay: '100ms' }}>
                                 <div className="flex relative">
                                     {/* Source Image */}
                                     <div className="flex-1 relative overflow-hidden">
@@ -604,88 +583,88 @@ export default function Home() {
 
                                     {/* Result Image */}
                                     <div className="flex-1 relative overflow-hidden">
-                                        <div className="absolute top-3 right-3 z-10 bg-[#F283AE]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">AI生成</div>
+                                        <div className="absolute top-3 right-3 z-10 bg-[#9C7378]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">AI生成</div>
                                         <img src="/nail_design_ribbon_result_1771336207172.png" alt="Ribbon nail result" className="w-full h-52 object-cover" />
-                                        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#F283AE]/8 pointer-events-none" />
+                                        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#9C7378]/8 pointer-events-none" />
                                     </div>
                                 </div>
-                                <div className="px-5 py-4 flex items-center gap-3 border-t border-pink-50">
+                                <div className="px-5 py-4 flex items-center gap-3 border-t border-[#E5D9D5]">
                                     <span className="text-xl">🎀</span>
                                     <div>
-                                        <p className="text-sm font-bold text-[#5e3e53] font-[family-name:var(--font-montserrat)] tracking-wide">Ribbon Essence</p>
-                                        <p className="text-xs text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">シルクの光沢とリボンの立体感を指先に再現</p>
+                                        <p className="text-sm font-bold text-[#665956] font-[family-name:var(--font-montserrat)] tracking-wide">Ribbon Essence</p>
+                                        <p className="text-xs text-[#665956] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">シルクの光沢とリボンの立体感を指先に再現</p>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Card 2: Check */}
-                            <div className="group animate-on-scroll bg-white rounded-3xl shadow-xl border border-pink-50 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500" style={{ transitionDelay: '200ms' }}>
+                            <div className="group animate-on-scroll bg-white rounded-3xl shadow-xl border border-[#E5D9D5] overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500" style={{ transitionDelay: '200ms' }}>
                                 <div className="flex relative">
                                     <div className="flex-1 relative overflow-hidden">
                                         <div className="absolute top-3 left-3 z-10 bg-black/40 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">元画像</div>
                                         <img src="/inspiration_check_source_1771336351525.png" alt="Check inspiration" className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-700" />
                                     </div>
-                                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-gradient-to-br from-[#F283AE] to-[#C6C870] flex items-center justify-center shadow-lg border-2 border-white">
+                                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-gradient-to-br from-[#9C7378] to-[#BB969B] flex items-center justify-center shadow-lg border-2 border-white">
                                         <span className="text-white text-[11px] font-black tracking-wider">AI</span>
                                     </div>
                                     <div className="flex-1 relative overflow-hidden">
-                                        <div className="absolute top-3 right-3 z-10 bg-[#F283AE]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">AI生成</div>
+                                        <div className="absolute top-3 right-3 z-10 bg-[#9C7378]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">AI生成</div>
                                         <img src="/nail_design_check_result_1771336430638.png" alt="Check nail result" className="w-full h-52 object-cover" />
                                     </div>
                                 </div>
-                                <div className="px-5 py-4 flex items-center gap-3 border-t border-pink-50">
+                                <div className="px-5 py-4 flex items-center gap-3 border-t border-[#E5D9D5]">
                                     <span className="text-xl">🧣</span>
                                     <div>
-                                        <p className="text-sm font-bold text-[#5e3e53] font-[family-name:var(--font-montserrat)] tracking-wide">Modern Check</p>
-                                        <p className="text-xs text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">高級感のあるテキスタイル模様を繊細な筆致で昇華</p>
+                                        <p className="text-sm font-bold text-[#665956] font-[family-name:var(--font-montserrat)] tracking-wide">Modern Check</p>
+                                        <p className="text-xs text-[#665956] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">高級感のあるテキスタイル模様を繊細な筆致で昇華</p>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Card 3: Flower */}
-                            <div className="group animate-on-scroll bg-white rounded-3xl shadow-xl border border-pink-50 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500" style={{ transitionDelay: '300ms' }}>
+                            <div className="group animate-on-scroll bg-white rounded-3xl shadow-xl border border-[#E5D9D5] overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500" style={{ transitionDelay: '300ms' }}>
                                 <div className="flex relative">
                                     <div className="flex-1 relative overflow-hidden">
                                         <div className="absolute top-3 left-3 z-10 bg-black/40 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">元画像</div>
                                         <img src="/inspiration_flower_source.png" alt="Flower inspiration" className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-700" />
                                     </div>
-                                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-gradient-to-br from-[#F283AE] to-[#C6C870] flex items-center justify-center shadow-lg border-2 border-white">
+                                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-gradient-to-br from-[#9C7378] to-[#BB969B] flex items-center justify-center shadow-lg border-2 border-white">
                                         <span className="text-white text-[11px] font-black tracking-wider">AI</span>
                                     </div>
                                     <div className="flex-1 relative overflow-hidden">
-                                        <div className="absolute top-3 right-3 z-10 bg-[#F283AE]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">AI生成</div>
+                                        <div className="absolute top-3 right-3 z-10 bg-[#9C7378]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">AI生成</div>
                                         <img src="/nail_design_flower_result.png" alt="Flower nail result" className="w-full h-52 object-cover" />
                                     </div>
                                 </div>
-                                <div className="px-5 py-4 flex items-center gap-3 border-t border-pink-50">
+                                <div className="px-5 py-4 flex items-center gap-3 border-t border-[#E5D9D5]">
                                     <span className="text-xl">🌿</span>
                                     <div>
-                                        <p className="text-sm font-bold text-[#5e3e53] font-[family-name:var(--font-montserrat)] tracking-wide">Botanical Garden</p>
-                                        <p className="text-xs text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">押し花の繊細な美しさをクリアジェルの中に閉じ込めて</p>
+                                        <p className="text-sm font-bold text-[#665956] font-[family-name:var(--font-montserrat)] tracking-wide">Botanical Garden</p>
+                                        <p className="text-xs text-[#665956] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">押し花の繊細な美しさをクリアジェルの中に閉じ込めて</p>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Card 4: Marble */}
-                            <div className="group animate-on-scroll bg-white rounded-3xl shadow-xl border border-pink-50 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500" style={{ transitionDelay: '400ms' }}>
+                            <div className="group animate-on-scroll bg-white rounded-3xl shadow-xl border border-[#E5D9D5] overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500" style={{ transitionDelay: '400ms' }}>
                                 <div className="flex relative">
                                     <div className="flex-1 relative overflow-hidden">
                                         <div className="absolute top-3 left-3 z-10 bg-black/40 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">元画像</div>
                                         <img src="/inspiration_marble_source.png" alt="Marble inspiration" className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-700" />
                                     </div>
-                                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-gradient-to-br from-[#F283AE] to-[#C6C870] flex items-center justify-center shadow-lg border-2 border-white">
+                                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-gradient-to-br from-[#9C7378] to-[#BB969B] flex items-center justify-center shadow-lg border-2 border-white">
                                         <span className="text-white text-[11px] font-black tracking-wider">AI</span>
                                     </div>
                                     <div className="flex-1 relative overflow-hidden">
-                                        <div className="absolute top-3 right-3 z-10 bg-[#F283AE]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">AI生成</div>
+                                        <div className="absolute top-3 right-3 z-10 bg-[#9C7378]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full leading-none">AI生成</div>
                                         <img src="/nail_design_marble_result.png" alt="Marble nail result" className="w-full h-52 object-cover" />
                                     </div>
                                 </div>
-                                <div className="px-5 py-4 flex items-center gap-3 border-t border-pink-50">
+                                <div className="px-5 py-4 flex items-center gap-3 border-t border-[#E5D9D5]">
                                     <span className="text-xl">🪨</span>
                                     <div>
-                                        <p className="text-sm font-bold text-[#5e3e53] font-[family-name:var(--font-montserrat)] tracking-wide">Luxury Marble</p>
-                                        <p className="text-xs text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">大理石の気品と金箔の輝きを纏った指先</p>
+                                        <p className="text-sm font-bold text-[#665956] font-[family-name:var(--font-montserrat)] tracking-wide">Luxury Marble</p>
+                                        <p className="text-xs text-[#665956] font-[family-name:var(--font-noto-sans-jp)] mt-0.5">大理石の気品と金箔の輝きを纏った指先</p>
                                     </div>
                                 </div>
                             </div>
@@ -694,20 +673,20 @@ export default function Home() {
 
                         {/* CTA / Action */}
                         <div className="mt-20 text-center animate-on-scroll">
-                            <a href={appUrl} className="group inline-flex items-center justify-center gap-3 px-12 py-5 rounded-full text-white font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 font-[family-name:var(--font-noto-sans-jp)]" style={{ background: 'linear-gradient(90deg, #F283AE, #F283AE, #C59FBE, #98B8B9)' }}>
-                                <span>💎 好きな画像からデザインを作る</span>
+                            <a href={appUrl} className="group inline-flex items-center justify-center gap-3 px-12 py-5 rounded-full text-white font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 font-[family-name:var(--font-noto-sans-jp)]" style={{ background: '#9C7378' }}>
+                                <span>💎 App Storeでダウンロード</span>
                             </a>
                         </div>
                     </div>
 
 
                     {/* Decorative Background Elements */}
-                    <div className="absolute top-[20%] left-[-10%] w-[40%] h-[40%] bg-pink-100 rounded-full mix-blend-multiply filter blur-[120px] opacity-40 pointer-events-none"></div>
-                    <div className="absolute bottom-[20%] right-[-10%] w-[40%] h-[40%] bg-[#EDD9BE] rounded-full mix-blend-multiply filter blur-[120px] opacity-40 pointer-events-none"></div>
+                    <div className="absolute top-[20%] left-[-10%] w-[40%] h-[40%] bg-[#DFC4C5] rounded-full mix-blend-multiply filter blur-[120px] opacity-40 pointer-events-none"></div>
+                    <div className="absolute bottom-[20%] right-[-10%] w-[40%] h-[40%] bg-[#FCF7F4] rounded-full mix-blend-multiply filter blur-[120px] opacity-40 pointer-events-none"></div>
                 </section>
 
                 {/* SECTION: CREATE YOUR OWN DESIGN (Explanation) */}
-                <section ref={designMakerRef} className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-white to-[#EDD9BE]" >
+                <section ref={designMakerRef} className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-white to-[#FCF7F4]" >
                     <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
                         {/* Left: Image */}
                         <div className="flex-1 relative">
@@ -715,22 +694,22 @@ export default function Home() {
                                 <img src="/app-interface.png" alt="AI Nail Design App Interface" className="w-full h-auto" />
                             </div>
                             {/* Decorative Background for Image */}
-                            <div className="absolute top-[-20%] right-[-20%] w-[120%] h-[120%] bg-[#F283AE] rounded-full mix-blend-multiply filter blur-[80px] opacity-10 pointer-events-none"></div>
+                            <div className="absolute top-[-20%] right-[-20%] w-[120%] h-[120%] bg-[#9C7378] rounded-full mix-blend-multiply filter blur-[80px] opacity-10 pointer-events-none"></div>
                         </div>
 
                         {/* Right: Text Content */}
                         <div className="flex-1 space-y-8">
-                            <div className="inline-block px-4 py-2 bg-white/60 backdrop-blur-md rounded-full border border-[#F283AE]/30 shadow-sm">
-                                <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase font-[family-name:var(--font-montserrat)]">NEW FEATURE</span>
+                            <div className="inline-block px-4 py-2 bg-white/60 backdrop-blur-md rounded-full border border-[#9C7378]/30 shadow-sm">
+                                <span className="text-[#9C7378] font-bold tracking-widest text-xs uppercase font-[family-name:var(--font-montserrat)]">NEW FEATURE</span>
                             </div>
 
-                            <h2 className="text-3xl md:text-4xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] leading-tight">
+                            <h2 className="text-3xl md:text-4xl font-bold text-[#665956] font-[family-name:var(--font-noto-sans-jp)] leading-tight">
                                 あなただけの<br />
                                 オリジナルデザインを。<br />
                                 <span className="text-2xl md:text-3xl mt-2 block opacity-80">AIが想いをカタチにします</span>
                             </h2>
 
-                            <p className="text-[#5e3e53] text-lg leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                            <p className="text-[#665956] text-lg leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                 「こんなネイルがしたい」というイメージを伝えるだけで、世界に一つだけのデザインが完成します。
                                 難しい操作は一切不要。まるで専属のネイリストとお話しするような感覚で、理想の指先を見つけましょう。
                             </p>
@@ -738,20 +717,20 @@ export default function Home() {
                             {/* Features List */}
                             <div className="space-y-6">
                                 <div className="flex items-start gap-4 p-4 bg-white/50 rounded-2xl border border-white/60 shadow-sm hover:bg-white/80 transition-colors">
-                                    <div className="w-10 h-10 bg-[#F283AE] rounded-full flex items-center justify-center text-xl shrink-0">🎨</div>
+                                    <div className="w-10 h-10 bg-[#9C7378] rounded-full flex items-center justify-center text-xl shrink-0">🎨</div>
                                     <div>
-                                        <h4 className="font-bold text-[#5e3e53] mb-1 font-[family-name:var(--font-noto-sans-jp)]">直感的な操作</h4>
-                                        <p className="text-sm text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">
+                                        <h4 className="font-bold text-[#665956] mb-1 font-[family-name:var(--font-noto-sans-jp)]">直感的な操作</h4>
+                                        <p className="text-sm text-[#665956] font-[family-name:var(--font-noto-sans-jp)]">
                                             「かわいい」「クール」などの気分や、好きな色を選ぶだけ。専門用語は必要ありません。
                                         </p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4 p-4 bg-white/50 rounded-2xl border border-white/60 shadow-sm hover:bg-white/80 transition-colors">
-                                    <div className="w-10 h-10 bg-[#EDD9BE] rounded-full flex items-center justify-center text-xl shrink-0">🤖</div>
+                                    <div className="w-10 h-10 bg-[#FCF7F4] rounded-full flex items-center justify-center text-xl shrink-0">🤖</div>
                                     <div>
-                                        <h4 className="font-bold text-[#5e3e53] mb-1 font-[family-name:var(--font-noto-sans-jp)]">無限のバリエーション</h4>
-                                        <p className="text-sm text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">
-                                            AIが数秒で数パターンのデザインをご提案。気に入るまで何度でも作り直せます。
+                                        <h4 className="font-bold text-[#665956] mb-1 font-[family-name:var(--font-noto-sans-jp)]">自分好みにアレンジ</h4>
+                                        <p className="text-sm text-[#665956] font-[family-name:var(--font-noto-sans-jp)]">
+                                            スタイル・色・爪の形を選んで、AIでデザインを試せます。無料生成には回数制限があります。
                                         </p>
                                     </div>
                                 </div>
@@ -759,7 +738,7 @@ export default function Home() {
 
                             <div className="pt-4">
                                 <a href={appUrl} className="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white shadow-xl hover:shadow-2xl hover:scale-105 transition-all font-[family-name:var(--font-noto-sans-jp)]">
-                                    <span>💎 無料でデザインを作る</span>
+                                    <span>💎 App Storeでダウンロード</span>
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <path d="M5 12h14M12 5l7 7-7 7" />
                                     </svg>
@@ -770,11 +749,11 @@ export default function Home() {
                 </section>
 
                 {/* SECTION: POPULAR STYLES */}
-                <section className="py-24 px-6 overflow-hidden bg-[#F283AE]/10" >
+                <section className="py-24 px-6 overflow-hidden bg-[#9C7378]/10" >
                     <div className="max-w-7xl mx-auto">
                         <div className="text-center mb-16">
-                            <h2 className="text-2xl md:text-3xl font-bold text-[#5e3e53] mb-4 font-[family-name:var(--font-noto-sans-jp)]">人気のトレンドスタイル</h2>
-                            <p className="text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">韓国・日本の最新トレンドをAIが学習しています</p>
+                            <h2 className="text-2xl md:text-3xl font-bold text-[#665956] mb-4 font-[family-name:var(--font-noto-sans-jp)]">人気のトレンドスタイル</h2>
+                            <p className="text-[#665956] font-[family-name:var(--font-noto-sans-jp)]">チーク、フレンチ、リボンなど、好きなスタイルを試せます</p>
                         </div>
 
                         {/* Style Carousel */}
@@ -882,7 +861,7 @@ export default function Home() {
                                     const el = document.getElementById('trend-carousel');
                                     if (el) el.scrollBy({ left: -300, behavior: 'smooth' });
                                 }}
-                                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-md rounded-full shadow-lg flex items-center justify-center text-[#5e3e53] opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-md rounded-full shadow-lg flex items-center justify-center text-[#665956] opacity-0 group-hover:opacity-100 transition-opacity z-10"
                             >
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
                             </button>
@@ -891,7 +870,7 @@ export default function Home() {
                                     const el = document.getElementById('trend-carousel');
                                     if (el) el.scrollBy({ left: 300, behavior: 'smooth' });
                                 }}
-                                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-md rounded-full shadow-lg flex items-center justify-center text-[#5e3e53] opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-md rounded-full shadow-lg flex items-center justify-center text-[#665956] opacity-0 group-hover:opacity-100 transition-opacity z-10"
                             >
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
                             </button>
@@ -900,7 +879,7 @@ export default function Home() {
 
                     {/* Popular Keywords Cloud */}
                     <div className="max-w-4xl mx-auto mt-16 text-center">
-                        <p className="text-sm text-[#5e3e53] mb-6 font-[family-name:var(--font-noto-sans-jp)] tracking-widest opacity-80">POPULAR TAGS</p>
+                        <p className="text-sm text-[#665956] mb-6 font-[family-name:var(--font-noto-sans-jp)] tracking-widest opacity-80">POPULAR TAGS</p>
                         <div className="flex flex-wrap justify-center gap-3">
                             {[
                                 "オフィスネイル", "シンプルネイル", "ガラスフレンチ", "フレンチネイル", "ドットネイル",
@@ -915,7 +894,7 @@ export default function Home() {
                                 "ぷっくりネイル", "囲みグラデ", "オーロラネイル", "氷ネイル", "インクネイル",
                                 "落書きネイル", "ショートネイル", "ロングネイル", "自爪風"
                             ].map((tag, index) => (
-                                <span key={index} className="px-4 py-2 bg-white/40 backdrop-blur-sm border border-white/60 rounded-full text-xs md:text-sm text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] hover:bg-white hover:scale-105 transition-all duration-300 cursor-default shadow-sm text-nowrap">
+                                <span key={index} className="px-4 py-2 bg-white/40 backdrop-blur-sm border border-white/60 rounded-full text-xs md:text-sm text-[#665956] font-[family-name:var(--font-noto-sans-jp)] hover:bg-white hover:scale-105 transition-all duration-300 cursor-default shadow-sm text-nowrap">
                                     # {tag}
                                 </span>
                             ))}
@@ -927,8 +906,8 @@ export default function Home() {
                     <div className="max-w-6xl mx-auto">
                         <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
                             <div className="text-left">
-                                <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase mb-3 block">SITUATION FINDER</span>
-                                <h2 className="text-3xl md:text-4xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] leading-tight">
+                                <span className="text-[#9C7378] font-bold tracking-widest text-xs uppercase mb-3 block">SITUATION FINDER</span>
+                                <h2 className="text-3xl md:text-4xl font-bold text-[#665956] font-[family-name:var(--font-noto-sans-jp)] leading-tight">
                                     今のあなたに、<br className="md:hidden" />ぴったりのデザインを。
                                 </h2>
                             </div>
@@ -940,21 +919,21 @@ export default function Home() {
                                     placeholder="結婚式, 就活, 推し活..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full px-6 py-4 rounded-2xl bg-white border-2 border-[#EDD9BE] outline-none focus:border-[#F283AE] transition-all text-sm font-[family-name:var(--font-noto-sans-jp)] shadow-sm pr-12 group-hover:shadow-md"
+                                    className="w-full px-6 py-4 rounded-2xl bg-white border-2 border-[#FCF7F4] outline-none focus:border-[#9C7378] transition-all text-sm font-[family-name:var(--font-noto-sans-jp)] shadow-sm pr-12 group-hover:shadow-md"
                                 />
-                                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[#F283AE]">
+                                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9C7378]">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <circle cx="11" cy="11" r="8" />
                                         <path d="m21 21-4.3-4.3" />
                                     </svg>
                                 </div>
                                 <div className="flex flex-wrap gap-2 mt-3 text-xs">
-                                    <span className="text-[#5e3e53]">例:</span>
+                                    <span className="text-[#665956]">例:</span>
                                     {["結婚式", "オフィス", "地雷系", "推し活", "デート", "成人式", "ワンホン", "Y2K"].map(tag => (
                                         <button
                                             key={tag}
                                             onClick={() => setSearchQuery(tag)}
-                                            className="text-[#F283AE] hover:underline cursor-pointer font-bold"
+                                            className="text-[#9C7378] hover:underline cursor-pointer font-bold"
                                         >
                                             #{tag}
                                         </button>
@@ -984,9 +963,9 @@ export default function Home() {
                                         </div>
 
                                         <div className="p-8 flex flex-col items-center flex-grow w-full">
-                                            <h3 className="text-xl font-bold text-[#5e3e53] mb-2 font-[family-name:var(--font-noto-sans-jp)]">{cat.titleJp}</h3>
-                                            <p className="text-xs text-[#F283AE] font-bold mb-4 tracking-widest uppercase font-[family-name:var(--font-montserrat)]">{cat.title}</p>
-                                            <p className="text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)] mb-6 line-clamp-3">
+                                            <h3 className="text-xl font-bold text-[#665956] mb-2 font-[family-name:var(--font-noto-sans-jp)]">{cat.titleJp}</h3>
+                                            <p className="text-xs text-[#9C7378] font-bold mb-4 tracking-widest uppercase font-[family-name:var(--font-montserrat)]">{cat.title}</p>
+                                            <p className="text-[#665956] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)] mb-6 line-clamp-3">
                                                 {cat.description}
                                             </p>
                                             <button
@@ -994,7 +973,7 @@ export default function Home() {
                                                     e.stopPropagation();
                                                     setSelectedSituation(cat);
                                                 }}
-                                                className="mt-auto px-6 py-2 rounded-full border border-[#F283AE] text-[#F283AE] text-xs font-bold bg-white group-hover:bg-[#F283AE] group-hover:text-white transition-all"
+                                                className="mt-auto px-6 py-2 rounded-full border border-[#9C7378] text-[#9C7378] text-xs font-bold bg-white group-hover:bg-[#9C7378] group-hover:text-white transition-all"
                                             >
                                                 デザインを見る
                                             </button>
@@ -1003,7 +982,7 @@ export default function Home() {
                                 ))
                             ) : (
                                 <div className="col-span-full py-20 text-center">
-                                    <p className="text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">
+                                    <p className="text-[#665956] font-[family-name:var(--font-noto-sans-jp)]">
                                         「{searchQuery}」に一致するシチュエーションが見つかりませんでした。
                                     </p>
                                 </div>
@@ -1025,14 +1004,14 @@ export default function Home() {
                                 <div>
                                     <div className="flex items-center gap-3 mb-2">
                                         <span className="text-3xl">{selectedSituation.icon}</span>
-                                        <h3 className="text-2xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">
+                                        <h3 className="text-2xl font-bold text-[#665956] font-[family-name:var(--font-noto-sans-jp)]">
                                             {selectedSituation.titleJp}
                                         </h3>
                                     </div>
-                                    <p className="text-[#F283AE] text-sm font-bold tracking-widest uppercase mb-2">
+                                    <p className="text-[#9C7378] text-sm font-bold tracking-widest uppercase mb-2">
                                         {selectedSituation.title}
                                     </p>
-                                    <p className="text-[#5e3e53] text-sm font-[family-name:var(--font-noto-sans-jp)]">
+                                    <p className="text-[#665956] text-sm font-[family-name:var(--font-noto-sans-jp)]">
                                         {selectedSituation.description}
                                     </p>
                                 </div>
@@ -1040,7 +1019,7 @@ export default function Home() {
                                     onClick={() => setSelectedSituation(null)}
                                     className="p-2 bg-white/50 hover:bg-white rounded-full transition-colors"
                                 >
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C59FBE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#DFC4C5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <path d="M18 6 6 18" /><path d="m6 6 18 18" />
                                     </svg>
                                 </button>
@@ -1058,14 +1037,14 @@ export default function Home() {
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                             />
                                             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                                <button className="bg-white/90 text-[#5e3e53] px-4 py-2 rounded-full text-xs font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all">
-                                                    このデザインにする
-                                                </button>
+                                                <a href={appUrl} className="bg-white/90 text-[#665956] px-4 py-2 rounded-full text-xs font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all">
+                                                    App Storeでアプリを見る
+                                                </a>
                                             </div>
                                         </div>
                                     ))}
                                     {/* Standard situation images */}
-                                    {[1, 2, 3, 4, 5].map((i) => (
+                                    {[1, 2, 3, 4, 5].filter((i) => !({ subculture: [1], adult: [3, 4], trend: [4] } as Record<string, number[]>)[selectedSituation.id]?.includes(i)).map((i) => (
                                         <div key={i} className="aspect-[3/4] rounded-2xl overflow-hidden group relative">
                                             <img
                                                 src={`/situation-${selectedSituation.id}-${i}.png`}
@@ -1073,9 +1052,9 @@ export default function Home() {
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                             />
                                             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                                <button className="bg-white/90 text-[#5e3e53] px-4 py-2 rounded-full text-xs font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all">
-                                                    このデザインにする
-                                                </button>
+                                                <a href={appUrl} className="bg-white/90 text-[#665956] px-4 py-2 rounded-full text-xs font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all">
+                                                    App Storeでアプリを見る
+                                                </a>
                                             </div>
                                         </div>
                                     ))}
@@ -1090,8 +1069,8 @@ export default function Home() {
                 <section ref={recommendedRef} className="py-20 px-6 relative z-10 bg-white/30 backdrop-blur-sm">
                     <div className="max-w-5xl mx-auto">
                         <div className="text-center mb-16">
-                            <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase mb-3 block">RECOMMENDED</span>
-                            <h2 className="text-2xl md:text-3xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">こんな方におすすめ</h2>
+                            <span className="text-[#9C7378] font-bold tracking-widest text-xs uppercase mb-3 block">RECOMMENDED</span>
+                            <h2 className="text-2xl md:text-3xl font-bold text-[#665956] font-[family-name:var(--font-noto-sans-jp)]">こんな方におすすめ</h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <div className="animate-on-scroll bg-white/60 backdrop-blur-md rounded-[32px] border border-white/80 shadow-lg overflow-hidden hover-lift group">
@@ -1100,8 +1079,8 @@ export default function Home() {
                                 </div>
                                 <div className="p-8 text-center">
                                     <div className="text-3xl mb-4 group-hover:scale-125 transition-transform duration-300">💅</div>
-                                    <h3 className="text-lg font-bold mb-3 text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">失敗したくない！<br />サロン前のリハに</h3>
-                                    <p className="text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                                    <h3 className="text-lg font-bold mb-3 text-[#665956] font-[family-name:var(--font-noto-sans-jp)]">失敗したくない！<br />サロン前のリハに</h3>
+                                    <p className="text-[#665956] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                         「イメージと違った...」を防ぐために。<br />納得いくまでシミュレーション♡
                                     </p>
                                 </div>
@@ -1112,8 +1091,8 @@ export default function Home() {
                                 </div>
                                 <div className="p-8 text-center">
                                     <div className="text-3xl mb-4 group-hover:scale-125 transition-transform duration-300">🎀</div>
-                                    <h3 className="text-lg font-bold mb-3 text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">流行りの韓国ネイルも<br />試してみたい</h3>
-                                    <p className="text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                                    <h3 className="text-lg font-bold mb-3 text-[#665956] font-[family-name:var(--font-noto-sans-jp)]">流行りの韓国ネイルも<br />試してみたい</h3>
+                                    <p className="text-[#665956] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                         話題のワンホンネイルやチークネイル。<br />似合うかどうか、まずはアプリでcheck✨
                                     </p>
                                 </div>
@@ -1124,8 +1103,8 @@ export default function Home() {
                                 </div>
                                 <div className="p-8 text-center">
                                     <div className="text-3xl mb-4 group-hover:scale-125 transition-transform duration-300">📸</div>
-                                    <h3 className="text-lg font-bold mb-3 text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">「これ可愛い♡」を<br />みんなにシェア</h3>
-                                    <p className="text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                                    <h3 className="text-lg font-bold mb-3 text-[#665956] font-[family-name:var(--font-noto-sans-jp)]">「これ可愛い♡」を<br />みんなにシェア</h3>
+                                    <p className="text-[#665956] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                         お気に入りのデザインができたら保存。<br />インスタやTikTokで自慢しちゃおう！
                                     </p>
                                 </div>
@@ -1138,26 +1117,26 @@ export default function Home() {
                 <section className="py-24 px-6 bg-white/50 relative overflow-hidden" >
                     <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-16">
                         <div className="flex-1 space-y-8 animate-on-scroll">
-                            <div className="inline-block px-4 py-2 bg-[#F283AE]/10 rounded-full border border-[#F283AE]/30">
-                                <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase">AI DIAGNOSIS</span>
+                            <div className="inline-block px-4 py-2 bg-[#9C7378]/10 rounded-full border border-[#9C7378]/30">
+                                <span className="text-[#9C7378] font-bold tracking-widest text-xs uppercase">MAKE IT YOURS</span>
                             </div>
-                            <h2 className="text-3xl md:text-4xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] leading-tight">
-                                自分に似合うネイルデザインの<br />見つけ方、知りたくない？
+                            <h2 className="text-3xl md:text-4xl font-bold text-[#665956] font-[family-name:var(--font-noto-sans-jp)] leading-tight">
+                                好きな色も、爪の形も。<br />自分らしく選ぼう。
                             </h2>
-                            <p className="text-[#5e3e53] text-lg leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
-                                NAILUのAIは、高度な画像解析であなたの肌色を瞬時に判別。<br />
-                                <strong>イエベ（イエローベース）</strong>か<strong>ブルベ（ブルーベース）</strong>かを診断し、肌を最高に美しく見せるパーソナルカラーに合ったネイルを提案します。
+                            <p className="text-[#665956] text-lg leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                                好きなスタイル、色、爪の形を選んで、自分の手の写真でネイルを試せます。<br />
+                                服の写真を使って、コーデに合わせた色を選ぶこともできます。
                             </p>
                             <div className="grid grid-cols-2 gap-4 mt-8">
-                                <div className="p-6 bg-[#EDD9BE] rounded-[30px] border border-white/50 text-center shadow-lg">
-                                    <span className="text-sm font-bold text-[#F283AE] block mb-2">Yellow Base</span>
-                                    <h3 className="text-xl font-bold text-[#5e3e53] mb-2 font-[family-name:var(--font-noto-sans-jp)]">イエベ春・秋</h3>
-                                    <p className="text-xs text-[#5e3e53]">暖かみのあるベージュやテラコッタ、コーラル系が映えます。</p>
+                                <div className="p-6 bg-[#FCF7F4] rounded-[30px] border border-white/50 text-center shadow-lg">
+                                    <span className="text-sm font-bold text-[#9C7378] block mb-2">Style & Color</span>
+                                    <h3 className="text-xl font-bold text-[#665956] mb-2 font-[family-name:var(--font-noto-sans-jp)]">スタイルと色</h3>
+                                    <p className="text-xs text-[#665956]">好みの雰囲気やカラーを選んで、デザインを試せます。</p>
                                 </div>
-                                <div className="p-6 bg-[#F5F8FD] rounded-[30px] border border-white/50 text-center shadow-lg">
-                                    <span className="text-sm font-bold text-[#8FBAC8] block mb-2">Blue Base</span>
-                                    <h3 className="text-xl font-bold text-[#5e3e53] mb-2 font-[family-name:var(--font-noto-sans-jp)]">ブルベ夏・冬</h3>
-                                    <p className="text-xs text-[#5e3e53]">透明感を出すローズ、アイボリー、グレージュ系が得意です。</p>
+                                <div className="p-6 bg-[#FCF7F4] rounded-[30px] border border-white/50 text-center shadow-lg">
+                                    <span className="text-sm font-bold text-[#BB969B] block mb-2">Nail Shape</span>
+                                    <h3 className="text-xl font-bold text-[#665956] mb-2 font-[family-name:var(--font-noto-sans-jp)]">爪の形</h3>
+                                    <p className="text-xs text-[#665956]">短め、オーバル、アーモンドなどから選べます。</p>
                                 </div>
                             </div>
                         </div>
@@ -1165,11 +1144,11 @@ export default function Home() {
                             <div className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl glass-card">
                                 <img
                                     src="/recommended-trends.png"
-                                    alt="イエベ・ブルベ肌色診断に基づいたパーソナルカラーネイル提案。AIネイル診断プロセスの可視化。"
+                                    alt="NAILUで試せるネイルデザインのイメージ"
                                     className="w-full h-auto opacity-90 transition-transform duration-700 hover:scale-105"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#C59FBE]/60 to-transparent flex items-end p-8">
-                                    <p className="text-white font-bold text-lg">AIによる高精度な肌色・美肌解析</p>
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#DFC4C5]/60 to-transparent flex items-end p-8">
+                                    <p className="text-white font-bold text-lg">自分の手でネイルを試そう</p>
                                 </div>
                             </div>
                         </div>
@@ -1180,50 +1159,50 @@ export default function Home() {
                 <section ref={howItWorksRef} className="py-20 px-6" >
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-16">
-                            <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase mb-3 block">HOW TO USE</span>
-                            <h2 className="text-3xl md:text-3xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">使い方はとっても簡単♡</h2>
+                            <span className="text-[#9C7378] font-bold tracking-widest text-xs uppercase mb-3 block">HOW TO USE</span>
+                            <h2 className="text-3xl md:text-3xl font-bold text-[#665956] font-[family-name:var(--font-noto-sans-jp)]">使い方はとっても簡単♡</h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
                             {/* Connecting Line (Desktop) */}
                             <div className="hidden md:block absolute top-[64px] left-[15%] right-[15%] h-0.5 overflow-hidden">
-                                <div className="w-full h-full bg-gradient-to-r from-[#F283AE]/30 via-[#F283AE] to-[#F283AE]/30 animate-line-draw"></div>
+                                <div className="w-full h-full bg-gradient-to-r from-[#9C7378]/30 via-[#9C7378] to-[#9C7378]/30 animate-line-draw"></div>
                             </div>
 
                             {/* Step 1 */}
                             <div className="animate-on-scroll relative z-10 flex flex-col items-center text-center group">
-                                <div className="w-32 h-32 bg-white rounded-full shadow-xl flex items-center justify-center overflow-hidden mb-6 border-4 border-[#EDD9BE] group-hover:scale-110 transition-transform duration-300">
+                                <div className="w-32 h-32 bg-white rounded-full shadow-xl flex items-center justify-center overflow-hidden mb-6 border-4 border-[#FCF7F4] group-hover:scale-110 transition-transform duration-300">
                                     <img src="/how-it-works-step1.png" alt="Step 1" className="w-full h-full object-cover" />
                                     <div className="absolute inset-0 bg-white/20 flex items-center justify-center text-3xl">📷</div>
                                 </div>
-                                <div className="bg-[#C59FBE] text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4 font-[family-name:var(--font-montserrat)] scale-100 group-hover:scale-110 transition-transform">STEP 1</div>
-                                <h3 className="text-xl font-bold mb-2 text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">パシャっと撮影</h3>
-                                <p className="text-[#5e3e53] text-sm font-[family-name:var(--font-noto-sans-jp)] text-center w-full">
+                                <div className="bg-[#DFC4C5] text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4 font-[family-name:var(--font-montserrat)] scale-100 group-hover:scale-110 transition-transform">STEP 1</div>
+                                <h3 className="text-xl font-bold mb-2 text-[#665956] font-[family-name:var(--font-noto-sans-jp)]">パシャっと撮影</h3>
+                                <p className="text-[#665956] text-sm font-[family-name:var(--font-noto-sans-jp)] text-center w-full">
                                     自分の手をスマホで撮影。<br />今のネイルのままでもOK！
                                 </p>
                             </div>
 
                             {/* Step 2 */}
                             <div className="animate-on-scroll delay-200 relative z-10 flex flex-col items-center text-center group">
-                                <div className="w-32 h-32 bg-white rounded-full shadow-xl flex items-center justify-center overflow-hidden mb-6 border-4 border-[#EDD9BE] group-hover:scale-110 transition-transform duration-300">
+                                <div className="w-32 h-32 bg-white rounded-full shadow-xl flex items-center justify-center overflow-hidden mb-6 border-4 border-[#FCF7F4] group-hover:scale-110 transition-transform duration-300">
                                     <img src="/how-it-works-step2.png" alt="Step 2" className="w-full h-full object-cover" />
                                     <div className="absolute inset-0 bg-white/20 flex items-center justify-center text-4xl animate-sparkle">✨</div>
                                 </div>
-                                <div className="bg-[#C59FBE] text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4 font-[family-name:var(--font-montserrat)] scale-100 group-hover:scale-110 transition-transform">STEP 2</div>
-                                <h3 className="text-xl font-bold mb-2 text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">わくわくAI生成</h3>
-                                <p className="text-[#5e3e53] text-sm font-[family-name:var(--font-noto-sans-jp)] text-center w-full">
-                                    好きな雰囲気を選ぶだけ。<br />魔法のように一瞬で変身します。
+                                <div className="bg-[#DFC4C5] text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4 font-[family-name:var(--font-montserrat)] scale-100 group-hover:scale-110 transition-transform">STEP 2</div>
+                                <h3 className="text-xl font-bold mb-2 text-[#665956] font-[family-name:var(--font-noto-sans-jp)]">わくわくAI生成</h3>
+                                <p className="text-[#665956] text-sm font-[family-name:var(--font-noto-sans-jp)] text-center w-full">
+                                    好きな雰囲気を選んで、AIで仕上がりを確認できます。
                                 </p>
                             </div>
 
                             {/* Step 3 */}
                             <div className="animate-on-scroll delay-400 relative z-10 flex flex-col items-center text-center group">
-                                <div className="w-32 h-32 bg-white rounded-full shadow-xl flex items-center justify-center overflow-hidden mb-6 border-4 border-[#EDD9BE] group-hover:scale-110 transition-transform duration-300">
+                                <div className="w-32 h-32 bg-white rounded-full shadow-xl flex items-center justify-center overflow-hidden mb-6 border-4 border-[#FCF7F4] group-hover:scale-110 transition-transform duration-300">
                                     <img src="/recommended-share.png" alt="Step 3" className="w-full h-full object-cover" />
                                     <div className="absolute inset-0 bg-white/20 flex items-center justify-center text-3xl">💖</div>
                                 </div>
-                                <div className="bg-[#C59FBE] text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4 font-[family-name:var(--font-montserrat)] scale-100 group-hover:scale-110 transition-transform">STEP 3</div>
-                                <h3 className="text-xl font-bold mb-2 text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">みんなに自慢</h3>
-                                <p className="text-[#5e3e53] text-sm font-[family-name:var(--font-noto-sans-jp)] text-center w-full">
+                                <div className="bg-[#DFC4C5] text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4 font-[family-name:var(--font-montserrat)] scale-100 group-hover:scale-110 transition-transform">STEP 3</div>
+                                <h3 className="text-xl font-bold mb-2 text-[#665956] font-[family-name:var(--font-noto-sans-jp)]">みんなに自慢</h3>
+                                <p className="text-[#665956] text-sm font-[family-name:var(--font-noto-sans-jp)] text-center w-full">
                                     お気に入りは保存して<br />SNSやサロンでシェアしてね♡
                                 </p>
                             </div>
@@ -1232,26 +1211,26 @@ export default function Home() {
                 </section>
 
                 {/* SECTION: MOCHIKOMI (SALON) GUIDE */}
-                <section className="py-24 px-6 bg-[#EDD9BE]/20" >
+                <section className="py-24 px-6 bg-[#FCF7F4]/20" >
                     <div className="max-w-5xl mx-auto text-center animate-on-scroll">
-                        <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase mb-3 block">SALON GUIDE</span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-[#5e3e53] mb-6 font-[family-name:var(--font-noto-sans-jp)]">
+                        <span className="text-[#9C7378] font-bold tracking-widest text-xs uppercase mb-3 block">SALON GUIDE</span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#665956] mb-6 font-[family-name:var(--font-noto-sans-jp)]">
                             ネイルサロンへの<br className="md:hidden" />「持ち込みデザイン」もスムーズに
                         </h2>
-                        <p className="text-[#5e3e53] text-lg leading-relaxed max-w-3xl mx-auto mb-16 font-[family-name:var(--font-noto-sans-jp)]">
-                            AIで作成した理想のデザインは、そのままネイルサロンで「持ち込みデザイン」としてオーダー可能です。ネイリストさんにイメージが正確に伝わるので、理想通りの仕上がりに。
+                        <p className="text-[#665956] text-lg leading-relaxed max-w-3xl mx-auto mb-16 font-[family-name:var(--font-noto-sans-jp)]">
+                            作成した画像を保存して、ネイルサロンで希望する雰囲気を伝える参考にできます。実際の施術はサロンでご相談ください。
                         </p>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {[
                                 { step: "01", title: "保存(Save)", desc: "AIで生成したお気に入りの画像を保存。スクリーンショットでもOK。" },
                                 { step: "02", title: "相談(Consult)", desc: "サロン予約時に「持ち込み可」を確認し、カウンセリング時に画像を見せます。" },
-                                { step: "03", title: "施術(Art)", desc: "オーダー方法に迷う必要はなし。AI画像があなたの意思を正確に伝えます。" },
+                                { step: "03", title: "施術(Art)", desc: "画像を見せながら、色やパーツをネイリストさんに相談できます。" },
                             ].map((item, i) => (
                                 <div key={i} className="p-8 bg-white/60 backdrop-blur-md rounded-[32px] shadow-lg border border-white/80 transition-all hover:shadow-xl group">
-                                    <div className="text-4xl font-black text-[#F283AE]/20 mb-4 group-hover:text-[#F283AE]/40 transition-colors">{item.step}</div>
-                                    <h4 className="text-xl font-bold text-[#5e3e53] mb-3 font-[family-name:var(--font-noto-sans-jp)]">{item.title}</h4>
-                                    <p className="text-sm text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">{item.desc}</p>
+                                    <div className="text-4xl font-black text-[#9C7378]/20 mb-4 group-hover:text-[#9C7378]/40 transition-colors">{item.step}</div>
+                                    <h4 className="text-xl font-bold text-[#665956] mb-3 font-[family-name:var(--font-noto-sans-jp)]">{item.title}</h4>
+                                    <p className="text-sm text-[#665956] font-[family-name:var(--font-noto-sans-jp)]">{item.desc}</p>
                                 </div>
                             ))}
                         </div>
@@ -1267,23 +1246,23 @@ export default function Home() {
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none"></div>
                                 <div className="relative z-10">
                                     <div className="flex gap-4 items-center mb-6">
-                                        <div className="w-14 h-14 bg-[#C59FBE] rounded-full flex items-center justify-center text-xs font-bold text-white font-[family-name:var(--font-montserrat)]">Before</div>
-                                        <div className="text-2xl text-[#F283AE]">➡</div>
-                                        <div className="w-14 h-14 bg-gradient-to-br from-[#F283AE] to-[#C6C870] rounded-full flex items-center justify-center text-xs font-bold text-white shadow-lg font-[family-name:var(--font-montserrat)]">After</div>
+                                        <div className="w-14 h-14 bg-[#DFC4C5] rounded-full flex items-center justify-center text-xs font-bold text-white font-[family-name:var(--font-montserrat)]">Before</div>
+                                        <div className="text-2xl text-[#9C7378]">➡</div>
+                                        <div className="w-14 h-14 bg-gradient-to-br from-[#9C7378] to-[#BB969B] rounded-full flex items-center justify-center text-xs font-bold text-white shadow-lg font-[family-name:var(--font-montserrat)]">After</div>
                                     </div>
-                                    <h3 className="text-[#5e3e53] font-bold text-xl mb-3 font-[family-name:var(--font-noto-sans-jp)]">サロンクオリティの仕上がり</h3>
-                                    <p className="text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
-                                        AIが爪の形、肌の色、光の当たり方を高度に分析。まるで本当にネイルを塗っているかのような、違和感のないリアルな試着体験を実現しました。
+                                    <h3 className="text-[#665956] font-bold text-xl mb-3 font-[family-name:var(--font-noto-sans-jp)]">自分の手で仕上がりをプレビュー</h3>
+                                    <p className="text-[#665956] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                                        自分の手の写真にネイルデザインを生成し、色や形のイメージを確認できます。
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div className="flex-1 order-1 md:order-2 text-left">
-                            <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase mb-3 block font-[family-name:var(--font-montserrat)]">REALISTIC</span>
-                            <h2 className="text-3xl md:text-4xl font-bold text-[#5e3e53] mb-6 font-[family-name:var(--font-noto-sans-jp)]">驚くほど自然な<br />バーチャル試着</h2>
-                            <p className="text-[#5e3e53] leading-relaxed font-[family-name:var(--font-noto-sans-jp)] text-lg">
-                                「イメージと違った...」を防ぎます。<br />
-                                自分の手に合わせて色味やデザインのバランスを確認できるので、失敗のないネイル選びが可能に。
+                            <span className="text-[#9C7378] font-bold tracking-widest text-xs uppercase mb-3 block font-[family-name:var(--font-montserrat)]">REALISTIC</span>
+                            <h2 className="text-3xl md:text-4xl font-bold text-[#665956] mb-6 font-[family-name:var(--font-noto-sans-jp)]">驚くほど自然な<br />バーチャル試着</h2>
+                            <p className="text-[#665956] leading-relaxed font-[family-name:var(--font-noto-sans-jp)] text-lg">
+                                サロンに行く前に、仕上がりのイメージを確認できます。<br />
+                                気になるスタイルを自分の写真で見比べて、好みのデザインを探せます。
                             </p>
                         </div>
                     </div>
@@ -1295,65 +1274,65 @@ export default function Home() {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {/* Feature Card 2: Trend Auto Reflection (Restored) */}
                             <div className="glass-card rounded-[40px] p-8 hover:scale-[1.02] transition-all duration-500 shadow-xl">
-                                <div className="w-16 h-16 bg-gradient-to-br from-[#F283AE] to-[#C6C870] rounded-2xl flex items-center justify-center mb-6">
+                                <div className="w-16 h-16 bg-gradient-to-br from-[#9C7378] to-[#BB969B] rounded-2xl flex items-center justify-center mb-6">
                                     <span className="text-2xl">✨</span>
                                 </div>
-                                <h3 className="text-xl font-bold mb-3 text-gray-900 font-[family-name:var(--font-noto-sans-jp)]">トレンド自動反映</h3>
-                                <p className="text-[#5e3e53] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
-                                    韓国、日本、世界中の最新トレンドを常時学習。今一番人気のデザインをリアルタイムで提案。
+                                <h3 className="text-xl font-bold mb-3 text-gray-900 font-[family-name:var(--font-noto-sans-jp)]">インスピレーションを探す</h3>
+                                <p className="text-[#665956] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
+                                    アプリ内のインスピレーションから、気になるスタイルを探せます。
                                 </p>
                             </div>
 
                             {/* Feature Card 3: Customization */}
                             <div className="glass-card rounded-[40px] p-8 hover:scale-[1.02] transition-all duration-500 shadow-xl">
-                                <div className="w-16 h-16 bg-gradient-to-br from-[#C6C870] to-[#F283AE] rounded-2xl flex items-center justify-center mb-6">
+                                <div className="w-16 h-16 bg-gradient-to-br from-[#BB969B] to-[#9C7378] rounded-2xl flex items-center justify-center mb-6">
                                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="12" cy="12" r="3" stroke="white" strokeWidth="2" />
                                         <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="white" strokeWidth="2" strokeLinecap="round" />
                                     </svg>
                                 </div>
                                 <h3 className="text-xl font-bold mb-3 text-gray-900 font-[family-name:var(--font-noto-sans-jp)]">自由なカスタマイズ</h3>
-                                <p className="text-[#5e3e53] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
+                                <p className="text-[#665956] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
                                     色、パターン、装飾を自由に変更。AIが提案したデザインをベースに、あなただけのアレンジが可能。
                                 </p>
                             </div>
 
                             {/* Feature Card 4: Instant Generation */}
                             <div className="glass-card rounded-[40px] p-8 hover:scale-[1.02] transition-all duration-500 shadow-xl">
-                                <div className="w-16 h-16 bg-gradient-to-br from-[#F283AE] to-[#EDD9BE] rounded-2xl flex items-center justify-center mb-6">
+                                <div className="w-16 h-16 bg-gradient-to-br from-[#9C7378] to-[#FCF7F4] rounded-2xl flex items-center justify-center mb-6">
                                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M12 2V6M12 18V22M4.93 4.93L7.76 7.76M16.24 16.24L19.07 19.07M2 12H6M18 12H22M4.93 19.07L7.76 16.24M16.24 7.76L19.07 4.93" stroke="white" strokeWidth="2" strokeLinecap="round" />
                                     </svg>
                                 </div>
-                                <h3 className="text-xl font-bold mb-3 text-gray-900 font-[family-name:var(--font-noto-sans-jp)]">一瞬で生成</h3>
-                                <p className="text-[#5e3e53] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
-                                    待ち時間はわずか数秒。高品質なデザインを複数パターン同時生成し、お気に入りを選べます。
+                                <h3 className="text-xl font-bold mb-3 text-gray-900 font-[family-name:var(--font-noto-sans-jp)]">写真で試せる</h3>
+                                <p className="text-[#665956] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
+                                    手の写真を選び、好みのデザインを指定してAIで仕上がりを確認できます。
                                 </p>
                             </div>
 
                             {/* Feature Card 5: Save & Share */}
                             <div className="glass-card rounded-[40px] p-8 hover:scale-[1.02] transition-all duration-500 shadow-xl">
-                                <div className="w-16 h-16 bg-gradient-to-br from-[#EDD9BE] to-[#F283AE] rounded-2xl flex items-center justify-center mb-6">
+                                <div className="w-16 h-16 bg-gradient-to-br from-[#FCF7F4] to-[#9C7378] rounded-2xl flex items-center justify-center mb-6">
                                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M4 16L4 17C4 18.6569 5.34315 20 7 20L17 20C18.6569 20 20 18.6569 20 17L20 16M16 8L12 4M12 4L8 8M12 4L12 16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
                                 </div>
                                 <h3 className="text-xl font-bold mb-3 text-gray-900 font-[family-name:var(--font-noto-sans-jp)]">保存＆シェア</h3>
-                                <p className="text-[#5e3e53] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
+                                <p className="text-[#665956] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
                                     お気に入りのデザインを保存して、サロンで見せたり、SNSでシェアして友達と共有できます。
                                 </p>
                             </div>
 
                             {/* Feature Card 6: Salon Ready */}
                             <div className="glass-card rounded-[40px] p-8 hover:scale-[1.02] transition-all duration-500 shadow-xl">
-                                <div className="w-16 h-16 bg-gradient-to-br from-[#C6C870] to-[#EDD9BE] rounded-2xl flex items-center justify-center mb-6">
+                                <div className="w-16 h-16 bg-gradient-to-br from-[#BB969B] to-[#FCF7F4] rounded-2xl flex items-center justify-center mb-6">
                                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
                                 </div>
-                                <h3 className="text-xl font-bold mb-3 text-gray-900 font-[family-name:var(--font-noto-sans-jp)]">サロン対応</h3>
-                                <p className="text-[#5e3e53] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
-                                    デザインをネイリストに見せるだけ。イメージの共有がスムーズになり、理想通りの仕上がりに。
+                                <h3 className="text-xl font-bold mb-3 text-gray-900 font-[family-name:var(--font-noto-sans-jp)]">サロンで相談</h3>
+                                <p className="text-[#665956] leading-relaxed text-sm font-[family-name:var(--font-noto-sans-jp)]">
+                                    保存した画像を見せながら、希望する仕上がりを相談できます。
                                 </p>
                             </div>
                         </div>
@@ -1361,19 +1340,19 @@ export default function Home() {
                 </section>
 
                 {/* SECTION: TECH AUTHORITY */}
-                <section className="py-24 px-6 border-t border-[#EDD9BE]/50" >
+                <section className="py-24 px-6 border-t border-[#FCF7F4]/50" >
                     <div className="max-w-4xl mx-auto animate-on-scroll">
                         <div className="flex flex-col md:flex-row items-center gap-12">
-                            <div className="w-24 h-24 shrink-0 bg-[#C59FBE] rounded-full flex items-center justify-center text-white text-3xl shadow-xl">
+                            <div className="w-24 h-24 shrink-0 bg-[#DFC4C5] rounded-full flex items-center justify-center text-white text-3xl shadow-xl">
                                 🦾
                             </div>
                             <div>
-                                <h2 className="text-2xl font-bold text-[#5e3e53] mb-4 font-[family-name:var(--font-noto-sans-jp)]">
-                                    2026年最新トレンドを学習した「ネイル特化型AI」
+                                <h2 className="text-2xl font-bold text-[#665956] mb-4 font-[family-name:var(--font-noto-sans-jp)]">
+                                    自分の手で試せるAIネイルアプリ
                                 </h2>
-                                <p className="text-[#5e3e53] leading-loose font-[family-name:var(--font-noto-sans-jp)]">
-                                    NAILUのAIは、日本国内の主要ネイルサロンの最新データと2026年のトレンド予測を学習しています。<br />
-                                    「クラウドダンサー（ミルキーホワイト）」や「微細パール」など、最先端のカラーや質感を忠実に再現。プロのネイリストも参考にするレベルのデザインを、無料で体験できます。
+                                <p className="text-[#665956] leading-loose font-[family-name:var(--font-noto-sans-jp)]">
+                                    自分の手の写真を撮るかアップロードして、スタイル・色・爪の形を選べます。<br />
+                                    作ったデザインは保存して、サロンでイメージを伝えるときにも使えます。
                                 </p>
                             </div>
                         </div>
@@ -1384,22 +1363,19 @@ export default function Home() {
                 <section ref={galleryRef} className="min-h-screen pt-24 pb-24 px-5 max-w-5xl mx-auto relative overflow-hidden" >
                     {/* Gallery Background Elements */}
                     <div className="absolute inset-0 w-full h-full -z-10 overflow-hidden pointer-events-none" >
-                        <div className="floating-form top-[10%] right-[10%] w-[400px] h-[400px] bg-[#F283AE] opacity-30 animate-blob"></div>
-                        <div className="floating-form bottom-[10%] left-[5%] w-[300px] h-[300px] bg-[#EDD9BE] opacity-20 animate-blob" style={{ animationDelay: "3s" }}></div>
+                        <div className="floating-form top-[10%] right-[10%] w-[400px] h-[400px] bg-[#9C7378] opacity-30 animate-blob"></div>
+                        <div className="floating-form bottom-[10%] left-[5%] w-[300px] h-[300px] bg-[#FCF7F4] opacity-20 animate-blob" style={{ animationDelay: "3s" }}></div>
                     </div>
 
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold mb-4 text-[#5e3e53] tracking-tight">Community Gallery</h2>
-                        <p className="text-[#5e3e53] font-medium tracking-wide">AIと創り上げた、最新のデザインたち</p>
+                        <h2 className="text-3xl font-bold mb-4 text-[#665956] tracking-tight">Community Gallery</h2>
+                        <p className="text-[#665956] font-medium tracking-wide">ネイルデザインのイメージをご紹介</p>
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
                         {galleryImages.slice(0, visibleGalleryCount).map((img, index) => (
                             <div key={index} className="aspect-[4/5] glass-card rounded-[40px] relative overflow-hidden group hover:scale-[1.03] transition-all duration-500 shadow-xl gloss-effect">
                                 <img src={img.src} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" alt={img.alt} />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                                    <span className="text-white text-sm font-bold backdrop-blur-xl px-4 py-2 rounded-2xl bg-white/20 border border-white/30">♥ {img.likes}</span>
-                                </div>
                             </div>
                         ))}
                     </div>
@@ -1409,7 +1385,7 @@ export default function Home() {
                             <div className="mt-16 text-center">
                                 <button
                                     onClick={() => setVisibleGalleryCount(prev => prev + 6)}
-                                    className="px-10 py-4 bg-white/50 backdrop-blur-md border border-[#F283AE]/30 rounded-full text-[#5e3e53] font-bold hover:bg-[#C59FBE] hover:text-white transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 group"
+                                    className="px-10 py-4 bg-white/50 backdrop-blur-md border border-[#9C7378]/30 rounded-full text-[#665956] font-bold hover:bg-[#DFC4C5] hover:text-white transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 group"
                                 >
                                     <span className="mr-2">More View</span>
                                     <span className="inline-block transition-transform group-hover:translate-y-1">↓</span>
@@ -1420,19 +1396,19 @@ export default function Home() {
                 </section>
 
                 {/* SECTION: NAIL STYLE GLOSSARY (SEO) */}
-                <section className="py-24 px-6 bg-[#FEFAF6] relative overflow-hidden" >
+                <section className="py-24 px-6 bg-[#FCF7F4] relative overflow-hidden" >
                     {/* Decorative Background Elements */}
                     <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-40">
-                        <div className="absolute top-10 left-[10%] w-64 h-64 bg-[#F283AE]/10 rounded-full blur-3xl"></div>
-                        <div className="absolute bottom-10 right-[10%] w-96 h-96 bg-[#EDD9BE]/20 rounded-full blur-3xl"></div>
+                        <div className="absolute top-10 left-[10%] w-64 h-64 bg-[#9C7378]/10 rounded-full blur-3xl"></div>
+                        <div className="absolute bottom-10 right-[10%] w-96 h-96 bg-[#FCF7F4]/20 rounded-full blur-3xl"></div>
                     </div>
 
                     <div className="max-w-6xl mx-auto relative z-10">
                         <div className="text-center mb-16 animate-on-scroll">
-                            <span className="text-[#F283AE] font-bold tracking-[0.3em] text-xs uppercase mb-4 block">NAIL DICTIONARY</span>
-                            <h2 className="text-3xl md:text-5xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] tracking-tight">ネイルデザイン用語集</h2>
-                            <div className="w-20 h-1 bg-[#F283AE] mx-auto mt-6 rounded-full opacity-60"></div>
-                            <p className="mt-8 text-[#5e3e53] text-base font-medium max-w-xl mx-auto leading-relaxed">最新のトレンドから定番まで、理想の指先を叶えるためのキーワードをAIが詳しく解説。</p>
+                            <span className="text-[#9C7378] font-bold tracking-[0.3em] text-xs uppercase mb-4 block">NAIL DICTIONARY</span>
+                            <h2 className="text-3xl md:text-5xl font-bold text-[#665956] font-[family-name:var(--font-noto-sans-jp)] tracking-tight">ネイルデザイン用語集</h2>
+                            <div className="w-20 h-1 bg-[#9C7378] mx-auto mt-6 rounded-full opacity-60"></div>
+                            <p className="mt-8 text-[#665956] text-base font-medium max-w-xl mx-auto leading-relaxed">定番から気になるスタイルまで、ネイルデザインの言葉を紹介します。</p>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -1449,10 +1425,10 @@ export default function Home() {
                                         <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                                     </div>
                                     <div className="p-8 pb-10">
-                                        <div className={`w-12 h-1 bg-gradient-to-r from-transparent via-[#F283AE] to-transparent mb-6 transition-all duration-500 group-hover:w-full group-hover:via-[#F283AE]`}></div>
-                                        <span className="text-[10px] font-bold text-[#F283AE] tracking-widest uppercase mb-2 block">{item.eng}</span>
-                                        <h3 className="text-2xl font-bold text-[#5e3e53] mb-4 font-[family-name:var(--font-noto-sans-jp)]">{item.title}</h3>
-                                        <p className="text-[#5e3e53] text-sm leading-loose font-[family-name:var(--font-noto-sans-jp)] opacity-90">{item.desc}</p>
+                                        <div className={`w-12 h-1 bg-gradient-to-r from-transparent via-[#9C7378] to-transparent mb-6 transition-all duration-500 group-hover:w-full group-hover:via-[#9C7378]`}></div>
+                                        <span className="text-[10px] font-bold text-[#9C7378] tracking-widest uppercase mb-2 block">{item.eng}</span>
+                                        <h3 className="text-2xl font-bold text-[#665956] mb-4 font-[family-name:var(--font-noto-sans-jp)]">{item.title}</h3>
+                                        <p className="text-[#665956] text-sm leading-loose font-[family-name:var(--font-noto-sans-jp)] opacity-90">{item.desc}</p>
                                     </div>
                                 </div>
                             ))}
@@ -1464,17 +1440,17 @@ export default function Home() {
                 <section className="py-32 px-6 bg-white relative" >
                     <div className="max-w-7xl mx-auto">
                         <div className="text-center mb-20 animate-on-scroll">
-                            <span className="text-[#F283AE] font-bold tracking-[0.4em] text-xs uppercase mb-4 block">2026 TREND FORECAST</span>
-                            <h2 className="text-4xl md:text-5xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)] tracking-tight">2026年 季節のトレンド予報</h2>
-                            <p className="mt-8 text-[#5e3e53] text-lg font-light">移り変わる季節に、AIが提案する最高の彩りを。</p>
+                            <span className="text-[#9C7378] font-bold tracking-[0.4em] text-xs uppercase mb-4 block">2026 TREND FORECAST</span>
+                            <h2 className="text-4xl md:text-5xl font-bold text-[#665956] font-[family-name:var(--font-noto-sans-jp)] tracking-tight">季節のデザイン例</h2>
+                            <p className="mt-8 text-[#665956] text-lg font-light">季節に合わせた色や質感のアイデアをご紹介。</p>
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                             {[
-                                { season: "SPRING", theme: "Peach & Sakura", color: "bg-[#EDD9BE]", border: "border-[#C6C870]", text: "text-[#F283AE]", desc: "多幸感あふれるピーチカラーや、桜の花びらのようなシアーな質感が主役。AI診断では『イエベ春』の方に特におすすめのデザインが豊富です。", img: "/gallery-sakura-cherry-blossom.png" },
-                                { season: "SUMMER", theme: "Sea Glass", color: "bg-[#EDD9BE]", border: "border-[#FAC1B5]", text: "text-[#5e3e53]", desc: "磨りガラスのようなマットな透明感と、水面のような波紋模様。涼しげなブルーやミントカラーのニュアンスが『ブルベ夏』の白肌を引き立てます。", img: "/gallery-aurora-glass.png" },
-                                { season: "AUTUMN", theme: "Rich Amber", color: "bg-[#EDD9BE]", border: "border-[#C6C870]", text: "text-[#C6C870]", desc: "深みのある琥珀色やテラコッタ。重厚感のあるマグネットや、べっ甲柄の進化系がトレンド。温かみのあるカラーが『イエベ秋』の肌に馴染みます。", img: "/gallery-autumn-leaves-terracotta.png" },
-                                { season: "WINTER", theme: "Frozen Pearl", color: "bg-[#EDD9BE]", border: "border-[#FAC1B5]", text: "text-[#5e3e53]", desc: "氷の結晶のような微細なパールと、冬の静寂を感じさせるアイボリー。クリアな煌めきが『ブルベ冬』のコントラストの効いた肌色を輝かせます。", img: "/gallery-ivory-aurora.png" },
+                                { season: "SPRING", theme: "Peach & Sakura", color: "bg-[#FCF7F4]", border: "border-[#BB969B]", text: "text-[#9C7378]", desc: "ピーチカラーや桜の花びらのような、やさしい質感のデザイン例。", img: "/gallery-sakura-cherry-blossom.png" },
+                                { season: "SUMMER", theme: "Sea Glass", color: "bg-[#FCF7F4]", border: "border-[#F9F0ED]", text: "text-[#665956]", desc: "ブルーやミントのニュアンスが涼しげなデザイン例。", img: "/gallery-aurora-glass.png" },
+                                { season: "AUTUMN", theme: "Rich Amber", color: "bg-[#FCF7F4]", border: "border-[#BB969B]", text: "text-[#BB969B]", desc: "琥珀色やテラコッタを使った、落ち着いたデザイン例。", img: "/gallery-autumn-leaves-terracotta.png" },
+                                { season: "WINTER", theme: "Frozen Pearl", color: "bg-[#FCF7F4]", border: "border-[#F9F0ED]", text: "text-[#665956]", desc: "アイボリーとパールのきらめきを楽しむデザイン例。", img: "/gallery-ivory-aurora.png" },
                             ].map((item, idx) => (
                                 <div key={idx} className={`relative rounded-[50px] ${item.color} border ${item.border} overflow-hidden group transition-all duration-500 hover:shadow-xl hover:-translate-y-1 flex flex-col`}>
                                     <div className="aspect-[4/3] overflow-hidden">
@@ -1484,8 +1460,8 @@ export default function Home() {
                                         <div className="absolute top-4 right-6 text-6xl font-black text-white/40 group-hover:scale-110 transition-transform duration-700">{item.season[0]}</div>
                                         <div className="relative z-10">
                                             <span className={`text-xs font-black tracking-[0.2em] ${item.text} mb-3 block`}>{item.season}</span>
-                                            <h3 className="text-xl font-bold text-[#5e3e53] mb-4 font-[family-name:var(--font-noto-sans-jp)]">{item.theme}</h3>
-                                            <p className="text-[#5e3e53] text-sm leading-loose font-[family-name:var(--font-noto-sans-jp)] opacity-80">{item.desc}</p>
+                                            <h3 className="text-xl font-bold text-[#665956] mb-4 font-[family-name:var(--font-noto-sans-jp)]">{item.theme}</h3>
+                                            <p className="text-[#665956] text-sm leading-loose font-[family-name:var(--font-noto-sans-jp)] opacity-80">{item.desc}</p>
                                         </div>
                                     </div>
                                     <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
@@ -1500,26 +1476,26 @@ export default function Home() {
                     <div className="max-w-5xl mx-auto">
                         <div className="glass-card rounded-[60px] p-12 md:p-20 relative overflow-hidden border border-white/60 shadow-2xl">
                             {/* Animated Background Blob */}
-                            <div className="absolute -top-20 -right-20 w-96 h-96 bg-[#F283AE] opacity-10 rounded-full blur-[100px] animate-pulse"></div>
+                            <div className="absolute -top-20 -right-20 w-96 h-96 bg-[#9C7378] opacity-10 rounded-full blur-[100px] animate-pulse"></div>
 
                             <div className="relative z-10 flex flex-col lg:flex-row gap-16 items-center">
                                 <div className="w-full lg:w-2/5 text-center lg:text-left">
                                     <div className="inline-flex items-center justify-center w-24 h-24 bg-white/40 backdrop-blur-md rounded-full mb-8 shadow-inner text-4xl">🧴</div>
-                                    <h2 className="text-3xl md:text-4xl font-bold text-[#5e3e53] mb-6 font-[family-name:var(--font-noto-sans-jp)] tracking-tight">美爪のための<br className="hidden md:block" />メンテナンス習慣</h2>
-                                    <p className="inline-block px-4 py-2 bg-[#F283AE] text-white text-[10px] font-bold tracking-[0.3em] uppercase rounded-full shadow-lg shadow-[#F283AE]/20">Care & Maintenance</p>
+                                    <h2 className="text-3xl md:text-4xl font-bold text-[#665956] mb-6 font-[family-name:var(--font-noto-sans-jp)] tracking-tight">美爪のための<br className="hidden md:block" />メンテナンス習慣</h2>
+                                    <p className="inline-block px-4 py-2 bg-[#9C7378] text-white text-[10px] font-bold tracking-[0.3em] uppercase rounded-full shadow-lg shadow-[#9C7378]/20">Care & Maintenance</p>
                                 </div>
-                                <div className="w-full lg:w-3/5 space-y-8 text-[#5e3e53] text-base leading-loose font-[family-name:var(--font-noto-sans-jp)]">
-                                    <p className="font-medium text-[#5e3e53]/70">AI診断で最高の結果を得るためには、土台となる自爪のケアが欠かせません。プロが実践する3つの秘訣をご紹介します。</p>
+                                <div className="w-full lg:w-3/5 space-y-8 text-[#665956] text-base leading-loose font-[family-name:var(--font-noto-sans-jp)]">
+                                    <p className="font-medium text-[#665956]/70">手の写真を撮る前に、爪がはっきり見える明るい場所を選びましょう。</p>
                                     <div className="grid grid-cols-1 gap-6">
                                         {[
-                                            { icon: "✨", title: "徹底した保湿", text: "ネイルオイルを爪の根元（ルースキューティクル）に1日3回塗ることで、乾燥による欠けやささくれを徹底防御。" },
-                                            { icon: "📸", title: "撮影前の準備", text: "ハンドクリームを薄く馴染ませると肌のトーンが均一になり、AI診断の正確性が飛躍的に向上します。" },
-                                            { icon: "🌿", title: "定期的な休息", text: "オフ後は1〜2週間ほど強化剤（ベースコート）で保護。健康な爪を育てることで次のデザインも美しく映えます。" },
+                                            { icon: "✨", title: "明るい場所で撮る", text: "自然光など、手元が見やすい場所で撮影すると爪を確認しやすくなります。" },
+                                            { icon: "📸", title: "爪を写す", text: "指先がフレームに収まり、爪の形が見える写真を選んでください。" },
+                                            { icon: "🌿", title: "好きなスタイルを選ぶ", text: "写真を選んだら、スタイル・色・爪の形を組み合わせて試せます。" },
                                         ].map((tip, i) => (
                                             <div key={i} className="flex gap-6 items-start p-6 bg-white/30 rounded-3xl hover:bg-white/50 transition-colors">
                                                 <span className="text-2xl mt-1">{tip.icon}</span>
                                                 <div>
-                                                    <h4 className="font-bold text-[#5e3e53] mb-2">{tip.title}</h4>
+                                                    <h4 className="font-bold text-[#665956] mb-2">{tip.title}</h4>
                                                     <p className="text-sm opacity-90">{tip.text}</p>
                                                 </div>
                                             </div>
@@ -1534,16 +1510,15 @@ export default function Home() {
                 {/* SECTION: SAFETY & TRUST */}
                 <section className="py-20 px-6 bg-white/40 backdrop-blur-sm" >
                     <div className="max-w-4xl mx-auto text-center">
-                        <div className="inline-block p-5 rounded-full bg-[#EDD9BE]/30 mb-6">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C59FBE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <div className="inline-block p-5 rounded-full bg-[#FCF7F4]/30 mb-6">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#DFC4C5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                             </svg>
                         </div>
-                        <h2 className="text-2xl font-bold text-[#5e3e53] mb-6 font-[family-name:var(--font-noto-sans-jp)]">安心・安全への取り組み</h2>
-                        <p className="text-[#5e3e53] text-sm leading-relaxed max-w-2xl mx-auto font-[family-name:var(--font-noto-sans-jp)]">
+                        <h2 className="text-2xl font-bold text-[#665956] mb-6 font-[family-name:var(--font-noto-sans-jp)]">安心・安全への取り組み</h2>
+                        <p className="text-[#665956] text-sm leading-relaxed max-w-2xl mx-auto font-[family-name:var(--font-noto-sans-jp)]">
                             NAILUでは、お客様のプライバシーを最優先に考えています。<br />
-                            アップロードされた写真はデザイン生成のみに使用され、許可なく保存・公開されることはありません。<br />
-                            生成された画像もお好きなタイミングで削除可能です。
+                            写真の取り扱いについては、アプリのプライバシーポリシーをご確認ください。
                         </p>
                     </div>
                 </section>
@@ -1551,64 +1526,64 @@ export default function Home() {
                 {/* SECTION: FAQ */}
                 <section ref={faqRef} className="py-24 px-6 max-w-3xl mx-auto" >
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-[#5e3e53] font-[family-name:var(--font-noto-sans-jp)]">よくあるご質問</h2>
+                        <h2 className="text-3xl font-bold text-[#665956] font-[family-name:var(--font-noto-sans-jp)]">よくあるご質問</h2>
                     </div>
                     <div className="space-y-4">
                         <details className="group glass-card rounded-[20px] open:bg-white transition-all duration-300">
-                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#5e3e53] list-none select-none">
-                                <span className="font-[family-name:var(--font-noto-sans-jp)]">Q. 本当に無料で使えますか？</span>
+                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#665956] list-none select-none">
+                                <span className="font-[family-name:var(--font-noto-sans-jp)]">Q. 無料で使えますか？</span>
                                 <span className="transition-transform duration-300 group-open:rotate-180">▼</span>
                             </summary>
-                            <div className="px-6 pb-6 text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
-                                はい、基本的なデザイン生成機能はすべて無料でお使いいただけます。
+                            <div className="px-6 pb-6 text-[#665956] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                                アプリは無料でダウンロードできます。無料生成には回数制限があり、追加利用にはアプリ内購入が用意されています。
                             </div>
                         </details>
                         <details className="group glass-card rounded-[20px] open:bg-white transition-all duration-300">
-                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#5e3e53] list-none select-none">
+                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#665956] list-none select-none">
                                 <span className="font-[family-name:var(--font-noto-sans-jp)]">Q. スマホでも使えますか？</span>
                                 <span className="transition-transform duration-300 group-open:rotate-180">▼</span>
                             </summary>
-                            <div className="px-6 pb-6 text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
-                                はい、スマートフォンに完全対応しています。アプリのインストール不要で、ブラウザからそのままご利用いただけます。
+                            <div className="px-6 pb-6 text-[#665956] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                                はい、iPhoneなどのiOS端末に対応しています。App Storeからアプリをダウンロードして、すぐに快適ご利用いただけます。
                             </div>
                         </details>
                         <details className="group glass-card rounded-[20px] open:bg-white transition-all duration-300">
-                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#5e3e53] list-none select-none">
+                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#665956] list-none select-none">
                                 <span className="font-[family-name:var(--font-noto-sans-jp)]">Q. 作った画像をネイルサロンで見せてもいいですか？</span>
                                 <span className="transition-transform duration-300 group-open:rotate-180">▼</span>
                             </summary>
-                            <div className="px-6 pb-6 text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
-                                もちろんです！「サロン対応」機能で生成された画像は、ネイリストさんにイメージを伝えるのに最適です。ぜひご活用ください。
+                            <div className="px-6 pb-6 text-[#665956] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                                はい。作った画像を保存して、ネイリストさんにイメージを見せられます。
                             </div>
                         </details>
                     </div>
                     {/* Additional FAQs */}
                     <div className="space-y-4 mt-4">
                         <details className="group glass-card rounded-[20px] open:bg-white transition-all duration-300">
-                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#5e3e53] list-none select-none">
+                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#665956] list-none select-none">
                                 <span className="font-[family-name:var(--font-noto-sans-jp)]">Q. 今のネイルをオフする必要はありますか？</span>
                                 <span className="transition-transform duration-300 group-open:rotate-180">▼</span>
                             </summary>
-                            <div className="px-6 pb-6 text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                            <div className="px-6 pb-6 text-[#665956] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
                                 いいえ、必要ありません！今のネイルの上からAIが新しいデザインを重ねて生成するので、オフなしでいろんなデザインを試着できます。
                             </div>
                         </details>
                         <details className="group glass-card rounded-[20px] open:bg-white transition-all duration-300">
-                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#5e3e53] list-none select-none">
+                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#665956] list-none select-none">
                                 <span className="font-[family-name:var(--font-noto-sans-jp)]">Q. 写真はどこかに保存されますか？</span>
                                 <span className="transition-transform duration-300 group-open:rotate-180">▼</span>
                             </summary>
-                            <div className="px-6 pb-6 text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
-                                アップロードされた写真はデザイン生成のみに使用され、サーバーには保存されませんのでご安心ください。プライバシーは厳重に保護されます。
+                            <div className="px-6 pb-6 text-[#665956] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                                写真の取り扱いについては、アプリのプライバシーポリシーをご確認ください。
                             </div>
                         </details>
                         <details className="group glass-card rounded-[20px] open:bg-white transition-all duration-300">
-                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#5e3e53] list-none select-none">
+                            <summary className="flex justify-between items-center cursor-pointer p-6 font-bold text-[#665956] list-none select-none">
                                 <span className="font-[family-name:var(--font-noto-sans-jp)]">Q. 会員登録は必要ですか？</span>
                                 <span className="transition-transform duration-300 group-open:rotate-180">▼</span>
                             </summary>
-                            <div className="px-6 pb-6 text-[#5e3e53] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
-                                いいえ、登録なしで今すぐお使いいただけます。「今すぐデザインを作る」ボタンから、魔法のようなネイル体験をお楽しみください♡
+                            <div className="px-6 pb-6 text-[#665956] text-sm leading-relaxed font-[family-name:var(--font-noto-sans-jp)]">
+                                ゲストとして試せます。履歴や一部の機能の利用には、アカウントが必要になる場合があります。
                             </div>
                         </details>
                     </div>
@@ -1616,22 +1591,23 @@ export default function Home() {
 
                 {/* SECTION: FINAL CTA */}
                 <section className="py-32 px-6 text-center relative overflow-hidden" >
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#F283AE]/10 to-transparent pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#9C7378]/10 to-transparent pointer-events-none"></div>
                     <div className="relative z-10 max-w-4xl mx-auto">
-                        <h2 className="text-4xl md:text-5xl font-bold text-[#5e3e53] mb-8 leading-tight font-[family-name:var(--font-noto-sans-jp)]">
+                        <h2 className="text-4xl md:text-5xl font-bold text-[#665956] mb-8 leading-tight font-[family-name:var(--font-noto-sans-jp)]">
                             指先から、<br />新しい私へ。
                         </h2>
-                        <p className="text-[#5e3e53] text-lg mb-12 font-[family-name:var(--font-noto-sans-jp)]">
+                        <p className="text-[#665956] text-lg mb-12 font-[family-name:var(--font-noto-sans-jp)]">
                             まずは1枚、写真を撮って試してみませんか？<br />
                             あなたの指先にぴったりのデザインが待っています。
                         </p>
 
-                        <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
+                        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                             <a href={appUrl} className="btn-diamond-app px-12 py-5 rounded-full text-lg font-bold shadow-2xl hover:scale-105 transition-transform flex items-center gap-3">
-                                <span>💎</span> デザインを作ってみる
+                                <span>💎</span> App Storeでダウンロード
                             </a>
+                            <AppStoreBadge href={appUrl} />
                         </div>
-                        <p className="mt-6 text-xs text-[#5e3e53] opacity-70 font-[family-name:var(--font-noto-sans-jp)]">※ 登録不要・完全無料</p>
+                        <p className="mt-6 text-xs text-[#665956] opacity-70 font-[family-name:var(--font-noto-sans-jp)]">※ 無料ダウンロード・アプリ内購入あり</p>
                     </div>
                 </section>
             </main>
@@ -1639,20 +1615,20 @@ export default function Home() {
             {/* COMPARISON SECTION - SNS vs NAILU */}
 
             {/* FOOTER */}
-            <footer className="bg-[#5e3e53] text-[#EDD9BE] py-16 px-6 relative overflow-hidden" >
+            <footer className="bg-[#665956] text-[#FCF7F4] py-16 px-6 relative overflow-hidden" >
                 {/* Decorative Background Elements */}
-                <div className="absolute top-[-50%] left-[-20%] w-[600px] h-[600px] bg-[#F283AE] rounded-full mix-blend-overlay opacity-10 blur-3xl pointer-events-none" ></div>
-                <div className="absolute bottom-[-50%] right-[-20%] w-[500px] h-[500px] bg-[#EDD9BE] rounded-full mix-blend-overlay opacity-10 blur-3xl pointer-events-none"></div>
+                <div className="absolute top-[-50%] left-[-20%] w-[600px] h-[600px] bg-[#9C7378] rounded-full mix-blend-overlay opacity-10 blur-3xl pointer-events-none" ></div>
+                <div className="absolute bottom-[-50%] right-[-20%] w-[500px] h-[500px] bg-[#FCF7F4] rounded-full mix-blend-overlay opacity-10 blur-3xl pointer-events-none"></div>
 
                 <div className="max-w-7xl mx-auto relative z-10">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
                         {/* 1. Brand */}
                         <div className="col-span-1 md:col-span-2 space-y-6">
                             <div>
-                                <h3 className="text-3xl font-bold font-[family-name:var(--font-montserrat)] tracking-widest mb-2 text-[#EDD9BE]">NAILU</h3>
-                                <p className="text-xs tracking-[0.2em] text-[#F283AE] uppercase">AI Nail Design Assistant</p>
+                                <h3 className="text-3xl font-bold font-[family-name:var(--font-montserrat)] tracking-widest mb-2 text-[#FCF7F4]">NAILU</h3>
+                                <p className="text-xs tracking-[0.2em] text-[#9C7378] uppercase">AI Nail Design Assistant</p>
                             </div>
-                            <p className="text-sm text-[#EDD9BE]/80 leading-loose max-w-sm font-[family-name:var(--font-noto-sans-jp)]">
+                            <p className="text-sm text-[#FCF7F4]/80 leading-loose max-w-sm font-[family-name:var(--font-noto-sans-jp)]">
                                 指先から、新しい私へ。<br />
                                 最先端のAI技術とトレンドデザインで、<br />
                                 あなただけのネイル体験をお届けします。
@@ -1661,25 +1637,25 @@ export default function Home() {
 
                         {/* 2. Links */}
                         <div className="space-y-6">
-                            <h4 className="font-bold text-sm tracking-widest font-[family-name:var(--font-montserrat)] text-[#F283AE] border-b border-[#F283AE]/30 pb-2 inline-block">LINKS</h4>
-                            <ul className="space-y-4 text-sm font-[family-name:var(--font-noto-sans-jp)] text-[#EDD9BE]/80">
+                            <h4 className="font-bold text-sm tracking-widest font-[family-name:var(--font-montserrat)] text-[#9C7378] border-b border-[#9C7378]/30 pb-2 inline-block">LINKS</h4>
+                            <ul className="space-y-4 text-sm font-[family-name:var(--font-noto-sans-jp)] text-[#FCF7F4]/80">
                                 <li>
-                                    <button onClick={() => scrollToSection(heroRef)} className="hover:text-[#F283AE] hover:translate-x-1 transition-all duration-300 flex items-center gap-2">
+                                    <button onClick={() => scrollToSection(heroRef)} className="hover:text-[#9C7378] hover:translate-x-1 transition-all duration-300 flex items-center gap-2">
                                         <span className="text-[10px]">▶</span> トップページ
                                     </button>
                                 </li>
                                 <li>
-                                    <button onClick={() => scrollToSection(galleryRef)} className="hover:text-[#F283AE] hover:translate-x-1 transition-all duration-300 flex items-center gap-2">
+                                    <button onClick={() => scrollToSection(galleryRef)} className="hover:text-[#9C7378] hover:translate-x-1 transition-all duration-300 flex items-center gap-2">
                                         <span className="text-[10px]">▶</span> ギャラリー
                                     </button>
                                 </li>
                                 <li>
-                                    <a href="/terms" className="hover:text-[#F283AE] hover:translate-x-1 transition-all duration-300 flex items-center gap-2">
+                                    <a href="/terms" className="hover:text-[#9C7378] hover:translate-x-1 transition-all duration-300 flex items-center gap-2">
                                         <span className="text-[10px]">▶</span> 利用規約
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/privacy" className="hover:text-[#F283AE] hover:translate-x-1 transition-all duration-300 flex items-center gap-2">
+                                    <a href="/privacy" className="hover:text-[#9C7378] hover:translate-x-1 transition-all duration-300 flex items-center gap-2">
                                         <span className="text-[10px]">▶</span> プライバシーポリシー
                                     </a>
                                 </li>
@@ -1688,27 +1664,27 @@ export default function Home() {
 
                         {/* 3. Social */}
                         <div className="space-y-6">
-                            <h4 className="font-bold text-sm tracking-widest font-[family-name:var(--font-montserrat)] text-[#F283AE] border-b border-[#F283AE]/30 pb-2 inline-block">FOLLOW US</h4>
+                            <h4 className="font-bold text-sm tracking-widest font-[family-name:var(--font-montserrat)] text-[#9C7378] border-b border-[#9C7378]/30 pb-2 inline-block">FOLLOW US</h4>
                             <div className="flex gap-4">
-                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#F283AE] hover:border-[#F283AE] hover:text-[#5e3e53] transition-all duration-300 group">
+                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#9C7378] hover:border-[#9C7378] hover:text-[#665956] transition-all duration-300 group">
                                     {/* Instagram */}
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="group-hover:scale-110 transition-transform">
                                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                                     </svg>
                                 </a>
-                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#F283AE] hover:border-[#F283AE] hover:text-[#5e3e53] transition-all duration-300 group">
+                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#9C7378] hover:border-[#9C7378] hover:text-[#665956] transition-all duration-300 group">
                                     {/* X (Twitter) */}
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="group-hover:scale-110 transition-transform">
                                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                                     </svg>
                                 </a>
-                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#F283AE] hover:border-[#F283AE] hover:text-[#5e3e53] transition-all duration-300 group">
+                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#9C7378] hover:border-[#9C7378] hover:text-[#665956] transition-all duration-300 group">
                                     {/* TikTok */}
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="group-hover:scale-110 transition-transform">
                                         <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
                                     </svg>
                                 </a>
-                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#F283AE] hover:border-[#F283AE] hover:text-[#5e3e53] transition-all duration-300 group">
+                                <a href="#" onClick={handleSocialClick} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#9C7378] hover:border-[#9C7378] hover:text-[#665956] transition-all duration-300 group">
                                     {/* Pinterest */}
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="group-hover:scale-110 transition-transform">
                                         <path d="M9.04 21.54c.96.29 1.93.46 2.96.46a10 10 0 0 0 10-10A10 10 0 0 0 12 2a10 10 0 0 0-10 10c0 4.25 2.67 7.9 6.44 9.34-.09-.8-.16-2.02.03-2.88l.82-3.46s-.2-.42-.2-1.05c0-.98.57-1.7 1.28-1.7.6 0 .89.45.89 1 0 .6-.38 1.5-.58 2.34-.17.7.35 1.27 1.04 1.27 1.25 0 2.21-1.32 2.21-3.22 0-1.68-1.21-2.85-2.93-2.85-2.14 0-3.39 1.6-3.39 3.26 0 .64.25 1.33.56 1.7.06.07.07.13.05.2l-.21.87c-.03.13-.1.16-.24.1-1.07-.5-1.74-1.83-1.74-2.94 0-2.39 1.74-4.59 5.01-4.59 2.64 0 4.69 1.88 4.69 4.39 0 2.62-1.65 4.73-3.95 4.73-.77 0-1.49-.4-1.74-.87 0 0-.4 1.56-.5 1.94-.18.66-.67 1.49-1 2 .75.22 1.55.34 2.37.34z" />
@@ -1718,11 +1694,17 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#EDD9BE]/40 font-[family-name:var(--font-montserrat)]">
+                    <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#FCF7F4]/40 font-[family-name:var(--font-montserrat)]">
                         <p>© 2026 NAILU. All Rights Reserved.</p>
                     </div>
                 </div>
             </footer>
+
+            <div className="fixed bottom-0 inset-x-0 z-50 border-t border-[#E5D9D5] bg-[#FCF7F4]/95 p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] shadow-lg backdrop-blur-md md:hidden">
+                <a href={appUrl} className="block rounded-full bg-[#9C7378] px-5 py-3 text-center text-sm font-bold text-white shadow-md">
+                    App Storeでダウンロード
+                </a>
+            </div>
 
             {/* Social Media Coming Soon Popup */}
             {
@@ -1733,19 +1715,19 @@ export default function Home() {
                             onClick={() => setShowSocialPopup(false)}
                         ></div>
                         <div className="relative bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl animate-scale-in">
-                            <div className="w-16 h-16 bg-[#EDD9BE] rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+                            <div className="w-16 h-16 bg-[#FCF7F4] rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
                                 🙏
                             </div>
-                            <h3 className="text-xl font-bold text-[#5e3e53] mb-2 font-[family-name:var(--font-noto-sans-jp)]">
+                            <h3 className="text-xl font-bold text-[#665956] mb-2 font-[family-name:var(--font-noto-sans-jp)]">
                                 Coming Soon
                             </h3>
-                            <p className="text-[#5e3e53] text-sm mb-6 font-[family-name:var(--font-noto-sans-jp)]">
+                            <p className="text-[#665956] text-sm mb-6 font-[family-name:var(--font-noto-sans-jp)]">
                                 SNSアカウントは現在準備中です。<br />
                                 公開までもう少々お待ちください。
                             </p>
                             <button
                                 onClick={() => setShowSocialPopup(false)}
-                                className="bg-[#F283AE] text-white px-6 py-2 rounded-full font-bold hover:bg-[#C9A098] transition-colors text-sm"
+                                className="bg-[#9C7378] text-white px-6 py-2 rounded-full font-bold hover:bg-[#BB969B] transition-colors text-sm"
                             >
                                 閉じる
                             </button>
@@ -1770,16 +1752,16 @@ export default function Home() {
                             {/* Close Button */}
                             <button
                                 onClick={() => setSelectedTrend(null)}
-                                className="absolute top-6 right-6 w-10 h-10 bg-black/5 hover:bg-black/10 rounded-full flex items-center justify-center text-[#5e3e53] transition-colors z-20"
+                                className="absolute top-6 right-6 w-10 h-10 bg-black/5 hover:bg-black/10 rounded-full flex items-center justify-center text-[#665956] transition-colors z-20"
                             >
                                 ✕
                             </button>
 
                             <div className="p-8 md:p-12">
                                 <div className="mb-10">
-                                    <span className="text-[#F283AE] font-bold tracking-widest text-xs uppercase mb-3 block font-[family-name:var(--font-montserrat)]">Trend Featured</span>
-                                    <h2 className="text-3xl md:text-5xl font-bold text-[#5e3e53] mb-4 font-[family-name:var(--font-noto-sans-jp)]">{selectedTrend.title}</h2>
-                                    <p className="text-[#5e3e53] text-lg font-[family-name:var(--font-noto-sans-jp)]">{selectedTrend.description}</p>
+                                    <span className="text-[#9C7378] font-bold tracking-widest text-xs uppercase mb-3 block font-[family-name:var(--font-montserrat)]">Trend Featured</span>
+                                    <h2 className="text-3xl md:text-5xl font-bold text-[#665956] mb-4 font-[family-name:var(--font-noto-sans-jp)]">{selectedTrend.title}</h2>
+                                    <p className="text-[#665956] text-lg font-[family-name:var(--font-noto-sans-jp)]">{selectedTrend.description}</p>
                                 </div>
 
                                 <div className="grid grid-cols-2 md:grid-cols-2 gap-6">
@@ -1794,9 +1776,9 @@ export default function Home() {
                                 <div className="mt-12 text-center">
                                     <a
                                         href={appUrl}
-                                        className="inline-flex items-center gap-2 px-10 py-4 bg-[#C59FBE] text-white rounded-full font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
+                                        className="inline-flex items-center gap-2 px-10 py-4 bg-[#DFC4C5] text-white rounded-full font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
                                     >
-                                        <span>このスタイルで作成する</span>
+                                        <span>App Storeでアプリを見る</span>
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M5 12h14M12 5l7 7-7 7" />
                                         </svg>
